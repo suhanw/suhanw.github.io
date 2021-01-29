@@ -4,7 +4,11 @@ module.exports = withLess({
 	cssModules: true,
 	cssLoaderOptions: {
 		importLoaders: 1,
-		localIdentName: '[local]_[hash:base64:5]',
+		// modules: {
+			localIdentName: '[local]_[hash:base64:5]',
+			namedExport: true,
+			exportLocalsConvention: 'camelCase'
+		// }
 	},
 	webpack: (config, { buildId, dev, isServer, defaultLoaders, webpack }) => {
 		// Note: we provide webpack above so you should not `require` it
