@@ -1,0 +1,25 @@
+{
+	"name": "suhanwijaya",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.js",
+	"scripts": {
+		"dev": "next dev",
+		"build": "next build",
+		"start": "next start",
+		"build-static": "next build && next export",
+		"start-static": "serve out"
+	},
+	"author": "Suhan Wijaya",
+	"license": "ISC",
+	"dependencies": {
+		"@zeit/next-less": "^1.0.1",
+		"less": "^4.1.0",
+		"next": "^10.0.5",
+		"react": "^17.0.1",
+		"react-dom": "^17.0.1"
+	},
+	"devDependencies": {
+		"serve": "^11.3.2"
+	}
+}
