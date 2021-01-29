@@ -1,11 +1,12 @@
-import Menu from 'components/menu';
+import Layout from 'components/layout';
 
 const HomePage = () => {
 	return (
-		<div>
-			<Menu />
-			HELLO WORLD
-		</div>
+		<Layout>
+			<div>
+				HELLO WORLD
+			</div>
+		</Layout>
 	);
 };
 
