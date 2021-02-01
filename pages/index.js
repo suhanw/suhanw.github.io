@@ -3,6 +3,7 @@ import { useRouter } from 'next/router';
 import Layout from 'components/layout';
 import Intro from 'components/intro';
 import About from 'components/about';
+import Projects from 'components/projects';
 
 const HomePage = () => {
 	const router = useRouter();
@@ -31,6 +32,7 @@ const HomePage = () => {
 		<Layout>
 			<Intro />
 			<About />
+			<Projects />
 		</Layout>
 	);
 };

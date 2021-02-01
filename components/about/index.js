@@ -1,10 +1,10 @@
 import cn from 'classnames';
 import style from './style';
 
-const Intro = (props) => {
+const About = (props) => {
 	return (
 		<section id={'about-section'} className={style.about}>
-			<h2 className={style.title}>about</h2>
+			<h2 className={style.title}>about me</h2>
 			<p className={cn(style.content, style.desktop)}>
 				Right-brained techie passionate about coding, product, UX, and fun adventures with my family.
 			</p>
@@ -23,4 +23,4 @@ const Intro = (props) => {
 	);
 };
 
-export default Intro;
+export default About;
