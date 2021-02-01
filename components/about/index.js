@@ -3,7 +3,7 @@ import style from './style';
 
 const Intro = (props) => {
 	return (
-		<section id={'about'} className={style.about}>
+		<section id={'about-section'} className={style.about}>
 			<h2 className={style.title}>about</h2>
 			<p className={cn(style.content, style.desktop)}>
 				Right-brained techie passionate about coding, product, UX, and fun adventures with my family.
