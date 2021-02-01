@@ -18,12 +18,14 @@ const HomePage = () => {
 			window.scrollTo({ top: scrollDistance, behavior: 'smooth' });
 		};
 
+		handleHashChange(router?.asPath);
+
 		router.events.on('hashChangeComplete', handleHashChange);
 
 		return () => {
 			router.events.off('hashChangeComplete', handleHashChange);
 		};
-	});
+	}, []);
 
 	return (
 		<Layout>
