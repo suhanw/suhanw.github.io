@@ -1,15 +1,16 @@
+import Link from 'next/link'
 import style from './style';
 
 const Menu = () => {
 	return (
 		<nav className={style.menu}>
-			<h2 className={style.name}>suhan wijaya</h2>
+			<h2 className={style.name}>suhan <br />wijaya</h2>
 			<ul className={style.menuItems}>
-				<li>INTRO</li>
-				<li>ABOUT ME</li>
-				<li>MY PROJECTS</li>
-				<li>BLOG</li>
-				<li>CONTACT</li>
+				<li><Link href='/#intro'><a>INTRO</a></Link></li>
+				<li><Link href='/#about'><a>ABOUT</a></Link></li>
+				<li><Link href='/#projects'><a>PROJECTS</a></Link></li>
+				<li><Link href='/#blog'><a>BLOG</a></Link></li>
+				<li><Link href='/#contact'><a>CONTACT</a></Link></li>
 			</ul>
 		</nav>
 	);
