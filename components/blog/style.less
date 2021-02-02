@@ -7,7 +7,7 @@
 
 .post {
 	flex: 0 0 100%;
-	padding: 0px 0px 15px 0px;
+	padding: 0px 0px 20px 0px;
 
 	a {
 		text-decoration: none;
@@ -17,7 +17,7 @@
 .postImage {
 	display: block;
 	padding-top: calc(100% / 1.91); // social media image aspect ratio 1.91:1
-	margin: 0px 0px 20px 0px;
+	margin: 0px 0px 10px 0px;
 	background-repeat: no-repeat;
 	background-position: center;
 	background-size: cover;
@@ -25,18 +25,18 @@
 
 .postTitle {
 	display: block;
-	margin: 0px 0px 10px 0px;
+	margin: 0px 0px 5px 0px;
 	font-weight: 700;
 	text-transform: uppercase;
 }
 
 .postDate {
 	display: block;
-	margin: 0px 0px 20px 0px;
+	margin: 0px 0px 10px 0px;
 }
 
 .postDescription {
-	margin: 0px 0px 20px 0px;
+	margin: 0px 0px 10px 0px;
 	font-size: 14px;
 }
 
@@ -45,17 +45,26 @@
 	font-weight: 700;
 }
 
-// @media only screen and (min-width: 768px) {
-// 	.post {
-// 		flex: 0 0 50%;
-// 		padding: 0px 15px 15px 0px;
-// 	}
-// }
-
 @media only screen and (min-width: 768px) {
 	.post {
 		flex: 0 0 auto;
 		width: 33%;
 		padding: 0px 15px;
+	}
+
+	.postImage {
+		margin: 0px 0px 20px 0px;
+	}
+
+	.postTitle {
+		margin: 0px 0px 10px 0px;
+	}
+
+	.postDate {
+		margin: 0px 0px 20px 0px;
+	}
+
+	.postDescription {
+		margin: 0px 0px 20px 0px;
 	}
 }
