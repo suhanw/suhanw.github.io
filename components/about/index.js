@@ -5,7 +5,7 @@ import utilStyle from 'styles/utils';
 const About = (props) => {
 	return (
 		<section id={'about-section'} className={cn(style.about, utilStyle.homeSection)}>
-			<h2 className={style.title}>about me</h2>
+			<h2 className={style.title}>about</h2>
 			<p className={cn(style.content, style.desktop)}>
 				Right-brained techie passionate about coding, product, UX, and fun adventures with my family.
 			</p>
