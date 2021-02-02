@@ -8,8 +8,8 @@ const Menu = () => {
 			<ul className={style.menuItems}>
 				<li><Link href='/#intro'><a>INTRO</a></Link></li>
 				<li><Link href='/#about'><a>ABOUT</a></Link></li>
-				<li><Link href='/#projects'><a>PROJECTS</a></Link></li>
 				<li><Link href='/#blog'><a>BLOG</a></Link></li>
+				<li><Link href='/#projects'><a>PROJECTS</a></Link></li>
 				<li><Link href='/#technologies'><a>TECHNOLOGIES</a></Link></li>
 				<li><Link href='/#contact'><a>CONTACT</a></Link></li>
 			</ul>
