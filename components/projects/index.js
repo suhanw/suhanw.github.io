@@ -8,11 +8,11 @@ const Projects = (props) => {
 			<h2 className={style.title}>projects</h2>
 			<div className={style.masonry}>
 				<div className={style.column}>
-					<span className={style.cell}><img src='/images/tmnt.png' /></span>
-					<span className={style.cell}><img src='/images/auteur.png' /></span>
+					<a className={style.cell} href='https://www.suhanwijaya.com/tmnt_react' target='_blank'><img src='/images/tmnt.png' /></a>
+					<a className={style.cell} href='https://auteur-nodejs.herokuapp.com' target='_blank'><img src='/images/auteur.png' /></a>
 				</div>
 				<div className={style.column}>
-					<span className={style.cell}><img src='/images/mapmycruise.png' /></span>
+					<a className={style.cell} href='https://mapmycruise.herokuapp.com' target='_blank'><img src='/images/mapmycruise.png' /></a>
 				</div>
 			</div>
 		</section>
