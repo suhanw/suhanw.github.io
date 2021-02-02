@@ -6,8 +6,18 @@ import Intro from 'components/intro';
 import About from 'components/about';
 import Blog from 'components/blog';
 import Projects from 'components/projects';
+import { getPinnedPosts } from 'data';
 
-const HomePage = () => {
+export const getStaticProps = async () => {
+	const pinnedPosts = getPinnedPosts();
+	return {
+		props: {
+			pinnedPosts,
+		}
+	}
+}
+
+const Home = ({ pinnedPosts }) => {
 	const router = useRouter();
 
 	useEffect(() => {
@@ -38,10 +48,10 @@ const HomePage = () => {
 			</Head>
 			<Intro />
 			<About />
-			<Blog />
+			<Blog pinnedPosts={pinnedPosts} />
 			<Projects />
 		</Layout>
 	);
 };
 
-export default HomePage;
+export default Home;
