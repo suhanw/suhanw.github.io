@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { useRouter } from 'next/router';
+import Head from 'next/head';
 import Layout from 'components/layout';
 import Intro from 'components/intro';
 import About from 'components/about';
@@ -31,6 +32,10 @@ const HomePage = () => {
 
 	return (
 		<Layout>
+			<Head>
+				<title>Suhan Wijaya</title>
+				<meta name="viewport" content="initial-scale=1.0, width=device-width" />
+			</Head>
 			<Intro />
 			<About />
 			<Blog />
