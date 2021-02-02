@@ -6,7 +6,9 @@ import Intro from 'components/intro';
 import About from 'components/about';
 import Blog from 'components/blog';
 import Projects from 'components/projects';
-import { getPinnedPosts } from 'data';
+import Technologies from 'components/technologies';
+import Contact from 'components/contact';
+import { getPinnedPosts } from 'data/posts';
 
 export const getStaticProps = async () => {
 	const pinnedPosts = getPinnedPosts();
@@ -50,6 +52,8 @@ const Home = ({ pinnedPosts }) => {
 			<About />
 			<Blog pinnedPosts={pinnedPosts} />
 			<Projects />
+			<Technologies />
+			<Contact />
 		</Layout>
 	);
 };
