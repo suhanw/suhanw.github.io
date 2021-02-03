@@ -139,13 +139,13 @@ Annotations of the code comments above:
 
 > `webpack-dev-server` doesn’t write any output files after compiling. Instead, it keeps bundle files in memory and serves them as if they were real files mounted at the server’s root path.
 
-**[C]** The `publicPath` option tells webpack where we will be serving the client-side bundle. Notice that we are using the same `clientPort` for `devServer`, which tells `webpack-dev-server` to serve the client-side bundle from `http://localhost:8080/`. And since the `filename` option tells webpack to nest `bundle.js` in a `scripts` folder, the client-side bundle will be served from `http://localhost:8080/scripts/bundle.js`.
+**[C]** The `publicPath` option tells webpack where we will be serving the client-side bundle. Notice that we are using the same `clientPort` for `devServer`, which tells `webpack-dev-server` to serve the client-side bundle from `http://localhost:8080/`. And since the `filename` option tells webpack to nest `bundle.js` in a `scripts` folder, the client-side bundle will be served from `localhost:8080/scripts/bundle.js`.
 
 **[D]** [CSS modules](https://css-tricks.com/css-modules-part-1-need/) and CSS preprocessors (e.g., Less, Sass) deserve an article. But in a nutshell, this piece of config tells webpack to:
 
 - transpile `.less` files into CSS code that the browser understands,
 - allow us to `import style from ‘./style.less’` which is scoped **locally** to the component importing it (i.e., we don’t have to worry about CSS class naming collisions or specificity issues as the app grows),
-- generate a CSS bundle that’s served separately from the JS bundle. In this instance, the `MiniCssExtractPlugin` tells webpack to serve the CSS bundle from `http://localhost:8080/styles/bundle.css` in dev mode.
+- generate a CSS bundle that’s served separately from the JS bundle. In this instance, the `MiniCssExtractPlugin` tells webpack to serve the CSS bundle from `localhost:8080/styles/bundle.css` in dev mode.
 
 **[E]** Remember `webpack.shared.config.js`? This line merges `webpack.shared.config.js` with `webpack.client.config.js`.
 
