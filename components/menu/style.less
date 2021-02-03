@@ -41,14 +41,18 @@
 
 .menuItems {
 	margin: 0px 0px 50px 0px;
-	
-	li {
-		margin: 0px 0px 20px 0px;
-		width: 200px;
-		color: #555555;
-		font-size: 14px;
-		letter-spacing: 2px;
-	}
+}
+
+.topMenuItems {
+	display: none;
+}
+
+.menuItem {
+	margin: 0px 0px 20px 0px;
+	width: 200px;
+	color: #555555;
+	font-size: 14px;
+	letter-spacing: 2px;
 
 	a {
 		text-decoration: none;
@@ -86,5 +90,27 @@
 		transform: translateX(0px);
 		transition: transform 300ms ease-out;
 		border-right: 1px solid #f9f9f9;
+	}
+
+	.topMenu {
+		&.menu {
+			position: relative;
+			padding: 40px 20px 0px;
+			border-right: none;
+			border-bottom: 1px solid #f9f9f9;
+		}
+
+		.name, .menuItems, .email, .social {
+			display: none;
+		}
+
+		.topMenuItems {
+			display: flex;
+			justify-content: center;
+
+			.menuItem {
+				width: auto;
+			}
+		}
 	}
 }
