@@ -1,4 +1,5 @@
 import Head from 'next/head';
+import { useRouter } from 'next/router';
 import style from './style';
 import { getAllPostIds, getPostData } from 'data';
 import Date from 'components/date';
@@ -22,11 +23,34 @@ export const getStaticProps = async ({ params }) => {
 };
 
 const Post = ({ postData }) => {
+	const router = useRouter();
+
+	const metaTitle = `${postData?.title} by Suhan Wijaya`;
+	const metaDescription = postData?.description;
+	const metaImage = postData?.image;
+	const metaUrl = `https://www.suhanwijaya.com${router?.asPath}`;
+	
 	return (
 		<Layout topMenu>
 			<Head>
-				<title>{`${postData?.title} by Suhan Wijaya`}</title>
+				<title>{metaTitle}</title>
 				<meta name="viewport" content="initial-scale=1.0, width=device-width" />
+
+				<meta name="title" content={metaTitle} />
+				<meta name="description" content={metaDescription} />
+
+				{/* Open Graph / Facebook */}
+				<meta property="og:type" content="website" />
+				<meta property="og:url" content={metaUrl} />
+				<meta property="og:title" content={metaTitle} />
+				<meta property="og:description" content={metaDescription} />
+				<meta property="og:image" content={metaImage} />
+
+				{/* Twitter */}
+				<meta name="twitter:title" content={metaTitle} />
+				<meta name="twitter:description" content={metaDescription} />
+				<meta name="twitter:image" content={metaImage} />
+				<meta name="twitter:card" content="summary_large_image" />
 			</Head>
 			<article className={style.contentWrapper}>
 				<h1 className={style.title}>{postData?.title}</h1>
