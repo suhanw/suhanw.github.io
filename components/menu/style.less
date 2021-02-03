@@ -1,3 +1,19 @@
+.hamburger {
+	position: fixed;
+	top: 15px;
+	left: 15px;
+	display: inline-block;
+	width: 50px;
+	background-color: #fff;
+	border-radius: 10px;
+	
+	> img {
+		display: block;
+		width: 100%;
+		height: auto;
+	}
+}
+
 .menu {
 	position: fixed;
 	top: 0px;
@@ -7,8 +23,14 @@
 	padding: 0px 30px 0px 50px;
 	height: 100%;
 	min-height: auto;
-	border-right: 1px solid #f9f9f9;
 	overflow-y: scroll;
+	background-color: rgba(255, 255, 255, 0.9);
+
+	&.showMenu {
+		transform: translateX(0);
+		transition: transform 300ms ease-out;
+		width: 100%;
+	}
 }
 
 .name {
@@ -32,8 +54,13 @@
 }
 
 @media only screen and (min-width: 992px) {
+	.hamburger {
+		display: none;
+	}
+	
 	.menu {
 		transform: translateX(0px);
 		transition: transform 300ms ease-out;
+		border-right: 1px solid #f9f9f9;
 	}
 }
