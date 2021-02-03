@@ -76,8 +76,23 @@
 		padding: 0.1em 0.25em;
 	}
 
+	pre {
+		padding: 20px;
+		border-radius: 5px;
+		background-color: rgba(0, 0, 0, 0.1);
+		overflow: scroll;
+
+		code {
+			background: none;
+		}
+	}
+
 	p {
 		margin: 30px 0px;
+
+		img {
+			max-width: 100%;
+		}
 	}
 
 	hr {
@@ -87,9 +102,20 @@
 		margin: 1.3em auto 1.5em;
 	}
 
-	ul {
+	ul, ol {
 		margin: 30px 0px;
 		padding-inline-start: 20px;
+	}
+	
+	ul {
 		list-style: disc;
+	}
+
+	ol {
+		list-style-type: decimal;
+	}
+
+	li {
+		margin: 0px 0px 10px 0px;
 	}
 }

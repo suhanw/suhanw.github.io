@@ -8,8 +8,6 @@ canonical_url: https://medium.com/javascript-in-plain-english/decouple-data-from
 date: '2020-11-23'
 ---
 
-### And how I “program to an interface” with JavaScript functions
-
 <figure>
 	<img src='https://cdn-images-1.medium.com/max/1024/1*Ysy1EpS9hF5J3qnkT5TX3A.png'>
 	<figcaption>Source: <a href="https://imgur.com/gallery/CgWZFId">Imgur</a></figcaption>

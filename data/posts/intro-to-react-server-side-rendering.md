@@ -8,9 +8,10 @@ canonical_url: https://medium.com/javascript-in-plain-english/intro-to-react-ser
 date: '2021-01-11'
 ---
 
-#### How to build a React SSR app without any tooling or framework
-
-![](https://cdn-images-1.medium.com/max/900/1*PXvYmj3eEqaRigoFGcJZTA.jpeg)<figcaption>Source: <a href="https://www.reddit.com/r/ProgrammerHumor/comments/5lnsko/programming_environment_dilbert_comic_strip_on/">Reddit</a> and Dilbert by Scott Adams</figcaption>
+<figure>
+	<img src='https://cdn-images-1.medium.com/max/900/1*PXvYmj3eEqaRigoFGcJZTA.jpeg'>
+	<figcaption>Source: <a href="https://www.reddit.com/r/ProgrammerHumor/comments/5lnsko/programming_environment_dilbert_comic_strip_on/">Reddit</a> and Dilbert by Scott Adams</figcaption>
+</figure>
 
 ***
 
@@ -74,7 +75,7 @@ A quick rundown of the files in this project:
 
 Here are the dependencies (and versions) used at the time of this writing. I will also mention which relevant dependencies to install in each of the following sections.
 
-{% gist https://gist.github.com/suhanw/2afd2841c1beb5a107b5547b27b786be %}
+<script src='https://gist.github.com/suhanw/2afd2841c1beb5a107b5547b27b786be.js'></script>
 
 Now let’s look at each file in our project in more detail.
 
@@ -94,7 +95,7 @@ Install the relevant dependencies:
 npm i webpack webpack-cli babel-loader
 ```
 
-{% gist https://gist.github.com/suhanw/128bbb5bdfb18b854d0ca0ed2ee5b884 %}
+<script src='https://gist.github.com/suhanw/128bbb5bdfb18b854d0ca0ed2ee5b884.js'></script>
 
 Annotations of the code comments above:
 
@@ -112,7 +113,7 @@ Install the relevant dependencies:
 npm i babel-loader @babel/core @babel/preset-env @babel/preset-react
 ```
 
-{% gist https://gist.github.com/suhanw/33f2d36ef3922ebbb4ce3d425e407eaa %}
+<script src='https://gist.github.com/suhanw/33f2d36ef3922ebbb4ce3d425e407eaa.js'></script>
 
 Annotations of the code comments above:
 
@@ -128,7 +129,7 @@ Install the relevant dependencies:
 npm i webpack webpack-cli webpack-merge webpack-dev-server mini-css-extract-plugin css-loader less-loader less
 ```
 
-{% gist https://gist.github.com/suhanw/98c17ffc82967bc28a84289f9b55d54b %}
+<script src='https://gist.github.com/suhanw/98c17ffc82967bc28a84289f9b55d54b.js'></script>
 
 Annotations of the code comments above:
 
@@ -158,7 +159,7 @@ Install the relevant dependencies (and grab a ☕️):
 npm i webpack webpack-cli webpack-node-externals css-loader
 ```
 
-{% gist https://gist.github.com/suhanw/93565516165d8225566ee0dcac854e3d %}
+<script src='https://gist.github.com/suhanw/93565516165d8225566ee0dcac854e3d.js'></script>
 
 Annotations of the code comments above:
 
@@ -186,9 +187,9 @@ npm i react
 
 Let’s create a simple React component `App`, which renders our favorite greeting with some basic styles, as well as a button that displays an alert dialog when clicked. We will render this component on the server-side and hydrate it on the client-side.
 
-{% gist https://gist.github.com/suhanw/22786482aae23f82852b3fa15faf46e0 %}
+<script src='https://gist.github.com/suhanw/22786482aae23f82852b3fa15faf46e0.js'></script>
 
-{% gist https://gist.github.com/suhanw/ff1f2997761dbec42ae3a80b7c7bdca2 %}
+<script src='https://gist.github.com/suhanw/ff1f2997761dbec42ae3a80b7c7bdca2.js'></script>
 
 ***
 
@@ -202,7 +203,7 @@ npm i express react react-dom
 
 Let’s create an Express server and define a route that serves an HTML page when a user visits `http://localhost:3000/`.
 
-{% gist https://gist.github.com/suhanw/23f6122050af076a51199a8d4b165d5b %}
+<script src='https://gist.github.com/suhanw/23f6122050af076a51199a8d4b165d5b.js'></script>
 
 Annotations of the code comments above:
 
@@ -222,7 +223,7 @@ npm i react react-dom
 
 In the client-side entry point, we will “[hydrate](https://reactjs.org/docs/react-dom.html#hydrate)” the React component that was SSR-ed into the root DOM container with the ID **“ssr-app”**.
 
-{% gist https://gist.github.com/suhanw/be366494b9bf2bdbd2272c732f1bbbe8 %}
+<script src='https://gist.github.com/suhanw/be366494b9bf2bdbd2272c732f1bbbe8.js'></script>
 
 Per the [docs](https://reactjs.org/docs/react-dom-server.html#rendertostring):
 
@@ -242,7 +243,7 @@ npm i rimraf webpack webpack-cli webpack-dev-server npm-run-all nodemon
 
 This is the `scripts` key in the `package.json` file, where we define several `npm` scripts to build and start the app in dev mode.
 
-{% gist https://gist.github.com/suhanw/5c87c373511b0d2e053ebca5fde8d6aa %}
+<script src='https://gist.github.com/suhanw/5c87c373511b0d2e053ebca5fde8d6aa.js'></script>
 
 Let’s look at each of them:
 
@@ -292,7 +293,7 @@ In future(ish 😅🤞🏻) articles, I plan to cover more advanced features lik
 ### Read More
 
 - [Decouple Data from UI with React Hooks](https://dev.to/suhanw/decouple-data-from-ui-with-react-hooks-3amn)
-- [Decouple Data from UI in React Part 2: A further exploration of the Hooks, Render Props, and HOC patterns](https://dev.to/suhanw/decouple-data-from-ui-in-react-part-2-4amk)
+- [Decouple Data from UI in React Part 2: Hooks, Render Props, and HOC patterns](https://dev.to/suhanw/decouple-data-from-ui-in-react-part-2-4amk)
 - [Accessible UI: Stop making clickable DIVs](https://dev.to/suhanw/accessible-ui-stop-making-clickable-divs-g8k)
 
 ***
