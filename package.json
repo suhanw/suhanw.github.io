@@ -5,10 +5,11 @@
 	"main": "index.js",
 	"scripts": {
 		"dev": "next dev",
-		"build": "next build",
-		"start": "next start",
-		"build-static": "next build && next export -o docs",
-		"start-static": "serve docs"
+		"build-ssr": "next build",
+		"start-ssr": "next start",
+		"build": "next build && next export -o docs",
+		"postbuild": "copyfiles .nojekyll docs",
+		"start": "serve docs"
 	},
 	"author": "Suhan Wijaya",
 	"license": "ISC",
@@ -26,6 +27,7 @@
 		"smoothscroll-polyfill": "^0.4.4"
 	},
 	"devDependencies": {
+		"copyfiles": "^2.4.1",
 		"serve": "^11.3.2"
 	}
 }
