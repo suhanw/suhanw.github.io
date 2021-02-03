@@ -2,7 +2,7 @@
 title: 'Accessible UI: Stop making clickable DIVs'
 description: Making the web accessible one (less) DIV at a time.
 published: true
-date: 2020-11-09 15:34:27 UTC
+date: '2020-11-09'
 tags: webdevelopment,a11y,javascript,html
 canonical_url: https://tech.boxed.com/accessible-ui-stop-making-clickable-divs-264115938716
 ---

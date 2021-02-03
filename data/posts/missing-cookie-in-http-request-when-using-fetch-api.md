@@ -1,6 +1,6 @@
 ---
 title: Missing cookie in HTTP request when using Fetch API
-date: 2020-11-02 13:02:48 UTC
+date: '2020-11-02'
 tags: coding,webdev,internet,browsers
 canonical_url: https://medium.com/@suhanwijaya/missing-cookie-in-http-request-when-using-fetch-api-fc0199c3dc3c
 ---

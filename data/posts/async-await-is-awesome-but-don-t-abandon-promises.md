@@ -1,7 +1,7 @@
 ---
 title: Async/await is awesome, but don’t abandon Promises
 description: Async/await is awesome, but don’t abandon Promises
-date: 2020-11-15 12:26:56 UTC
+date: '2020-11-15'
 tags: ui,javascript,webdev,promises
 canonical_url: https://medium.com/javascript-in-plain-english/async-await-is-awesome-but-dont-abandon-promises-f815b3df51dc
 ---

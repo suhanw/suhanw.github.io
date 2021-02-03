@@ -8,7 +8,7 @@ import Blog from 'components/blog';
 import Projects from 'components/projects';
 import Technologies from 'components/technologies';
 import Contact from 'components/contact';
-import { getPinnedPosts } from 'data/posts';
+import { getPinnedPosts } from 'data';
 
 export const getStaticProps = async () => {
 	const pinnedPosts = getPinnedPosts();

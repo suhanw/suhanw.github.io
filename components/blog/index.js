@@ -9,13 +9,13 @@ const Blog = ({ pinnedPosts }) => (
 		<ul className={style.posts}>
 			{pinnedPosts?.map((post, i) => (
 				<li key={`${post?.id}-i`} className={style.post}>
-					<a className={style.postImage} style={{ backgroundImage: `url(${post?.image})`}} />
-					<a className={style.postTitle}>{post?.title}</a>
+					<a href={`/posts/${post?.id}`} className={style.postImage} style={{ backgroundImage: `url(${post?.image})`}} />
+					<a href={`/posts/${post?.id}`} className={style.postTitle}>{post?.title}</a>
 					<small className={style.postDate}>
 						<Date dateString={post?.date} />
 					</small>
 					<p className={style.postDescription}>{post?.description}</p>
-					<a className={style.postCta}>READ MORE...</a>
+					<a href={`/posts/${post?.id}`} className={style.postCta}>READ MORE...</a>
 				</li>
 			))}
 		</ul>
