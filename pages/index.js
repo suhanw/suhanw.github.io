@@ -44,7 +44,7 @@ const Home = ({ pinnedPosts }) => {
 
 	const metaTitle = 'Suhan Wijaya';
 	const metaDescription = 'Right-brained techie who builds apps with JavaScript, React, Redux, Node.js, Hapi, Express, NoSQL, SQL, REST, GraphQL.';
-	const metaImage = 'https://www.suhanwijaya.com/images/digital-garden.png';
+	const metaImage = 'https://www.suhanwijaya.com/images/digital-garden-social.png';
 	const metaUrl = 'https://www.suhanwijaya.com/index.html';
 
 	return (
