@@ -16,7 +16,6 @@ const Technologies = (props) => {
 				<TechIcon imageSrc={'/tech-icons/babel.png'} imageCaption={`Babel`} />
 				<TechIcon imageSrc={'/tech-icons/less.png'} imageCaption={`Less`} />
 				<TechIcon imageSrc={'/tech-icons/storybook.png'} imageCaption={`Storybook`} />
-				<TechIcon imageSrc={'/tech-icons/thumbor.jpg'} imageCaption={`Thumbor`} />
 				<TechIcon imageSrc={'/tech-icons/nodejs.png'} imageCaption={`Node.js`} />
 				<TechIcon imageSrc={'/tech-icons/hapi.png'} imageCaption={`Hapi.js`} />
 				<TechIcon imageSrc={'/tech-icons/express.png'} imageCaption={`Express.js`} />
@@ -25,6 +24,7 @@ const Technologies = (props) => {
 				<TechIcon imageSrc={'/tech-icons/jest.png'} imageCaption={`Jest`} />
 				<TechIcon imageSrc={'/tech-icons/enzyme.png'} imageCaption={`Enzyme`} />
 				<TechIcon imageSrc={'/tech-icons/npm.png'} imageCaption={`npm`} />
+				<TechIcon imageSrc={'/tech-icons/thumbor.jpg'} imageCaption={`Thumbor`} />
 				<TechIcon imageSrc={'/tech-icons/passport.png'} imageCaption={`Passport.js`} />
 				<TechIcon imageSrc={'/tech-icons/socketio.png'} imageCaption={`Socket.io`} />
 				<TechIcon imageSrc={'/tech-icons/redis.png'} imageCaption={`Redis`} />
@@ -48,9 +48,10 @@ const Technologies = (props) => {
 				<TechIcon imageSrc={'/tech-icons/safari.jpg'} imageCaption={`Safari`} />
 				<TechIcon imageSrc={'/tech-icons/edge.jpeg'} imageCaption={`Edge`} />
 				<TechIcon imageSrc={'/tech-icons/ie.png'} imageCaption={`IE11`} />
+				<TechIcon imageSrc={'/tech-icons/browserstack.png'} imageCaption={`BrowserStack`} />
+				<TechIcon imageSrc={'/tech-icons/responsively.png'} imageCaption={`Responsively`} />
 				<TechIcon imageSrc={'/tech-icons/vsc.png'} imageCaption={`Visual Studio Code`} />
 				<TechIcon imageSrc={'/tech-icons/zeplin.png'} imageCaption={`Zeplin`} />
-				<TechIcon imageSrc={'/tech-icons/browserstack.png'} imageCaption={`BrowserStack`} />
 				<TechIcon imageSrc={'/tech-icons/postman.png'} imageCaption={`Postman`} />
 				<TechIcon imageSrc={'/tech-icons/slack.jpg'} imageCaption={`Slack`} />
 				<TechIcon imageSrc={'/tech-icons/jira.jpg'} imageCaption={`JIRA`} />
