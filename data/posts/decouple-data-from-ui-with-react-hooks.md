@@ -10,12 +10,15 @@ date: '2020-11-23'
 
 ### And how I “program to an interface” with JavaScript functions
 
-![](https://cdn-images-1.medium.com/max/1024/1*Ysy1EpS9hF5J3qnkT5TX3A.png)<figcaption>Source: <a href="https://imgur.com/gallery/CgWZFId">Imgur</a></figcaption>
+<figure>
+	<img src='https://cdn-images-1.medium.com/max/1024/1*Ysy1EpS9hF5J3qnkT5TX3A.png'>
+	<figcaption>Source: <a href="https://imgur.com/gallery/CgWZFId">Imgur</a></figcaption>
+</figure>
+
 ***
 
 I‘m certain you have seen (or written) this common React pattern: (a) render a placeholder/ loader/spinner while some data is fetched via AJAX, then (b) re-render the component based on the data received. Let’s write a functional component leveraging the [Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API) to accomplish this.
 
-<!-- {% gist https://gist.github.com/suhanw/b8aa23f97f06ddc3b068b2c2368e4ca2 %} -->
 <script src="https://gist.github.com/suhanw/b8aa23f97f06ddc3b068b2c2368e4ca2.js"></script>
 ***
 
@@ -25,22 +28,22 @@ Let’s say my app grows, and there are X components that use the same data fetc
 
 Nope, let’s [DRY it up](https://medium.com/better-programming/kiss-dry-and-code-principles-every-developer-should-follow-b77d89f51d74) by writing a custom hook `useSomeData`.
 
-{% gist https://gist.github.com/suhanw/3e948918f96a1b7680bdeb86bbbbdaa2 %}
+<script src='https://gist.github.com/suhanw/3e948918f96a1b7680bdeb86bbbbdaa2.js'></script>
 
 The components that share this data logic now look concise.
 
-{% gist https://gist.github.com/suhanw/9e23e8b61dfb58db45e280124b22fe55 %}
+<script src='https://gist.github.com/suhanw/9e23e8b61dfb58db45e280124b22fe55.js'></script>
 ***
 
 **OK… DRY code is great, but so what?**
 
 Let’s say my app becomes complex, so I decide to use Redux to handle AJAX requests and maintain a global app state. I simply update the implementation of `useSomeData` _without touching the UI components_.
 
-{% gist https://gist.github.com/suhanw/aac361c9ab4856eed2cf5d5531ce655b %}
+<script src='https://gist.github.com/suhanw/aac361c9ab4856eed2cf5d5531ce655b.js'></script>
 
 Then GraphQL comes along and I jump on the bandwagon. Again, I simply update the implementation of `useSomeData` _without touching the UI components_.
 
-{% gist https://gist.github.com/suhanw/eaeebbf6afd44b7b5509ec74a27656f7 %}
+<script src='https://gist.github.com/suhanw/eaeebbf6afd44b7b5509ec74a27656f7.js'></script>
 ***
 
 **Rinse and repeat whenever I’m compelled to update the data layer with the latest/hottest state management framework or API paradigm.**
@@ -51,7 +54,11 @@ To me, this looks a lot like the classic Dependency Inversion Principle, the “
 
 Curious to hear your thoughts.
 
-![](https://cdn-images-1.medium.com/max/540/1*F1CfUAi51VQA4NJd3Fj_cA.jpeg)<figcaption>Source: <a href="https://www.pinterest.com/pin/333759022356307210/">Pinterest</a></figcaption>
+<figure>
+	<img src='https://cdn-images-1.medium.com/max/540/1*F1CfUAi51VQA4NJd3Fj_cA.jpeg'>
+	<figcaption>Source: <a href="https://www.pinterest.com/pin/333759022356307210/">Pinterest</a></figcaption>
+</figure>
+
 ***
 
 **P.S.** The [Container pattern](https://medium.com/@dan_abramov/smart-and-dumb-components-7ca2f9a7c7d0), [Render Props](https://reactjs.org/docs/render-props.html), and [HOC](https://reactjs.org/docs/higher-order-components.html) are popular options to decouple the data layer from the UI layer for classical components. This article is not meant to be a debate as to whether Hooks is better or worse. I’m simply sharing how I learned to use Hooks to apply the same separation of concerns.
@@ -59,7 +66,7 @@ Curious to hear your thoughts.
 
 ### Read More
 
-- [Decouple Data from UI in React Part 2: A further exploration of the Hooks, Render Props, and HOC patterns](https://medium.com/javascript-in-plain-english/how-to-decouple-data-from-ui-in-react-d6b1516f4f0b)
+- [Decouple Data from UI in React Part 2](https://medium.com/javascript-in-plain-english/how-to-decouple-data-from-ui-in-react-d6b1516f4f0b)
 - [Intro to React Server Side Rendering](https://medium.com/javascript-in-plain-english/intro-to-react-server-side-rendering-3c2af3782d08)
 
 ***

@@ -9,9 +9,11 @@ author: Suhan Wijaya
 date: '2020-12-15'
 ---
 
-#### A further exploration of the Hooks, Render Props, and HOC patterns
+<figure>
+	<img src='https://cdn-images-1.medium.com/max/556/1*goD09hSrSRRjYBjiCrimJQ.jpeg'>
+	<figcaption>c. 1512, Oil on canvas, Source: <a href="https://programming-memes.com/do-you-like-spaghetti/">programming-memes.com</a></figcaption>
+</figure>
 
-![](https://cdn-images-1.medium.com/max/556/1*goD09hSrSRRjYBjiCrimJQ.jpeg)<figcaption>c. 1512, Oil on canvas, Source: <a href="https://programming-memes.com/do-you-like-spaghetti/">programming-memes.com</a></figcaption>
 ***
 
 In [Part 1](https://dev.to/suhanw/decouple-data-from-ui-with-react-hooks-3amn), I presented an approach to decouple the data fetching/management layer from the UI, which would free us from being locked into any particular data library or framework. Let’s call this **Approach A**.
@@ -22,19 +24,19 @@ Let’s create a custom hook — `useSomeData` — that returns the prop
 
 _With Fetch API and component state:_
 
-{% gist https://gist.github.com/suhanw/8d1b24a42dea617288e28d767996e7cc %}
+<script src="https://gist.github.com/suhanw/8d1b24a42dea617288e28d767996e7cc.js"></script>
 
 _With Redux:_
 
-{% gist https://gist.github.com/suhanw/aac361c9ab4856eed2cf5d5531ce655b %}
+<script src="https://gist.github.com/suhanw/aac361c9ab4856eed2cf5d5531ce655b.js"></script>
 
 _With Apollo GraphQL:_
 
-{% gist https://gist.github.com/suhanw/eaeebbf6afd44b7b5509ec74a27656f7 %}
+<script src="https://gist.github.com/suhanw/eaeebbf6afd44b7b5509ec74a27656f7.js"></script>
 
 The 3 implementations above are **interchangeable** without having to modify this UI component:
 
-{% gist https://gist.github.com/suhanw/a08783eb6302899bb91a88572a2ac86c %}
+<script src="https://gist.github.com/suhanw/a08783eb6302899bb91a88572a2ac86c.js"></script>
 
 But, as [Julius Koronci](https://medium.com/u/3efad7746b00) correctly pointed out, while the data fetching/management logic is decoupled, the `SomeComponent` UI is still coupled to the `useSomeData` hook.
 
@@ -48,7 +50,7 @@ Perhaps this is where Render Props and Higher Order Components do a better job a
 
 Instead of a custom hook that returns `someData`, `loading`, and `error`, let’s create a Render Props component — `SomeData` — that wraps around a function (i.e., children needs to be a function), implements the data logic, and passes in `someData`, `loading`, and `error` into the function.
 
-{% gist https://gist.github.com/suhanw/263c954810fc5ab69292ed256e1494aa %}
+<script src="https://gist.github.com/suhanw/263c954810fc5ab69292ed256e1494aa"></script>
 
 You can replace line 4 in the snippet above with Redux, Apollo GraphQL, or any data fetching/management layer of your choice.
 
@@ -60,7 +62,7 @@ You can replace line 4 in the snippet above with Redux, Apollo GraphQL, or any d
 
 Let’s create a HOC — `withSomeData` — that accepts a React component as an argument, implements the data logic, and passes `someData`, `loading`, and `error` as props into the wrapped React component.
 
-{% gist https://gist.github.com/suhanw/106e18601dff30a7d3f73a77ab2f861c %}
+<script src="https://gist.github.com/suhanw/106e18601dff30a7d3f73a77ab2f861c.js"></script>
 
 You can replace line 5 in the snippet above with Redux, Apollo GraphQL, or any data fetching/management layer of your choice.
 
@@ -69,6 +71,7 @@ You can replace line 5 in the snippet above with Redux, Apollo GraphQL, or any d
 Today I learned.
 
 Which approach do you prefer and why?
+
 ***
 
 ### Resources
@@ -83,7 +86,3 @@ Which approach do you prefer and why?
 
 - [Intro to React Server Side Rendering](https://medium.com/javascript-in-plain-english/intro-to-react-server-side-rendering-3c2af3782d08)
 - [Decouple Data from UI with React Hooks](https://dev.to/suhanw/decouple-data-from-ui-with-react-hooks-3amn)
-
-***
-
-📫 _Let’s connect on_ [_LinkedIn_](https://www.linkedin.com/in/suhanwijaya/) _or_ [_Twitter_](https://twitter.com/suhanw)_!_

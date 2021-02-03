@@ -1,6 +1,7 @@
 import Head from 'next/head';
+import style from './style';
 import { getAllPostIds, getPostData } from 'data';
-import Date from 'components/date'
+import Date from 'components/date';
 
 export const getStaticPaths = async () => {
 	const paths = getAllPostIds();
@@ -8,7 +9,7 @@ export const getStaticPaths = async () => {
 		paths,
 		fallback: false,
 	};
-}
+};
 
 export const getStaticProps = async ({ params }) => {
 	const postData = await getPostData(params.id);
@@ -17,7 +18,7 @@ export const getStaticProps = async ({ params }) => {
 			postData,
 		},
 	};
-}
+};
 
 const Post = ({ postData }) => {
 	// console.log({ postData })
@@ -26,10 +27,23 @@ const Post = ({ postData }) => {
 			<Head>
 				<title>{postData?.title}</title>
 			</Head>
-			<article>
-				<h1>{postData?.title}</h1>
-				<Date dateString={postData.date} />
-				<div dangerouslySetInnerHTML={{ __html: postData.contentHtml }} />
+			<article className={style.contentWrapper}>
+				<h1 className={style.title}>{postData?.title}</h1>
+				<div className={style.description}>{postData?.description}</div>
+				<div className={style.date}>
+					<Date dateString={postData.date} />
+					<span className={style.socialIcons}>
+						<img src={'/images/linked-in.png'} />
+						<img src={'/images/twitter.png'} />
+					</span>
+				</div>
+				<div className={style.content} dangerouslySetInnerHTML={{ __html: postData.contentHtml }} />
+				<div className={style.footer}>
+					<span className={style.socialIcons}>
+						<img src={'/images/linked-in.png'} />
+						<img src={'/images/twitter.png'} />
+					</span>
+				</div>
 			</article>
 		</>
 	);
