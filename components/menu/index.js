@@ -24,9 +24,15 @@ const Menu = () => {
 				<li><Link href='/#about'><a onClick={hideMenu}>ABOUT</a></Link></li>
 				<li><Link href='/#blog'><a onClick={hideMenu}>BLOG</a></Link></li>
 				<li><Link href='/#projects'><a onClick={hideMenu}>PROJECTS</a></Link></li>
-				<li><Link href='/#technologies'><a onClick={hideMenu}>TECHNOLOGIES</a></Link></li>
 				<li><Link href='/#contact'><a onClick={hideMenu}>CONTACT</a></Link></li>
+				<li><Link href='/#technologies'><a onClick={hideMenu}>TECHNOLOGIES</a></Link></li>
 			</ul>
+			<a href={'mailto:suhanw@gmail.com'} target={'_blank'} className={style.email}>suhanw@gmail.com</a>
+			<div className={style.social}>
+				<a href={'https://www.linkedin.com/in/suhanwijaya/'} target={'_blank'}><img src={'/images/linked-in.png'} /></a>
+				<a href={'https://twitter.com/suhanw'} target={'_blank'}><img src={'/images/twitter.png'} /></a>
+				<a href={'https://github.com/suhanw'} target={'_blank'}><img src={'/images/github.png'} /></a>
+			</div>
 		</nav>
 		<button className={style.hamburger} onClick={toggleMenu}>
 			<img src={'/images/hamburger.png'} />

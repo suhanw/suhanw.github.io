@@ -52,8 +52,8 @@ const Home = ({ pinnedPosts }) => {
 			<About />
 			<Blog pinnedPosts={pinnedPosts} />
 			<Projects />
-			<Technologies />
 			<Contact />
+			<Technologies />
 		</Layout>
 	);
 };
