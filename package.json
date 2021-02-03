@@ -7,8 +7,8 @@
 		"dev": "next dev",
 		"build": "next build",
 		"start": "next start",
-		"build-static": "next build && next export",
-		"start-static": "serve out"
+		"build-static": "next build && next export -o docs",
+		"start-static": "serve docs"
 	},
 	"author": "Suhan Wijaya",
 	"license": "ISC",
