@@ -38,12 +38,7 @@ const Home = ({ pinnedPosts }) => {
 
 		handleHashChange(router?.asPath);
 
-		if (typeof window !== 'undefined') {
-			console.log({router})
-			// window.history.replaceState(null, null, router?.pathname)
-			router.replace('/');
-			console.log('after', {router})
-		}
+		router.replace('/'); // to remove `/index.html` appended by LinkedIn
 
 		router.events.on('hashChangeComplete', handleHashChange);
 
