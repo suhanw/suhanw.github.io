@@ -398,6 +398,7 @@ a {
   height: auto;
 }
 .menu_2G6rj {
+  z-index: 2;
   position: fixed;
   top: 0px;
   left: 0px;
