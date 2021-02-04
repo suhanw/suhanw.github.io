@@ -51,6 +51,9 @@ const Post = ({ postData }) => {
 				<meta name="twitter:description" content={metaDescription} />
 				<meta name="twitter:image" content={metaImage} />
 				<meta name="twitter:card" content="summary_large_image" />
+				
+				{postData?.canonical_url && <link rel="canonical" href={postData.canonical_url} />}
+				
 			</Head>
 			<article className={style.contentWrapper}>
 				<h1 className={style.title}>{postData?.title}</h1>
