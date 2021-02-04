@@ -12,11 +12,13 @@ const Projects = () => (
 				<ProjectThumbnail
 					href={'/tmnt'}
 					imageSrc={'/images/tmnt.png'}
+					imageAlt={'Personal challenge to build a game with React & Redux. Design/features inspired by SNES TMNT.'}
 					stack={['react.png', 'redux.png', 'html5.png', 'css3.png']}
 				/>
 				<ProjectThumbnail
 					href={'/auteur'}
 					imageSrc={'/images/auteur.png'}
+					imageAlt={'Personal challenge to build a full-stack MVP with Node.js. Design/features inspired by Tumblr.'}
 					stack={[
 						'react.png',
 						'redux.png',
@@ -33,6 +35,7 @@ const Projects = () => (
 				<ProjectThumbnail
 					href={'/mapmycruise'}
 					imageSrc={'/images/mapmycruise.png'}
+					imageAlt={'Personal challenge to build a MVP with Rails. Design/features inspired by MapMyRun.'}
 					stack={[
 						'react.png',
 						'redux.png',
@@ -49,7 +52,7 @@ const Projects = () => (
 	</section>
 );
 
-const ProjectThumbnail = ({ href, imageSrc, description, stack }) => {
+const ProjectThumbnail = ({ href, imageSrc, imageAlt, stack }) => {
 	const [showOverlay, setShowOverlay] = useState(false);
 
 	const handleMouseEvent = (e) => {
@@ -65,19 +68,14 @@ const ProjectThumbnail = ({ href, imageSrc, description, stack }) => {
 	};
 
 	return (
-		<a
-			className={cn(style.cell, showOverlay ? style.show : null)}
-			href={href}
-			target="_blank"
-			onMouseEnter={handleMouseEvent}
-			onMouseLeave={handleMouseEvent}>
+		<a className={cn(style.cell, showOverlay ? style.show : null)} href={href} target="_blank" onMouseEnter={handleMouseEvent} onMouseLeave={handleMouseEvent}>
 			<span className={style.overlay}></span>
 			<span className={style.overlayContent}>
 				<span className={style.iconWrapper}>
 					{stack?.length > 0 && stack.map((filename) => <img key={filename} className={style.icon} src={`/tech-icons/${filename}`} />)}
 				</span>
 			</span>
-			<img src={imageSrc} />
+			<img src={imageSrc} alt={imageAlt} />
 		</a>
 	);
 };
