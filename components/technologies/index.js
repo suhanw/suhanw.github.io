@@ -10,7 +10,7 @@ const Technologies = (props) => {
 				<TechIcon imageSrc={'/tech-icons/javascript.jpeg'} imageCaption={`JavaScript`} />
 				<TechIcon imageSrc={'/tech-icons/html5.png'} imageCaption={`HTML5`} />
 				<TechIcon imageSrc={'/tech-icons/css3.png'} imageCaption={`CSS3`} />
-				<TechIcon imageSrc={'/tech-icons/reactjs.png'} imageCaption={`React`} />
+				<TechIcon imageSrc={'/tech-icons/react.png'} imageCaption={`React`} />
 				<TechIcon imageSrc={'/tech-icons/redux.png'} imageCaption={`Redux`} />
 				<TechIcon imageSrc={'/tech-icons/react-router.png'} imageCaption={`React Router`} />
 				<TechIcon imageSrc={'/tech-icons/babel.png'} imageCaption={`Babel`} />
