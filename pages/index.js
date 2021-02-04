@@ -40,7 +40,9 @@ const Home = ({ pinnedPosts }) => {
 
 		if (typeof window !== 'undefined') {
 			console.log({router})
-			window.history.replaceState(null, null, router?.pathname)
+			// window.history.replaceState(null, null, router?.pathname)
+			router.replace('/');
+			console.log('after', {router})
 		}
 
 		router.events.on('hashChangeComplete', handleHashChange);
