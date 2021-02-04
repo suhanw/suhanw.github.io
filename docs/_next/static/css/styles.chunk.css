@@ -657,15 +657,50 @@ a {
   flex-direction: column;
 }
 .cell_KWklp {
+  position: relative;
   flex: 0 0 auto;
-  display: inline-block;
-  width: 100%;
+  display: block;
   margin: 0px 0px 15px 0px;
+  overflow: hidden;
 }
 .cell_KWklp > img {
   display: block;
   width: 100%;
   height: auto;
+}
+.overlay_3Z7Cr {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  transform: translateX(-100%);
+  transition: transform 350ms ease-out;
+  background-color: rgba(255, 255, 255, 0.75);
+}
+.overlayContent_g7vR5 {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transition: opacity 350ms ease-out;
+}
+.iconWrapper_2ZzFM {
+  width: 50%;
+}
+.icon_3UBFI {
+  margin: 2.5%;
+  width: 20%;
+  height: auto;
+}
+.show_2tUu2 .overlay_3Z7Cr {
+  transform: translateX(0);
+  transition: transform 350ms ease-in;
+}
+.show_2tUu2 .overlayContent_g7vR5 {
+  opacity: 1;
+  transition: opacity 350ms ease-in;
 }
 @media only screen and (min-width: 992px) {
   .masonry_24oNz {
