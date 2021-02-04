@@ -12,13 +12,11 @@ const Projects = () => (
 				<ProjectThumbnail
 					href={'/tmnt'}
 					imageSrc={'/images/tmnt.png'}
-					description={'React & Redux'}
 					stack={['react.png', 'redux.png', 'html5.png', 'css3.png']}
 				/>
 				<ProjectThumbnail
 					href={'/auteur'}
 					imageSrc={'/images/auteur.png'}
-					description={'Node.js, React, & Redux'}
 					stack={[
 						'react.png',
 						'redux.png',
@@ -35,7 +33,6 @@ const Projects = () => (
 				<ProjectThumbnail
 					href={'/mapmycruise'}
 					imageSrc={'/images/mapmycruise.png'}
-					description={'Rails, React, & Redux'}
 					stack={[
 						'react.png',
 						'redux.png',
@@ -77,7 +74,7 @@ const ProjectThumbnail = ({ href, imageSrc, description, stack }) => {
 			<span className={style.overlay}></span>
 			<span className={style.overlayContent}>
 				<span className={style.iconWrapper}>
-					{stack?.length > 0 && stack.map((filename) => <img className={style.icon} src={`/tech-icons/${filename}`} />)}
+					{stack?.length > 0 && stack.map((filename) => <img key={filename} className={style.icon} src={`/tech-icons/${filename}`} />)}
 				</span>
 			</span>
 			<img src={imageSrc} />
