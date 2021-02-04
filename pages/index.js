@@ -29,9 +29,11 @@ const Home = ({ pinnedPosts }) => {
 
 			const sectionId = `${url.substring(2)}-section`;
 			const section = document.getElementById(sectionId);
-			const scrollDistance = section?.offsetTop;
-
-			window.scrollTo({ top: scrollDistance, behavior: 'smooth' });
+			
+			if (section) {
+				const scrollDistance = section.offsetTop;
+				window.scrollTo({ top: scrollDistance, behavior: 'smooth' });
+			}
 		};
 
 		handleHashChange(router?.asPath);
