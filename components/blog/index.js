@@ -15,7 +15,6 @@ const Blog = ({ pinnedPosts }) => (
 						<Date dateString={post?.date} />
 					</small>
 					<p className={style.postDescription}>{post?.description}</p>
-					{/* <a href={`/posts/${post?.id}`} className={style.postCta}>READ MORE...</a> */}
 				</li>
 			))}
 		</ul>
