@@ -36,9 +36,9 @@ const Home = ({ pinnedPosts }) => {
 			}
 		};
 
-		handleHashChange(router?.asPath);
-
-		router.replace('/'); // to remove `/index.html` appended by LinkedIn
+		if (router?.asPath !== '/') {
+			router.replace('/'); // to remove `/index.html` appended by LinkedIn
+		}
 
 		router.events.on('hashChangeComplete', handleHashChange);
 

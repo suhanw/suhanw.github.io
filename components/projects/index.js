@@ -68,7 +68,7 @@ const ProjectThumbnail = ({ href, imageSrc, imageAlt, stack }) => {
 	};
 
 	return (
-		<a className={cn(style.cell, showOverlay ? style.show : null)} href={href} target="_blank" onMouseEnter={handleMouseEvent} onMouseLeave={handleMouseEvent}>
+		<a className={cn(style.cell, showOverlay ? style.show : null)} href={href} onMouseEnter={handleMouseEvent} onMouseLeave={handleMouseEvent}>
 			<span className={style.overlay}></span>
 			<span className={style.overlayContent}>
 				<span className={style.iconWrapper}>

@@ -8,19 +8,19 @@ const Contact = (props) => {
 			<h2 className={style.title}>contact</h2>
 			<div className={style.row}>
 				<span className={style.leftCol}>Email: </span>
-				<a href={'mailto:suhanw@gmail.com'} target={'_blank'} className={style.rightCol}>suhanw@gmail.com</a>
+				<a href={'mailto:suhanw@gmail.com'} className={style.rightCol}>suhanw@gmail.com</a>
 			</div>
 			<div className={style.row}>
 				<span className={style.leftCol}>LinkedIn: </span>
-				<a href={'https://www.linkedin.com/in/suhanwijaya/'} target={'_blank'} className={style.rightCol}>suhanwijaya</a>
+				<a href={'https://www.linkedin.com/in/suhanwijaya/'} className={style.rightCol}>suhanwijaya</a>
 			</div>
 			<div className={style.row}>
 				<span className={style.leftCol}>Twitter: </span>
-				<a href={'https://twitter.com/suhanw'} target={'_blank'} className={style.rightCol}>@suhanw</a>
+				<a href={'https://twitter.com/suhanw'} className={style.rightCol}>@suhanw</a>
 			</div>
 			<div className={style.row}>
 				<span className={style.leftCol}>Github: </span>
-				<a href={'https://github.com/suhanw'} target={'_blank'} className={style.rightCol}>suhanw</a>
+				<a href={'https://github.com/suhanw'} className={style.rightCol}>suhanw</a>
 			</div>
 		</section>
 	);
