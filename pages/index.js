@@ -37,6 +37,7 @@ const Home = ({ pinnedPosts }) => {
 		};
 
 		if (router?.asPath !== '/') {
+			console.log({router})
 			router.replace('/'); // to remove `/index.html` appended by LinkedIn
 		}
 
