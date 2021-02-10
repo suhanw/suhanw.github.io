@@ -36,7 +36,7 @@ const Technologies = (props) => {
 				<TechIcon imageSrc={'/tech-icons/grunt.png'} imageCaption={`Grunt`} />
 				<TechIcon imageSrc={'/tech-icons/git.png'} imageCaption={`Git`} />
 				<TechIcon imageSrc={'/tech-icons/tower.png'} imageCaption={`Tower`} />
-				<TechIcon imageSrc={'/tech-icons/github.png'} imageCaption={`Github`} />
+				<TechIcon imageSrc={'/tech-icons/github.png'} imageCaption={`GitHub`} />
 				<TechIcon imageSrc={'/tech-icons/docker.png'} imageCaption={`Docker`} />
 				<TechIcon imageSrc={'/tech-icons/jenkins.png'} imageCaption={`Jenkins`} />
 				<TechIcon imageSrc={'/tech-icons/gcp.jpg'} imageCaption={`GCP`} />

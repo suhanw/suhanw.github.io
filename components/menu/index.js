@@ -33,9 +33,9 @@ const Menu = ({ topMenu }) => {
 			</ul>
 			<a href={'mailto:suhanw@gmail.com'} target={'_blank'} className={style.email}>suhanw@gmail.com</a>
 			<div className={style.social}>
-				<a href={'https://www.linkedin.com/in/suhanwijaya/'} target={'_blank'}><img src={'/images/linked-in.png'} /></a>
-				<a href={'https://twitter.com/suhanw'} target={'_blank'}><img src={'/images/twitter.png'} /></a>
-				<a href={'https://github.com/suhanw'} target={'_blank'}><img src={'/images/github.png'} /></a>
+				<a href={'https://www.linkedin.com/in/suhanwijaya/'} target={'_blank'}><img src={'/images/linked-in.png'} alt={`Suhan's LinkedIn profile`} /></a>
+				<a href={'https://twitter.com/suhanw'} target={'_blank'}><img src={'/images/twitter.png'} alt={`Suhan's Twitter profile`} /></a>
+				<a href={'https://github.com/suhanw'} target={'_blank'}><img src={'/images/github.png'} alt={`Suhan's GitHub profile`} /></a>
 			</div>
 			<ul className={style.topMenuItems}>
 				<li className={style.menuItem}><Link href='/#blog'><a>BACK TO HOME</a></Link></li>
