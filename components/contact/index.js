@@ -19,7 +19,7 @@ const Contact = (props) => {
 				<a href={'https://twitter.com/suhanw'} className={style.rightCol}>@suhanw</a>
 			</div>
 			<div className={style.row}>
-				<span className={style.leftCol}>Github: </span>
+				<span className={style.leftCol}>GitHub: </span>
 				<a href={'https://github.com/suhanw'} className={style.rightCol}>suhanw</a>
 			</div>
 		</section>
