@@ -545,6 +545,14 @@ a {
 .desktop_24M0x {
   display: none;
 }
+.mobile_Ktulk {
+  font-size: 14px;
+}
+@media only screen and (min-width: 375px) {
+  .mobile_Ktulk {
+    font-size: 16px;
+  }
+}
 @media only screen and (min-width: 768px) {
   .desktop_24M0x {
     display: block;
@@ -766,12 +774,18 @@ a {
 .row_2RB2A {
   width: 275px;
   display: flex;
+  font-size: 14px;
 }
 .leftCol_SrdDf {
   flex: 0 0 35%;
 }
 .rightCol_3Q6Vb {
   flex: 0 0 65%;
+}
+@media only screen and (min-width: 375px) {
+  .row_2RB2A {
+    font-size: 16px;
+  }
 }
 
 .credits_3vUZs a {
