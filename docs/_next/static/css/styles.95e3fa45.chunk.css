@@ -6,6 +6,7 @@
  * 2. Prevent adjustments of font size after orientation changes in iOS.
  */
 html {
+  height: 100%;
   line-height: 1.15;
   /* 1 */
   -webkit-text-size-adjust: 100%;
@@ -17,7 +18,11 @@ html {
    * Remove the margin in all browsers.
    */
 body {
+  height: 100%;
   margin: 0;
+}
+body > div {
+  height: 100%;
 }
 /**
    * Render the `main` element consistently in IE.
@@ -595,6 +600,7 @@ a {
 
 .layout_GvkLX {
   position: relative;
+  height: 100%;
 }
 @media only screen and (min-width: 992px) {
   .layout_GvkLX {
