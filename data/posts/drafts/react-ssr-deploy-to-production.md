@@ -43,14 +43,14 @@ Before diving into the code, let’s get situated with the project structure.
 +-- webpack.shared.config.js
 ```
 
-A quick rundown of the key files I will discuss in this article (refer to [this other article](https://www.suhanwijaya.com/posts/intro-to-react-server-side-rendering) for the other files):
+A quick rundown of the key files I will discuss in this article (refer to [this other article](https://www.suhanwijaya.com/posts/intro-to-react-server-side-rendering) for the rest of the files are covered in great detail):
 
 - `./.gcloudignore` is the list of files that are not uploaded to GCP using `gcloud`
 - `./.gitignore` is the list of files that are not uploaded to the Github repo
 - `./app.yaml` is the config file to deploy the Express server to App Engine
-- `./cloudbuild.yaml` is the config file where we will set up our deployment process
-- `./package.json` contains the scripts that 
-- `./webpack.client.config.js` is the config specific to the client-side code.
+- `./cloudbuild.yaml` is the config file to automate our deployment process using Cloud Build
+- `./package.json` contains the scripts that form the meat of the deployment process
+- `./webpack.client.config.js` is the config specific to the client-side code
 
 
 
@@ -59,7 +59,7 @@ A quick rundown of the key files I will discuss in this article (refer to [this 
 
 
 
-
+<!-- OLD CONTENT -->
 
 This is the first in (hopefully) a series of articles to document the lessons I learned building and maintaining SSR apps.
 
