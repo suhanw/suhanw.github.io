@@ -839,44 +839,44 @@ a {
   }
 }
 
-.technologies_14c9y {
+.toolbox_1K04u {
   background-color: #f9f9f9;
 }
-.icons_1o6S0 {
+.icons_1XEtQ {
   flex: 0 0 auto;
   width: 100%;
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
 }
-.icon_2aNuu {
+.icon_e57Ma {
   flex: 0 0 25%;
   display: inline-block;
   margin: 0px 0px 20px 0px;
 }
-.icon_2aNuu > img {
+.icon_e57Ma > img {
   width: 100%;
   max-width: 50px;
   padding: 5px;
   margin: 0px auto;
   display: block;
 }
-.icon_2aNuu > figcaption {
+.icon_e57Ma > figcaption {
   text-align: center;
   font-size: 10px;
 }
 @media only screen and (min-width: 768px) {
-  .icons_1o6S0 {
+  .icons_1XEtQ {
     max-width: 768px;
   }
-  .icon_2aNuu {
+  .icon_e57Ma {
     flex: 0 0 16.66%;
   }
-  .icon_2aNuu > img {
+  .icon_e57Ma > img {
     height: auto;
     padding: 0px;
   }
-  .icon_2aNuu > figcaption {
+  .icon_e57Ma > figcaption {
     margin: 10px 0px 0px 0px;
     font-size: 12px;
   }
