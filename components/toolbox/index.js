@@ -2,10 +2,10 @@ import cn from 'classnames';
 import style from './style';
 import utilStyle from 'styles/utils';
 
-const Technologies = (props) => {
+const Toolbox = (props) => {
 	return (
-		<section id={'technologies-section'} className={cn(style.technologies, utilStyle.homeSection)}>
-			<h2 className={style.title}>technologies</h2>
+		<section id={'toolbox-section'} className={cn(style.toolbox, utilStyle.homeSection)}>
+			<h2 className={style.title}>toolbox</h2>
 			<div className={style.icons}>
 				<TechIcon imageSrc={'/tech-icons/javascript.jpeg'} imageCaption={`JavaScript`} />
 				<TechIcon imageSrc={'/tech-icons/html5.png'} imageCaption={`HTML5`} />
@@ -73,4 +73,4 @@ const TechIcon = ({ imageSrc, imageCaption }) => (
 	</figure>
 );
 
-export default Technologies;
+export default Toolbox;

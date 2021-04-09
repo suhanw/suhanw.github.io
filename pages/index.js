@@ -6,7 +6,7 @@ import Intro from 'components/intro';
 import About from 'components/about';
 import Blog from 'components/blog';
 import Projects from 'components/projects';
-import Technologies from 'components/technologies';
+import Toolbox from 'components/toolbox';
 import Contact from 'components/contact';
 import Credits from 'components/credits';
 import { getPinnedPosts } from 'data';
@@ -79,7 +79,7 @@ const Home = ({ pinnedPosts }) => {
 			<Blog pinnedPosts={pinnedPosts} />
 			<Projects />
 			<Contact />
-			<Technologies />
+			<Toolbox />
 			<Credits />
 		</Layout>
 	);

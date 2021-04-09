@@ -29,7 +29,7 @@ const Menu = ({ topMenu }) => {
 				<li className={style.menuItem}><Link href='/#blog'><a onClick={hideMenu}>BLOG</a></Link></li>
 				<li className={style.menuItem}><Link href='/#projects'><a onClick={hideMenu}>PROJECTS</a></Link></li>
 				<li className={style.menuItem}><Link href='/#contact'><a onClick={hideMenu}>CONTACT</a></Link></li>
-				<li className={style.menuItem}><Link href='/#technologies'><a onClick={hideMenu}>TECHNOLOGIES</a></Link></li>
+				<li className={style.menuItem}><Link href='/#toolbox'><a onClick={hideMenu}>TOOLBOX</a></Link></li>
 			</ul>
 			<a href={'mailto:suhanw@gmail.com'} target={'_blank'} className={style.email}>suhanw@gmail.com</a>
 			<div className={style.social}>
