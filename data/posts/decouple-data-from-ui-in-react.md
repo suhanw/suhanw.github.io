@@ -16,7 +16,7 @@ date: '2020-12-15'
 
 ***
 
-In [Part 1](https://dev.to/suhanw/decouple-data-from-ui-with-react-hooks-3amn), I presented an approach to decouple the data fetching/management layer from the UI, which would free us from being locked into any particular data library or framework. Let’s call this **Approach A**.
+In [Part 1](/posts/decouple-data-from-ui-with-react-hooks), I presented an approach to decouple the data fetching/management layer from the UI, which would free us from being locked into any particular data library or framework. Let’s call this **Approach A**.
 
 ### Approach A. Custom Hook
 
@@ -50,7 +50,7 @@ Perhaps this is where Render Props and Higher Order Components do a better job a
 
 Instead of a custom hook that returns `someData`, `loading`, and `error`, let’s create a Render Props component — `SomeData` — that wraps around a function (i.e., children needs to be a function), implements the data logic, and passes in `someData`, `loading`, and `error` into the function.
 
-<script src="https://gist.github.com/suhanw/263c954810fc5ab69292ed256e1494aa"></script>
+<script src="https://gist.github.com/suhanw/263c954810fc5ab69292ed256e1494aa.js"></script>
 
 You can replace line 4 in the snippet above with Redux, Apollo GraphQL, or any data fetching/management layer of your choice.
 
