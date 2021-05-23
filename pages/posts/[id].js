@@ -60,27 +60,26 @@ const Post = ({ postData }) => {
 				<div className={style.description}>{postData?.description}</div>
 				<div className={style.date}>
 					<Date dateString={postData.date} />
-					{/* <SocialIcons /> */}
+					<SocialIcons url={metaUrl} title={metaTitle} description={metaDescription} />
 				</div>
 				<div className={style.content} dangerouslySetInnerHTML={{ __html: postData.contentHtml }} />
 				<div className={style.footer}>
-					{/* <SocialIcons /> */}
+					<SocialIcons url={metaUrl} title={metaTitle} description={metaDescription} />
 				</div>
 			</article>
 		</Layout>
 	);
 };
 
-const SocialIcons = ({ url, title }) => {
-	// https://www.linkedin.com/shareArticle?mini=true&url=https://dev.to/suhanw/intro-to-react-server-side-rendering-nh9&title=Intro%20to%20React%20Server%20Side%20Rendering&summary=How%20to%20build%20a%20React%20SSR%20app%20without%20any%20tooling%20or%20framework&source=DEV%20Community
-	// https://twitter.com/intent/tweet?text=%22Intro%20to%20React%20Server%20Side%20Rendering%22%20by%20@suhanw%20%23DEVCommunity%20https://dev.to/suhanw/intro-to-react-server-side-rendering-nh9
-
-	return (
-		<span className={style.socialIcons}>
-			<img src={'/images/linked-in.png'} />
-			<img src={'/images/twitter.png'} />
-		</span>
-	); 
-};
+const SocialIcons = ({ url, title, description }) => (
+	<span className={style.socialIcons}>
+		<a href={`https://www.linkedin.com/sharing/share-offsite/?url=${url}`} target={'_blank'} aria-label={'Share this article on LinkedIn'}>
+			<img src={'/images/linkedin-share.png'} />
+		</a>
+		<a href={`https://twitter.com/intent/tweet?text=${title}%20@suhanw%20${url}`} target={'_blank'} aria-label={'Share this article on Twitter'}>
+			<img src={'/images/twitter-share.png'} />
+		</a>
+	</span>
+); 
 
 export default Post;
