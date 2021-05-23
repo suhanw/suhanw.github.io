@@ -1,12 +1,18 @@
 ---
+pin_order: 4
 title: Async/await is awesome, but don’t abandon Promises
 description: Async/await is awesome, but don’t abandon Promises
-date: '2020-11-15'
+image: https://cdn-images-1.medium.com/max/960/1*UTN8LzorPrLQQ2HLnUDbnA.jpeg
 tags: ui,javascript,webdev,promises
 canonical_url: https://medium.com/javascript-in-plain-english/async-await-is-awesome-but-dont-abandon-promises-f815b3df51dc
+date: '2020-11-15'
 ---
 
-![](https://cdn-images-1.medium.com/max/960/1*UTN8LzorPrLQQ2HLnUDbnA.jpeg)<figcaption>Shoutout to <a href="https://medium.com/u/4c5633187eea">Cassidy Williams</a> 😀</figcaption>
+<figure>
+	<img src='https://cdn-images-1.medium.com/max/960/1*UTN8LzorPrLQQ2HLnUDbnA.jpeg'>
+	<figcaption>Shoutout to <a href="https://medium.com/u/4c5633187eea">Cassidy Williams</a> 😀</figcaption>
+</figure>
+
 ***
 
 Let’s create a button that will:
@@ -17,11 +23,12 @@ Let’s create a button that will:
 
 Here is the markup.
 
-{% gist https://gist.github.com/suhanw/b7d915ac044a8934d720629f4466c25e %}
+<script src='https://gist.github.com/suhanw/b7d915ac044a8934d720629f4466c25e.js'></script>
 
 Here are the functions. Let’s also measure the duration of each operation with the [Performance API](https://developer.mozilla.org/en-US/docs/Web/API/Performance/measure), which visualizes when and how long each function executes on the Chrome DevTools Performance Timeline. (Thanks to [JSONPlaceholder](https://jsonplaceholder.typicode.com) for the dummy endpoints.)
 
-{% gist https://gist.github.com/suhanw/8e984392ffc4974e3654dda7082c6aff %}
+
+<script src='https://gist.github.com/suhanw/8e984392ffc4974e3654dda7082c6aff.js'></script>
 ***
 
 You’re still here? Good, here comes the interesting part: writing the `onclick` handler for the button. Since all the cool kids are doing it, let’s use `async / await`.
@@ -117,12 +124,17 @@ function handleClick() {
 The reason why this works deserves its own article, but [here is an awesome explainer](http://latentflip.com/loupe/?code=JC5vbignYnV0dG9uJywgJ2NsaWNrJywgZnVuY3Rpb24gb25DbGljaygpIHsKICAgIHNldFRpbWVvdXQoZnVuY3Rpb24gdGltZXIoKSB7CiAgICAgICAgY29uc29sZS5sb2coJ1lvdSBjbGlja2VkIHRoZSBidXR0b24hJyk7ICAgIAogICAgfSwgMjAwMCk7Cn0pOwoKY29uc29sZS5sb2coIkhpISIpOwoKc2V0VGltZW91dChmdW5jdGlvbiB0aW1lb3V0KCkgewogICAgY29uc29sZS5sb2coIkNsaWNrIHRoZSBidXR0b24hIik7Cn0sIDUwMDApOwoKY29uc29sZS5sb2coIldlbGNvbWUgdG8gbG91cGUuIik7!!!PGJ1dHRvbj5DbGljayBtZSE8L2J1dHRvbj4%3D).
 
 Today I learned.
+
 ***
 
-![](https://cdn-images-1.medium.com/max/720/1*-WWI7e_QvvXBYp7BPzw0PA.jpeg)<figcaption>Source: <a href="https://programmerhumour.tumblr.com/post/633961754778533888/google-my-saviour">Programmer Humor</a></figcaption>
+<figure>
+	<img src='https://cdn-images-1.medium.com/max/720/1*-WWI7e_QvvXBYp7BPzw0PA.jpeg'>
+	<figcaption>Source: <a href="https://programmerhumour.tumblr.com/post/633961754778533888/google-my-saviour">Programmer Humor</a></figcaption>
+</figure>
+
 ***
 
-#### Bonus
+### Bonus
 
 For the die-hard `async / await` fans out there, I learned (literally on the day of writing this story) that the following snippet actually does the same thing. Credit to [this article](https://medium.com/better-programming/an-extremely-easy-tip-to-improve-web-performance-with-async-await-b609e7e65744) by [Moon](https://medium.com/u/994dcd5bc2e8).
 
