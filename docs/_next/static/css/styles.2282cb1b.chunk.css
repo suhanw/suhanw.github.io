@@ -416,11 +416,11 @@ a {
 }
 .footer_2PjJq {
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
   margin: 0px 0px 32px 0px;
 }
 .socialIcons_2XzlR {
-  height: 28px;
+  height: 25px;
 }
 .socialIcons_2XzlR img {
   height: 100%;
