@@ -256,19 +256,27 @@ Let’s look at each of them:
 
 Run `npm run dev` in the terminal to spin up the SSR app. Open up `http://localhost:3000` in your browser. 🎉🥳
 
-![](https://cdn-images-1.medium.com/max/1024/1*ht6aRr0glttBE5TlouMJJQ.png)<figcaption>Server-side rendering and client-side hydration</figcaption>
+<figure>
+	<img src='https://cdn-images-1.medium.com/max/1024/1*ht6aRr0glttBE5TlouMJJQ.png'><figcaption>Server-side rendering and client-side hydration</figcaption>
+</figure>
 
 And click on the button `Say Hello Back!` 🙌🎊
 
-![](https://cdn-images-1.medium.com/max/1024/1*JcnDOG4whmExaBhNoyG8Vg.png)<figcaption>Clicking the button triggers the alert dialog</figcaption>
+<figure>
+	<img src='https://cdn-images-1.medium.com/max/1024/1*JcnDOG4whmExaBhNoyG8Vg.png'><figcaption>Clicking the button triggers the alert dialog</figcaption>
+</figure>
 
 Now, let’s disable client-side JavaScript…
 
-![](https://cdn-images-1.medium.com/max/722/1*43qx5zcj8QnwSjXQT-Nhsw.png)<figcaption>Disable client-side JavaScript</figcaption>
+<figure>
+	<img src='https://cdn-images-1.medium.com/max/722/1*43qx5zcj8QnwSjXQT-Nhsw.png'><figcaption>Disable client-side JavaScript</figcaption>
+</figure>
 
 …and refresh the page. IT’S NOT A BLANK PAGE! 🤯
 
-![](https://cdn-images-1.medium.com/max/1024/1*fFgBAnbm-9c3gN6J_yA1eg.png)<figcaption>Server-side rendered page</figcaption>
+<figure>
+	<img src='https://cdn-images-1.medium.com/max/1024/1*fFgBAnbm-9c3gN6J_yA1eg.png'><figcaption>Server-side rendered page</figcaption>
+</figure>
 
 Sidenote: nothing will happen if you click on the button. That’s because the event handlers are attached by the client-side code (aka “hydration”). Recall the [docs](https://reactjs.org/docs/react-dom-server.html#rendertostring):
 
@@ -276,7 +284,9 @@ Sidenote: nothing will happen if you click on the button. That’s because the e
 
 And since we disabled client-side JavaScript, what you see is just plain HTML.
 
-![](https://cdn-images-1.medium.com/max/894/1*xGp1Ds4XtlabyFoGwI2G1A.jpeg)<figcaption>Source: <a href="https://www.thecoderpedia.com/blog/programming-memes/">CoderPedia</a></figcaption>
+<figure>
+	<img src='https://cdn-images-1.medium.com/max/894/1*xGp1Ds4XtlabyFoGwI2G1A.jpeg'><figcaption>Source: <a href="https://www.thecoderpedia.com/blog/programming-memes/">CoderPedia</a></figcaption>
+</figure>
 
 In future(ish 😅🤞🏻) articles, I plan to cover more advanced features like routing, data fetching, caching, code-splitting, lazy-loading, and deploying a production app.
 
