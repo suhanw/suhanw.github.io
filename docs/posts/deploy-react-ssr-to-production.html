@@ -1,0 +1,250 @@
+<!DOCTYPE html><html><head><script async="" src="https://www.googletagmanager.com/gtag/js?id=G-CZ0TSM98BL"></script><script>
+							window.dataLayer = window.dataLayer || [];
+							function gtag(){dataLayer.push(arguments)}
+							gtag('js', new Date());
+
+							gtag('config', 'G-CZ0TSM98BL');
+					</script><meta charSet="utf-8"/><title>Deploy React SSR to Production by Suhan Wijaya</title><meta name="viewport" content="initial-scale=1.0, width=device-width"/><meta name="title" content="Deploy React SSR to Production by Suhan Wijaya"/><meta name="description" content="How to deploy a React SSR app on Google Cloud Platform"/><meta property="og:type" content="website"/><meta property="og:url" content="https://www.suhanwijaya.com/posts/deploy-react-ssr-to-production"/><meta property="og:title" content="Deploy React SSR to Production by Suhan Wijaya"/><meta property="og:description" content="How to deploy a React SSR app on Google Cloud Platform"/><meta property="og:image" content="https://cdn-images-1.medium.com/max/955/1*i7eATXxurPAPCyLIJ4X5xw.png"/><meta name="twitter:title" content="Deploy React SSR to Production by Suhan Wijaya"/><meta name="twitter:description" content="How to deploy a React SSR app on Google Cloud Platform"/><meta name="twitter:image" content="https://cdn-images-1.medium.com/max/955/1*i7eATXxurPAPCyLIJ4X5xw.png"/><meta name="twitter:card" content="summary_large_image"/><link rel="canonical" href="https://javascript.plainenglish.io/deploy-react-ssr-to-production-26350e9985d1"/><meta name="next-head-count" content="15"/><link rel="preload" href="/_next/static/css/styles.e3ae8452.chunk.css" as="style"/><link rel="stylesheet" href="/_next/static/css/styles.e3ae8452.chunk.css" data-n-g=""/><noscript data-n-css=""></noscript><link rel="preload" href="/_next/static/chunks/main-08372472a9a690b518ed.js" as="script"/><link rel="preload" href="/_next/static/chunks/webpack-147ea3ada7109f6dc0bb.js" as="script"/><link rel="preload" href="/_next/static/chunks/framework.abffcf18e526b7c0dbcd.js" as="script"/><link rel="preload" href="/_next/static/chunks/c8817c810ac732b2202d2ab097cea034b8097b3b.d4f57090bd55662b89aa.js" as="script"/><link rel="preload" href="/_next/static/chunks/styles.2fb92792e98ddc01317c.js" as="script"/><link rel="preload" href="/_next/static/chunks/pages/_app-3f426cc9284b0d3f87e0.js" as="script"/><link rel="preload" href="/_next/static/chunks/7989c093b81d86ddb0abfb342d5bc2e84730435d.35f69bd20a4f4cb15d7a.js" as="script"/><link rel="preload" href="/_next/static/chunks/pages/posts/%5Bid%5D-9a0b8b84e8bb9206aca5.js" as="script"/></head><body><div id="__next"><div class="layout_GvkLX hasTopMenu_1WVP3"><nav class="menu_2G6rj topMenu_3pGJ_"><h2 class="name_10dbC">suhan <br/>wijaya</h2><ul class="menuItems_26ie3"><li class="menuItem_5m-L2"><a href="/#intro">INTRO</a></li><li class="menuItem_5m-L2"><a href="/#about">ABOUT</a></li><li class="menuItem_5m-L2"><a href="/#blog">BLOG</a></li><li class="menuItem_5m-L2"><a href="/#projects">PROJECTS</a></li><li class="menuItem_5m-L2"><a href="/#contact">CONTACT</a></li><li class="menuItem_5m-L2"><a href="/#toolbox">TOOLBOX</a></li></ul><a href="mailto:suhanw@gmail.com" target="_blank" class="email_3kN3h">suhanw@gmail.com</a><div class="social_3_hb2"><a href="https://www.linkedin.com/in/suhanwijaya/" target="_blank"><img src="/images/linked-in.png" alt="Suhan&#x27;s LinkedIn profile"/></a><a href="https://twitter.com/suhanw" target="_blank"><img src="/images/twitter.png" alt="Suhan&#x27;s Twitter profile"/></a><a href="https://github.com/suhanw" target="_blank"><img src="/images/github.png" alt="Suhan&#x27;s GitHub profile"/></a></div><ul class="topMenuItems_3Vx-y"><li class="menuItem_5m-L2"><a href="/#blog">BACK TO HOME</a></li></ul></nav><button class="hamburger_1KX_H"><img src="/images/hamburger.png"/></button><article class="contentWrapper_1Wy1l"><h1 class="title_29RlI">Deploy React SSR to Production</h1><div class="description_1Da_c">How to deploy a React SSR app on Google Cloud Platform</div><div class="date_2avFh"><time dateTime="2021-06-02">Jun 2, 2021</time><span class="socialIcons_2XzlR"><a href="https://www.linkedin.com/sharing/share-offsite/?url=https://www.suhanwijaya.com/posts/deploy-react-ssr-to-production" target="_blank" aria-label="Share this article on LinkedIn"><img src="/images/linkedin-share.png"/></a><a href="https://twitter.com/intent/tweet?text=Deploy React SSR to Production by Suhan Wijaya%20@suhanw%20https://www.suhanwijaya.com/posts/deploy-react-ssr-to-production" target="_blank" aria-label="Share this article on Twitter"><img src="/images/twitter-share.png"/></a></span></div><div class="content_33yU5"><figure>
+	<img src='https://cdn-images-1.medium.com/max/955/1*i7eATXxurPAPCyLIJ4X5xw.png'>
+</figure>
+<p>This is the sequel to <a href="https://www.suhanwijaya.com/posts/intro-to-react-server-side-rendering">Intro to React Server Side Rendering</a>, so check that out if you haven’t already.</p>
+<p>Let’s deploy a basic React SSR app on Google Cloud Platform (GCP).</p>
+<p>In this article, I’ll deploy a <em>Web Application Server</em>, upload webpack bundles to <em>Cloud Storage</em>, and serve those bundles via <em>CDN.</em> I’m using the italicized terms as defined in this excellent article, <a href="https://engineering.videoblocks.com/web-architecture-101-a3224e126947">Web Architecture 101</a> by <a href="https://medium.com/u/d05e0fdb8e4f">Jonathan Fulton</a>.</p>
+<p>Let’s accomplish this in two parts.</p>
+<p><em>Part 1: Build and start the app locally.</em></p>
+<p><em>Part 2: Deploy to the cloud.</em></p>
+<hr>
+<h3>Part 1: Build and start the app locally</h3>
+<p>Here’s the big picture:</p>
+<ol>
+<li>Transpile client-side and server-side bundles via webpack.</li>
+<li>Serve the client-side bundles as static files.</li>
+<li>Start the server-side bundle as the Web Application Server.</li>
+</ol>
+<p>For reference, here’s the <a href="https://github.com/suhanw/blog-react-ssr/tree/local-build">Github repo</a> for the code used in this section.</p>
+<hr>
+<h4>React component</h4>
+<p>Let’s create a simple React component App, which renders our favorite greeting with some basic styles, as well as a button that displays an alert dialog when clicked. We will render this component on the server-side and hydrate it on the client-side.</p>
+<script src='https://gist.github.com/suhanw/22786482aae23f82852b3fa15faf46e0.js'></script>
+<script src='https://gist.github.com/suhanw/ff1f2997761dbec42ae3a80b7c7bdca2.js'></script>
+<hr>
+<h4>webpack configs</h4>
+<p>Instead of using webpack-dev-server to build the client-side bundles in memory (like in <a href="https://www.suhanwijaya.com/posts/intro-to-react-server-side-rendering">Intro to React Server Side Rendering</a>), we’ll be writing the bundle output into files, and starting a local static server to serve those files. Note the annotated lines below.</p>
+<script src='https://gist.github.com/suhanw/a8805ba3726a51525c5df782374e8a54.js'></script>
+<p>Annotations of the code comments above:</p>
+<p><strong>[A]</strong> Save client-side bundle output to <code>./build/client</code></p>
+<p><strong>[B]</strong> Write JavaScript code into .<code>/scripts/bundle.js</code></p>
+<p><strong>[C]</strong> Write CSS code into <code>./styles/bundle.css</code></p>
+<p>The other settings are not super relevant to what we’re trying to accomplish here, but more details can be found in <a href="https://www.suhanwijaya.com/posts/intro-to-react-server-side-rendering">Intro to React Server Side Rendering</a>.</p>
+<hr>
+<h4>HTML response</h4>
+<p>While the HTML markup will be server-side rendered, we need to make sure the bundled JS and CSS files are downloaded on the client-side to “hydrate” the markup.</p>
+<script src='https://gist.github.com/suhanw/9951fb3e09f6628cbf9d92deeced204e.js'></script>
+<p>Annotations of the code comments above:</p>
+<p><strong>[A]</strong> This turns the React component App into an HTML string, which we then insert into the div with the ID <strong>“ssr-app”</strong>. I.e., the SSR-ed markup.</p>
+<p><strong>[B]</strong> This loads the CSS code to style the DOM elements in our SSR-ed markup.</p>
+<p><strong>[C]</strong> This loads the JS code to “hydrate” the markup with interactivity. In this example, it attaches the click handler to the button.</p>
+<p><strong>[D]</strong> This is the local static server that serves the client-side bundles.</p>
+<p>Cool, cool, cool.</p>
+<hr>
+<h4>Build and start scripts</h4>
+<p>Let’s define several npm scripts to build and start our app locally. Think of these as the steps to get our app up and running.</p>
+<script src='https://gist.github.com/suhanw/dd77beae65b50b16ccb5b52471889394.js'></script>
+<ul>
+<li><code>build:client</code> — This tells webpack to build the client-side code and save the bundle output in <code>./build/client</code>.</li>
+<li><code>build:server</code> — This tells webpack to build the server-side code and save the bundle output to <code>./build/server/bundle.js</code>.</li>
+<li><code>prebuild — This</code> uses <a href="https://github.com/isaacs/rimraf">rimraf</a> to delete the <code>./build</code> folder.</li>
+<li><code>build</code> — Runs <code>build:client</code> and <code>build:server</code> in parallel.</li>
+<li><code>start:client</code> — This serves <code>./build/client</code> as static files on <code>http://localhost:5000</code>, using the aptly named library <a href="https://github.com/vercel/serve">serve</a>. Note that this is the <code>cdnHost</code> we insert into the HTML response above.</li>
+<li><code>start:server</code> — This starts the Express server on <code>http://localhost:3000</code>.</li>
+<li><code>start:local</code> — Runs <code>start:client</code> and <code>start:server</code> in parallel.</li>
+</ul>
+<hr>
+<h4>Putting it all together</h4>
+<p>In the terminal, let’s run the npm scripts in the following order:</p>
+<ol>
+<li><code>npm run build</code></li>
+<li><code>npm run start:local</code></li>
+</ol>
+<p>Our SSR app is now up and running on <code>http://localhost:3000</code>! 🎉</p>
+<figure>
+	<img src='https://cdn-images-1.medium.com/max/1024/1*V8TXde5Bpc_OoTeQdbxf6A.png'>
+</figure>
+<p>Clicking the button should trigger the alert dialog! 🙌</p>
+<figure>
+	<img src='https://cdn-images-1.medium.com/max/1024/1*BEf6jWA_6lIFmEcohfV_iw.png'>
+</figure>
+<hr>
+<h3>Part 2: Deploy to the cloud</h3>
+<p>We’ll now replicate what we just did locally, <strong>in the cloud!</strong></p>
+<figure>
+	<img src='https://cdn-images-1.medium.com/max/800/1*OuRPNKuAgKXQ3QdqmQg1AA.jpeg'><figcaption>Source: <a href="https://www.reddit.com/r/ProgrammerHumor/comments/6cer5t/what_are_clouds_made_of/">Reddit</a></figcaption>
+</figure>
+<hr>
+<p>Again, here’s the big picture:</p>
+<ol>
+<li>Use GCP Cloud Build to execute the following build steps.</li>
+<li>Transpile client-side and server-side bundles via webpack.</li>
+<li>Upload the client-side bundles to GCP Cloud Storage, which will be served as static files over CDN.</li>
+<li>Deploy the server-side bundle to GCP App Engine as the Web Application Server.</li>
+</ol>
+<p>For reference, here’s the <a href="https://github.com/suhanw/blog-react-ssr/tree/deploy">Github repo</a> for the code used in this section.</p>
+<p>For this section, I’m assuming that you have some level of familiarity with GCP, including the fact that you’ve already signed up for an account.</p>
+<p><strong>Please note there may be billing charges when you use GCP products/services!</strong></p>
+<p>Take a deep breath, and here we go!</p>
+<hr>
+<h4>Create a new GCP project</h4>
+<p>Go to <a href="https://console.cloud.google.com/cloud-resource-manager">IAM &#x26; Admin > Manage Resources</a> and create a new project. Let’s name this project <code>react-ssr</code>.</p>
+<figure>
+	<img src='https://cdn-images-1.medium.com/max/1024/1*B6FjoiNPtXTgX-Vk5Omz5Q.png'>
+</figure>
+<p>Make sure the newly created project <code>react-ssr</code> is selected.</p>
+<figure>
+	<img src='https://cdn-images-1.medium.com/max/886/1*YI9ou1Rw8kWTpYI0jVfNLQ.png'>
+</figure>
+<hr>
+<h4>Cloud Storage</h4>
+<p>Create a storage bucket to upload the client-side bundles. These will be served as static files via an actual CDN powered by GCP.</p>
+<p>Go to <a href="https://console.cloud.google.com/storage/browser">Cloud Storage > Browser</a> and create a new bucket. Let’s name it <code>react-ssr</code> to be consistent. Use default settings for the rest of the options.</p>
+<figure>
+	<img src='https://cdn-images-1.medium.com/max/1024/1*UwWWbp08J6epNBxrEWM04g.png'>
+</figure>
+<p>Once the bucket is created, you should see something like this.</p>
+<figure>
+	<img src='https://cdn-images-1.medium.com/max/1024/1*_IiXV2fWTfO8BbRHhlVv3w.png'>
+</figure>
+<p>Drill into the <code>react-ssr</code> bucket, click on the <code>Configuration</code> tab, edit the <code>Permissions > Access Control</code>, and set it to <code>Fine-grained</code>.</p>
+<figure>
+	<img src='https://cdn-images-1.medium.com/max/1024/1*sFMSu2uMbC1-WYUsCwNdeA.png'>
+</figure>
+<p>Click on the <code>Permissions</code> tab, click on <code>Permissions > ADD</code>, and add the user <code>allUsers</code> with the role <code>Storage Legacy Object Reader</code> , to make the files in this storage bucket publicly readable.</p>
+<figure>
+	<img src='https://cdn-images-1.medium.com/max/1024/1*ISIl3e0ZNeMKDPQ6FEkAHQ.png'>
+</figure>
+<hr>
+<h4>App Engine</h4>
+<p>This service will manage containerization and scaling. For the purpose of this illustration, this simply means our app will be available over the interwebs via a URL.</p>
+<p>Go to <a href="https://console.cloud.google.com/appengine">App Engine > Dashboard</a> and create a new application. Pick your region accordingly.</p>
+<figure>
+	<img src='https://cdn-images-1.medium.com/max/1024/1*O9q2NgvplKYs1VVkZrYIgQ.png'>
+</figure>
+<p>Once the application is created successfully, you should see something like this on your dashboard.</p>
+<figure>
+	<img src='https://cdn-images-1.medium.com/max/1024/1*-mIN_9raxln55U01vorf1A.png'>
+</figure>
+<p>Next, enable the <a href="https://console.cloud.google.com/marketplace/product/google/appengine.googleapis.com">App Engine Admin API</a>.</p>
+<figure>
+	<img src='https://cdn-images-1.medium.com/max/1024/1*2iwXnlM4VkSZqFlLJLJFfg.png'>
+</figure>
+<p>Once enabled, you should see something like this.</p>
+<figure>
+	<img src='https://cdn-images-1.medium.com/max/1024/1*vcphMFF-51oB037BZOqOHg.png'>
+</figure>
+<p>Next, we need to define the <a href="https://cloud.google.com/appengine/docs/standard/nodejs/configuring-your-app-with-app-yaml">runtime settings</a>, via the <code>app.yaml</code> file in our codebase, for our Node.js app to be hosted on App Engine.</p>
+<script src='https://gist.github.com/suhanw/16eadcd1612d8810d467748a24e0a07e.js'></script>
+<p>Annotations of the code comments above:</p>
+<p><strong>[A]</strong> This tells App Engine the Node.js version you want to use for your app.</p>
+<p><strong>[B]</strong> This sets the runtime environment variable <code>NODE\_ENV</code> with the value “production”, which we can access in our code via <code>process.env.NODE\_ENV</code>.</p>
+<p>Lastly, App Engine starts the app by running <code>npm start</code>, so let’s add that npm script to our package.json.</p>
+<script src='https://gist.github.com/suhanw/b18b7ddf97de7cc5504ca1d4e995a8d3.js'></script>
+<hr>
+<h4>Cloud Build</h4>
+<p>We’ll be using Cloud Build to automate the app deployment every time we push commits to the source code repo.</p>
+<p>First, let’s enable the <a href="https://console.cloud.google.com/marketplace/product/google/cloudbuild.googleapis.com">Cloud Build API</a>.</p>
+<figure>
+	<img src='https://cdn-images-1.medium.com/max/1024/1*zJkXHOirjJRdPVAMRxslkA.png'>
+</figure>
+<p>Once enabled, you should see something like this.</p>
+<figure>
+	<img src='https://cdn-images-1.medium.com/max/1024/1*bod8If6hZiqZUsxaru9sqg.png'>
+</figure>
+<p>Next, go to <a href="https://console.cloud.google.com/cloud-build/settings/">Cloud Build > Settings</a> and set the status of the <strong>App Engine Admin</strong> role and the <strong>Service Account User</strong> role to  <strong>Enabled</strong>.</p>
+<figure>
+	<img src='https://cdn-images-1.medium.com/max/1024/1*pTHGjblMZkCIwocb68Brtw.png'>
+</figure>
+<p>For the purpose of this illustration, just think of the <a href="https://cloud.google.com/build/docs/securing-builds/configure-access-for-cloud-build-service-account">Cloud Build service account</a> as the bot that automagically executes our build steps, uploads files to Cloud Storage, and deploys to App Engine.</p>
+<p>Lastly, we define the series of build steps to deploy our app to the cloud in the <code>cloudbuild.yaml</code> file in our codebase. Cloud Build will execute these steps in consecutive order.</p>
+<script src='https://gist.github.com/suhanw/dbd9b4f22c06232f505eb2f115e4c346.js'></script>
+<p>Annotations of the code comments above:</p>
+<p><strong>[A]</strong> This runs <code>npm install</code> to install all our dependencies in the cloud, just like we would when we’re starting a new project locally.</p>
+<p><strong>[B]</strong> This runs npm run build to transpile our client-side and server-side bundles via webpack, and save the output to <code>./build</code>, with build-time environment variable <code>NODE\_ENV</code> set to “production”, which we can access in our code via <code>process.env.NODE\_ENV</code>.</p>
+<p><strong>[C]</strong> This uploads the files in the <code>./build</code> directory to the Cloud Storage bucket <code>react-ssr/build</code> which we created previously.</p>
+<p><strong>[D]</strong> This sets the Cloud Build <a href="https://cloud.google.com/build/docs/deploying-builds/deploy-appengine#configuring_the_deployment">timeout to 1600s</a> and deploys the app to App Engine.</p>
+<p>Lastly, let’s kick off automated builds every time we push a new git commit to the source repo by creating a build trigger. Go to <a href="https://console.cloud.google.com/cloud-build/triggers">Cloud Build > Triggers</a>, and create a trigger. Let’s name it <code>deploy-react-ssr</code>, and select Push to a branch as the repo event to kick off the automated build.</p>
+<figure>
+	<img src='https://cdn-images-1.medium.com/max/1024/1*qpkAeSZV7sXbJvzQEKiVJQ.png'>
+</figure>
+<p>Select the source code repo which includes the build config file <code>cloudbuild.yaml</code>. Specify the regular expression for the branch that will start the trigger. In my example, I want to trigger the automated build every time I push commits to the <code>deploy</code> branch.</p>
+<figure>
+	<img src='https://cdn-images-1.medium.com/max/1024/1*aPRWHuXI3UOeitXH1WnzZA.png'>
+</figure>
+<p>Once the trigger is successfully created, you should see something like this.</p>
+<figure>
+	<img src='https://cdn-images-1.medium.com/max/1024/1*Uz13gIx_Ya_jEBYHSrxcNQ.png'>
+</figure>
+<hr>
+<h4>HTML response</h4>
+<p>Similar to Part 1 above, we need to make sure the bundled JS and CSS files are downloaded on the client-side to “hydrate” the SSR-ed markup. The annotated lines below are slightly different from those in Part 1.</p>
+<script src='https://gist.github.com/suhanw/f636755485cf72d5a61a153e6e952b23.js'></script>
+<p>Annotations of the code comments above:</p>
+<p><strong>[A]</strong> In production, App Engine will set the <code>process.env.PORT</code> environment variable to the port that receives HTTP requests over the interwebs.</p>
+<p><strong>[B]</strong> In production, this is the static server that serves the client-side bundles uploaded to Cloud Storage. Note: there are additional steps to actually enable the Cloud CDN service, but not super relevant to this illustration.</p>
+<hr>
+<h4>Putting it all together</h4>
+<p>You’re still here? Awesome!</p>
+<p>Here’s the workflow that brings all of the above together:</p>
+<ol>
+<li>
+<p>Push a commit to the <code>deploy</code> branch in the source code repo.</p>
+</li>
+<li>
+<p>The commit triggers Cloud Build to kick off an automated build. Go to <a href="https://console.cloud.google.com/cloud-build/builds">Cloud Build > History</a> for the history of builds and the associated commits.</p>
+</li>
+</ol>
+<figure>
+	<img src='https://cdn-images-1.medium.com/max/1024/1*3VWR5S8bI6_9MByrOIaCTA.png'>
+</figure>
+<ol start="3">
+<li>In a given build, the steps defined in <code>cloudbuild.yaml</code> are executed.</li>
+</ol>
+<figure>
+	<img src='https://cdn-images-1.medium.com/max/1024/1*NrsX2l3eRuuSJk4ECQ_xUA.png'>
+</figure>
+<ol start="4">
+<li>The client-side bundles are uploaded to Cloud Storage.</li>
+</ol>
+<figure>
+	<img src='https://cdn-images-1.medium.com/max/1024/1*zCz2fUu95c-HifUJM2v00A.png'>
+</figure>
+<ol start="5">
+<li>The Web Application Server is deployed to App Engine.</li>
+</ol>
+<figure>
+	<img src='https://cdn-images-1.medium.com/max/1024/1*s2vmSGUimC8gVj1kluDpgA.png'>
+</figure>
+<ol start="6">
+<li>The SSR app is now up and running in the cloud! 😍</li>
+</ol>
+<figure>
+	<img src='https://cdn-images-1.medium.com/max/1024/1*M-8Atpg9mjcJqhJIkRlEfQ.png'>
+</figure>
+<hr>
+<h3>Resources</h3>
+<ul>
+<li><a href="https://cloud.google.com/build/docs/building/build-nodejs?hl=en">Cloud Build: Building Node.js applications</a></li>
+<li><a href="https://cloud.google.com/community/tutorials/automated-publishing-cloud-build">Cloud Build: Automated static website publishing with Cloud Build</a></li>
+<li><a href="https://cloud.google.com/build/docs/automating-builds/create-github-app-triggers">Cloud Build: Creating GitHub App triggers</a></li>
+<li><a href="https://cloud.google.com/appengine/docs/standard/nodejs/building-app">App Engine: Building a Node.js app on App Engine</a></li>
+<li><a href="https://cloud.google.com/appengine/docs/standard/nodejs/using-cloud-storage">App Engine: Using Cloud Storage</a></li>
+<li><a href="https://cloud.google.com/storage/docs/access-public-data#api-link">Cloud Storage: Accessing Public Data</a></li>
+</ul>
+<hr>
+<h3>Read More</h3>
+<ul>
+<li><a href="https://www.suhanwijaya.com/posts/intro-to-react-server-side-rendering">Intro to React Server Side Rendering</a></li>
+<li><a href="https://www.suhanwijaya.com/posts/decouple-data-from-ui-with-react-hooks">Decouple Data from UI with React Hooks</a></li>
+<li><a href="https://www.suhanwijaya.com/posts/decouple-data-from-ui-in-react">Decouple Data from UI in React Part 2: Hooks, Render Props, and HOC patterns</a></li>
+</ul>
+<hr>
+<p>📫 <em>Let’s connect on</em> <a href="https://www.linkedin.com/in/suhanwijaya/"><em>LinkedIn</em></a> <em>or <em><a href="https://twitter.com/suhanw"><em>Twitter</em></a></em>!</em></p>
+</div><div class="footer_2PjJq"><span class="socialIcons_2XzlR"><a href="https://www.linkedin.com/sharing/share-offsite/?url=https://www.suhanwijaya.com/posts/deploy-react-ssr-to-production" target="_blank" aria-label="Share this article on LinkedIn"><img src="/images/linkedin-share.png"/></a><a href="https://twitter.com/intent/tweet?text=Deploy React SSR to Production by Suhan Wijaya%20@suhanw%20https://www.suhanwijaya.com/posts/deploy-react-ssr-to-production" target="_blank" aria-label="Share this article on Twitter"><img src="/images/twitter-share.png"/></a></span></div></article></div></div><script id="__NEXT_DATA__" type="application/json">{"props":{"pageProps":{"postData":{"id":"deploy-react-ssr-to-production","contentHtml":"\u003cfigure\u003e\n\t\u003cimg src='https://cdn-images-1.medium.com/max/955/1*i7eATXxurPAPCyLIJ4X5xw.png'\u003e\n\u003c/figure\u003e\n\u003cp\u003eThis is the sequel to \u003ca href=\"https://www.suhanwijaya.com/posts/intro-to-react-server-side-rendering\"\u003eIntro to React Server Side Rendering\u003c/a\u003e, so check that out if you haven’t already.\u003c/p\u003e\n\u003cp\u003eLet’s deploy a basic React SSR app on Google Cloud Platform (GCP).\u003c/p\u003e\n\u003cp\u003eIn this article, I’ll deploy a \u003cem\u003eWeb Application Server\u003c/em\u003e, upload webpack bundles to \u003cem\u003eCloud Storage\u003c/em\u003e, and serve those bundles via \u003cem\u003eCDN.\u003c/em\u003e I’m using the italicized terms as defined in this excellent article, \u003ca href=\"https://engineering.videoblocks.com/web-architecture-101-a3224e126947\"\u003eWeb Architecture 101\u003c/a\u003e by \u003ca href=\"https://medium.com/u/d05e0fdb8e4f\"\u003eJonathan Fulton\u003c/a\u003e.\u003c/p\u003e\n\u003cp\u003eLet’s accomplish this in two parts.\u003c/p\u003e\n\u003cp\u003e\u003cem\u003ePart 1: Build and start the app locally.\u003c/em\u003e\u003c/p\u003e\n\u003cp\u003e\u003cem\u003ePart 2: Deploy to the cloud.\u003c/em\u003e\u003c/p\u003e\n\u003chr\u003e\n\u003ch3\u003ePart 1: Build and start the app locally\u003c/h3\u003e\n\u003cp\u003eHere’s the big picture:\u003c/p\u003e\n\u003col\u003e\n\u003cli\u003eTranspile client-side and server-side bundles via webpack.\u003c/li\u003e\n\u003cli\u003eServe the client-side bundles as static files.\u003c/li\u003e\n\u003cli\u003eStart the server-side bundle as the Web Application Server.\u003c/li\u003e\n\u003c/ol\u003e\n\u003cp\u003eFor reference, here’s the \u003ca href=\"https://github.com/suhanw/blog-react-ssr/tree/local-build\"\u003eGithub repo\u003c/a\u003e for the code used in this section.\u003c/p\u003e\n\u003chr\u003e\n\u003ch4\u003eReact component\u003c/h4\u003e\n\u003cp\u003eLet’s create a simple React component App, which renders our favorite greeting with some basic styles, as well as a button that displays an alert dialog when clicked. We will render this component on the server-side and hydrate it on the client-side.\u003c/p\u003e\n\u003cscript src='https://gist.github.com/suhanw/22786482aae23f82852b3fa15faf46e0.js'\u003e\u003c/script\u003e\n\u003cscript src='https://gist.github.com/suhanw/ff1f2997761dbec42ae3a80b7c7bdca2.js'\u003e\u003c/script\u003e\n\u003chr\u003e\n\u003ch4\u003ewebpack configs\u003c/h4\u003e\n\u003cp\u003eInstead of using webpack-dev-server to build the client-side bundles in memory (like in \u003ca href=\"https://www.suhanwijaya.com/posts/intro-to-react-server-side-rendering\"\u003eIntro to React Server Side Rendering\u003c/a\u003e), we’ll be writing the bundle output into files, and starting a local static server to serve those files. Note the annotated lines below.\u003c/p\u003e\n\u003cscript src='https://gist.github.com/suhanw/a8805ba3726a51525c5df782374e8a54.js'\u003e\u003c/script\u003e\n\u003cp\u003eAnnotations of the code comments above:\u003c/p\u003e\n\u003cp\u003e\u003cstrong\u003e[A]\u003c/strong\u003e Save client-side bundle output to \u003ccode\u003e./build/client\u003c/code\u003e\u003c/p\u003e\n\u003cp\u003e\u003cstrong\u003e[B]\u003c/strong\u003e Write JavaScript code into .\u003ccode\u003e/scripts/bundle.js\u003c/code\u003e\u003c/p\u003e\n\u003cp\u003e\u003cstrong\u003e[C]\u003c/strong\u003e Write CSS code into \u003ccode\u003e./styles/bundle.css\u003c/code\u003e\u003c/p\u003e\n\u003cp\u003eThe other settings are not super relevant to what we’re trying to accomplish here, but more details can be found in \u003ca href=\"https://www.suhanwijaya.com/posts/intro-to-react-server-side-rendering\"\u003eIntro to React Server Side Rendering\u003c/a\u003e.\u003c/p\u003e\n\u003chr\u003e\n\u003ch4\u003eHTML response\u003c/h4\u003e\n\u003cp\u003eWhile the HTML markup will be server-side rendered, we need to make sure the bundled JS and CSS files are downloaded on the client-side to “hydrate” the markup.\u003c/p\u003e\n\u003cscript src='https://gist.github.com/suhanw/9951fb3e09f6628cbf9d92deeced204e.js'\u003e\u003c/script\u003e\n\u003cp\u003eAnnotations of the code comments above:\u003c/p\u003e\n\u003cp\u003e\u003cstrong\u003e[A]\u003c/strong\u003e This turns the React component App into an HTML string, which we then insert into the div with the ID \u003cstrong\u003e“ssr-app”\u003c/strong\u003e. I.e., the SSR-ed markup.\u003c/p\u003e\n\u003cp\u003e\u003cstrong\u003e[B]\u003c/strong\u003e This loads the CSS code to style the DOM elements in our SSR-ed markup.\u003c/p\u003e\n\u003cp\u003e\u003cstrong\u003e[C]\u003c/strong\u003e This loads the JS code to “hydrate” the markup with interactivity. In this example, it attaches the click handler to the button.\u003c/p\u003e\n\u003cp\u003e\u003cstrong\u003e[D]\u003c/strong\u003e This is the local static server that serves the client-side bundles.\u003c/p\u003e\n\u003cp\u003eCool, cool, cool.\u003c/p\u003e\n\u003chr\u003e\n\u003ch4\u003eBuild and start scripts\u003c/h4\u003e\n\u003cp\u003eLet’s define several npm scripts to build and start our app locally. Think of these as the steps to get our app up and running.\u003c/p\u003e\n\u003cscript src='https://gist.github.com/suhanw/dd77beae65b50b16ccb5b52471889394.js'\u003e\u003c/script\u003e\n\u003cul\u003e\n\u003cli\u003e\u003ccode\u003ebuild:client\u003c/code\u003e — This tells webpack to build the client-side code and save the bundle output in \u003ccode\u003e./build/client\u003c/code\u003e.\u003c/li\u003e\n\u003cli\u003e\u003ccode\u003ebuild:server\u003c/code\u003e — This tells webpack to build the server-side code and save the bundle output to \u003ccode\u003e./build/server/bundle.js\u003c/code\u003e.\u003c/li\u003e\n\u003cli\u003e\u003ccode\u003eprebuild — This\u003c/code\u003e uses \u003ca href=\"https://github.com/isaacs/rimraf\"\u003erimraf\u003c/a\u003e to delete the \u003ccode\u003e./build\u003c/code\u003e folder.\u003c/li\u003e\n\u003cli\u003e\u003ccode\u003ebuild\u003c/code\u003e — Runs \u003ccode\u003ebuild:client\u003c/code\u003e and \u003ccode\u003ebuild:server\u003c/code\u003e in parallel.\u003c/li\u003e\n\u003cli\u003e\u003ccode\u003estart:client\u003c/code\u003e — This serves \u003ccode\u003e./build/client\u003c/code\u003e as static files on \u003ccode\u003ehttp://localhost:5000\u003c/code\u003e, using the aptly named library \u003ca href=\"https://github.com/vercel/serve\"\u003eserve\u003c/a\u003e. Note that this is the \u003ccode\u003ecdnHost\u003c/code\u003e we insert into the HTML response above.\u003c/li\u003e\n\u003cli\u003e\u003ccode\u003estart:server\u003c/code\u003e — This starts the Express server on \u003ccode\u003ehttp://localhost:3000\u003c/code\u003e.\u003c/li\u003e\n\u003cli\u003e\u003ccode\u003estart:local\u003c/code\u003e — Runs \u003ccode\u003estart:client\u003c/code\u003e and \u003ccode\u003estart:server\u003c/code\u003e in parallel.\u003c/li\u003e\n\u003c/ul\u003e\n\u003chr\u003e\n\u003ch4\u003ePutting it all together\u003c/h4\u003e\n\u003cp\u003eIn the terminal, let’s run the npm scripts in the following order:\u003c/p\u003e\n\u003col\u003e\n\u003cli\u003e\u003ccode\u003enpm run build\u003c/code\u003e\u003c/li\u003e\n\u003cli\u003e\u003ccode\u003enpm run start:local\u003c/code\u003e\u003c/li\u003e\n\u003c/ol\u003e\n\u003cp\u003eOur SSR app is now up and running on \u003ccode\u003ehttp://localhost:3000\u003c/code\u003e! 🎉\u003c/p\u003e\n\u003cfigure\u003e\n\t\u003cimg src='https://cdn-images-1.medium.com/max/1024/1*V8TXde5Bpc_OoTeQdbxf6A.png'\u003e\n\u003c/figure\u003e\n\u003cp\u003eClicking the button should trigger the alert dialog! 🙌\u003c/p\u003e\n\u003cfigure\u003e\n\t\u003cimg src='https://cdn-images-1.medium.com/max/1024/1*BEf6jWA_6lIFmEcohfV_iw.png'\u003e\n\u003c/figure\u003e\n\u003chr\u003e\n\u003ch3\u003ePart 2: Deploy to the cloud\u003c/h3\u003e\n\u003cp\u003eWe’ll now replicate what we just did locally, \u003cstrong\u003ein the cloud!\u003c/strong\u003e\u003c/p\u003e\n\u003cfigure\u003e\n\t\u003cimg src='https://cdn-images-1.medium.com/max/800/1*OuRPNKuAgKXQ3QdqmQg1AA.jpeg'\u003e\u003cfigcaption\u003eSource: \u003ca href=\"https://www.reddit.com/r/ProgrammerHumor/comments/6cer5t/what_are_clouds_made_of/\"\u003eReddit\u003c/a\u003e\u003c/figcaption\u003e\n\u003c/figure\u003e\n\u003chr\u003e\n\u003cp\u003eAgain, here’s the big picture:\u003c/p\u003e\n\u003col\u003e\n\u003cli\u003eUse GCP Cloud Build to execute the following build steps.\u003c/li\u003e\n\u003cli\u003eTranspile client-side and server-side bundles via webpack.\u003c/li\u003e\n\u003cli\u003eUpload the client-side bundles to GCP Cloud Storage, which will be served as static files over CDN.\u003c/li\u003e\n\u003cli\u003eDeploy the server-side bundle to GCP App Engine as the Web Application Server.\u003c/li\u003e\n\u003c/ol\u003e\n\u003cp\u003eFor reference, here’s the \u003ca href=\"https://github.com/suhanw/blog-react-ssr/tree/deploy\"\u003eGithub repo\u003c/a\u003e for the code used in this section.\u003c/p\u003e\n\u003cp\u003eFor this section, I’m assuming that you have some level of familiarity with GCP, including the fact that you’ve already signed up for an account.\u003c/p\u003e\n\u003cp\u003e\u003cstrong\u003ePlease note there may be billing charges when you use GCP products/services!\u003c/strong\u003e\u003c/p\u003e\n\u003cp\u003eTake a deep breath, and here we go!\u003c/p\u003e\n\u003chr\u003e\n\u003ch4\u003eCreate a new GCP project\u003c/h4\u003e\n\u003cp\u003eGo to \u003ca href=\"https://console.cloud.google.com/cloud-resource-manager\"\u003eIAM \u0026#x26; Admin \u003e Manage Resources\u003c/a\u003e and create a new project. Let’s name this project \u003ccode\u003ereact-ssr\u003c/code\u003e.\u003c/p\u003e\n\u003cfigure\u003e\n\t\u003cimg src='https://cdn-images-1.medium.com/max/1024/1*B6FjoiNPtXTgX-Vk5Omz5Q.png'\u003e\n\u003c/figure\u003e\n\u003cp\u003eMake sure the newly created project \u003ccode\u003ereact-ssr\u003c/code\u003e is selected.\u003c/p\u003e\n\u003cfigure\u003e\n\t\u003cimg src='https://cdn-images-1.medium.com/max/886/1*YI9ou1Rw8kWTpYI0jVfNLQ.png'\u003e\n\u003c/figure\u003e\n\u003chr\u003e\n\u003ch4\u003eCloud Storage\u003c/h4\u003e\n\u003cp\u003eCreate a storage bucket to upload the client-side bundles. These will be served as static files via an actual CDN powered by GCP.\u003c/p\u003e\n\u003cp\u003eGo to \u003ca href=\"https://console.cloud.google.com/storage/browser\"\u003eCloud Storage \u003e Browser\u003c/a\u003e and create a new bucket. Let’s name it \u003ccode\u003ereact-ssr\u003c/code\u003e to be consistent. Use default settings for the rest of the options.\u003c/p\u003e\n\u003cfigure\u003e\n\t\u003cimg src='https://cdn-images-1.medium.com/max/1024/1*UwWWbp08J6epNBxrEWM04g.png'\u003e\n\u003c/figure\u003e\n\u003cp\u003eOnce the bucket is created, you should see something like this.\u003c/p\u003e\n\u003cfigure\u003e\n\t\u003cimg src='https://cdn-images-1.medium.com/max/1024/1*_IiXV2fWTfO8BbRHhlVv3w.png'\u003e\n\u003c/figure\u003e\n\u003cp\u003eDrill into the \u003ccode\u003ereact-ssr\u003c/code\u003e bucket, click on the \u003ccode\u003eConfiguration\u003c/code\u003e tab, edit the \u003ccode\u003ePermissions \u003e Access Control\u003c/code\u003e, and set it to \u003ccode\u003eFine-grained\u003c/code\u003e.\u003c/p\u003e\n\u003cfigure\u003e\n\t\u003cimg src='https://cdn-images-1.medium.com/max/1024/1*sFMSu2uMbC1-WYUsCwNdeA.png'\u003e\n\u003c/figure\u003e\n\u003cp\u003eClick on the \u003ccode\u003ePermissions\u003c/code\u003e tab, click on \u003ccode\u003ePermissions \u003e ADD\u003c/code\u003e, and add the user \u003ccode\u003eallUsers\u003c/code\u003e with the role \u003ccode\u003eStorage Legacy Object Reader\u003c/code\u003e , to make the files in this storage bucket publicly readable.\u003c/p\u003e\n\u003cfigure\u003e\n\t\u003cimg src='https://cdn-images-1.medium.com/max/1024/1*ISIl3e0ZNeMKDPQ6FEkAHQ.png'\u003e\n\u003c/figure\u003e\n\u003chr\u003e\n\u003ch4\u003eApp Engine\u003c/h4\u003e\n\u003cp\u003eThis service will manage containerization and scaling. For the purpose of this illustration, this simply means our app will be available over the interwebs via a URL.\u003c/p\u003e\n\u003cp\u003eGo to \u003ca href=\"https://console.cloud.google.com/appengine\"\u003eApp Engine \u003e Dashboard\u003c/a\u003e and create a new application. Pick your region accordingly.\u003c/p\u003e\n\u003cfigure\u003e\n\t\u003cimg src='https://cdn-images-1.medium.com/max/1024/1*O9q2NgvplKYs1VVkZrYIgQ.png'\u003e\n\u003c/figure\u003e\n\u003cp\u003eOnce the application is created successfully, you should see something like this on your dashboard.\u003c/p\u003e\n\u003cfigure\u003e\n\t\u003cimg src='https://cdn-images-1.medium.com/max/1024/1*-mIN_9raxln55U01vorf1A.png'\u003e\n\u003c/figure\u003e\n\u003cp\u003eNext, enable the \u003ca href=\"https://console.cloud.google.com/marketplace/product/google/appengine.googleapis.com\"\u003eApp Engine Admin API\u003c/a\u003e.\u003c/p\u003e\n\u003cfigure\u003e\n\t\u003cimg src='https://cdn-images-1.medium.com/max/1024/1*2iwXnlM4VkSZqFlLJLJFfg.png'\u003e\n\u003c/figure\u003e\n\u003cp\u003eOnce enabled, you should see something like this.\u003c/p\u003e\n\u003cfigure\u003e\n\t\u003cimg src='https://cdn-images-1.medium.com/max/1024/1*vcphMFF-51oB037BZOqOHg.png'\u003e\n\u003c/figure\u003e\n\u003cp\u003eNext, we need to define the \u003ca href=\"https://cloud.google.com/appengine/docs/standard/nodejs/configuring-your-app-with-app-yaml\"\u003eruntime settings\u003c/a\u003e, via the \u003ccode\u003eapp.yaml\u003c/code\u003e file in our codebase, for our Node.js app to be hosted on App Engine.\u003c/p\u003e\n\u003cscript src='https://gist.github.com/suhanw/16eadcd1612d8810d467748a24e0a07e.js'\u003e\u003c/script\u003e\n\u003cp\u003eAnnotations of the code comments above:\u003c/p\u003e\n\u003cp\u003e\u003cstrong\u003e[A]\u003c/strong\u003e This tells App Engine the Node.js version you want to use for your app.\u003c/p\u003e\n\u003cp\u003e\u003cstrong\u003e[B]\u003c/strong\u003e This sets the runtime environment variable \u003ccode\u003eNODE\\_ENV\u003c/code\u003e with the value “production”, which we can access in our code via \u003ccode\u003eprocess.env.NODE\\_ENV\u003c/code\u003e.\u003c/p\u003e\n\u003cp\u003eLastly, App Engine starts the app by running \u003ccode\u003enpm start\u003c/code\u003e, so let’s add that npm script to our package.json.\u003c/p\u003e\n\u003cscript src='https://gist.github.com/suhanw/b18b7ddf97de7cc5504ca1d4e995a8d3.js'\u003e\u003c/script\u003e\n\u003chr\u003e\n\u003ch4\u003eCloud Build\u003c/h4\u003e\n\u003cp\u003eWe’ll be using Cloud Build to automate the app deployment every time we push commits to the source code repo.\u003c/p\u003e\n\u003cp\u003eFirst, let’s enable the \u003ca href=\"https://console.cloud.google.com/marketplace/product/google/cloudbuild.googleapis.com\"\u003eCloud Build API\u003c/a\u003e.\u003c/p\u003e\n\u003cfigure\u003e\n\t\u003cimg src='https://cdn-images-1.medium.com/max/1024/1*zJkXHOirjJRdPVAMRxslkA.png'\u003e\n\u003c/figure\u003e\n\u003cp\u003eOnce enabled, you should see something like this.\u003c/p\u003e\n\u003cfigure\u003e\n\t\u003cimg src='https://cdn-images-1.medium.com/max/1024/1*bod8If6hZiqZUsxaru9sqg.png'\u003e\n\u003c/figure\u003e\n\u003cp\u003eNext, go to \u003ca href=\"https://console.cloud.google.com/cloud-build/settings/\"\u003eCloud Build \u003e Settings\u003c/a\u003e and set the status of the \u003cstrong\u003eApp Engine Admin\u003c/strong\u003e role and the \u003cstrong\u003eService Account User\u003c/strong\u003e role to  \u003cstrong\u003eEnabled\u003c/strong\u003e.\u003c/p\u003e\n\u003cfigure\u003e\n\t\u003cimg src='https://cdn-images-1.medium.com/max/1024/1*pTHGjblMZkCIwocb68Brtw.png'\u003e\n\u003c/figure\u003e\n\u003cp\u003eFor the purpose of this illustration, just think of the \u003ca href=\"https://cloud.google.com/build/docs/securing-builds/configure-access-for-cloud-build-service-account\"\u003eCloud Build service account\u003c/a\u003e as the bot that automagically executes our build steps, uploads files to Cloud Storage, and deploys to App Engine.\u003c/p\u003e\n\u003cp\u003eLastly, we define the series of build steps to deploy our app to the cloud in the \u003ccode\u003ecloudbuild.yaml\u003c/code\u003e file in our codebase. Cloud Build will execute these steps in consecutive order.\u003c/p\u003e\n\u003cscript src='https://gist.github.com/suhanw/dbd9b4f22c06232f505eb2f115e4c346.js'\u003e\u003c/script\u003e\n\u003cp\u003eAnnotations of the code comments above:\u003c/p\u003e\n\u003cp\u003e\u003cstrong\u003e[A]\u003c/strong\u003e This runs \u003ccode\u003enpm install\u003c/code\u003e to install all our dependencies in the cloud, just like we would when we’re starting a new project locally.\u003c/p\u003e\n\u003cp\u003e\u003cstrong\u003e[B]\u003c/strong\u003e This runs npm run build to transpile our client-side and server-side bundles via webpack, and save the output to \u003ccode\u003e./build\u003c/code\u003e, with build-time environment variable \u003ccode\u003eNODE\\_ENV\u003c/code\u003e set to “production”, which we can access in our code via \u003ccode\u003eprocess.env.NODE\\_ENV\u003c/code\u003e.\u003c/p\u003e\n\u003cp\u003e\u003cstrong\u003e[C]\u003c/strong\u003e This uploads the files in the \u003ccode\u003e./build\u003c/code\u003e directory to the Cloud Storage bucket \u003ccode\u003ereact-ssr/build\u003c/code\u003e which we created previously.\u003c/p\u003e\n\u003cp\u003e\u003cstrong\u003e[D]\u003c/strong\u003e This sets the Cloud Build \u003ca href=\"https://cloud.google.com/build/docs/deploying-builds/deploy-appengine#configuring_the_deployment\"\u003etimeout to 1600s\u003c/a\u003e and deploys the app to App Engine.\u003c/p\u003e\n\u003cp\u003eLastly, let’s kick off automated builds every time we push a new git commit to the source repo by creating a build trigger. Go to \u003ca href=\"https://console.cloud.google.com/cloud-build/triggers\"\u003eCloud Build \u003e Triggers\u003c/a\u003e, and create a trigger. Let’s name it \u003ccode\u003edeploy-react-ssr\u003c/code\u003e, and select Push to a branch as the repo event to kick off the automated build.\u003c/p\u003e\n\u003cfigure\u003e\n\t\u003cimg src='https://cdn-images-1.medium.com/max/1024/1*qpkAeSZV7sXbJvzQEKiVJQ.png'\u003e\n\u003c/figure\u003e\n\u003cp\u003eSelect the source code repo which includes the build config file \u003ccode\u003ecloudbuild.yaml\u003c/code\u003e. Specify the regular expression for the branch that will start the trigger. In my example, I want to trigger the automated build every time I push commits to the \u003ccode\u003edeploy\u003c/code\u003e branch.\u003c/p\u003e\n\u003cfigure\u003e\n\t\u003cimg src='https://cdn-images-1.medium.com/max/1024/1*aPRWHuXI3UOeitXH1WnzZA.png'\u003e\n\u003c/figure\u003e\n\u003cp\u003eOnce the trigger is successfully created, you should see something like this.\u003c/p\u003e\n\u003cfigure\u003e\n\t\u003cimg src='https://cdn-images-1.medium.com/max/1024/1*Uz13gIx_Ya_jEBYHSrxcNQ.png'\u003e\n\u003c/figure\u003e\n\u003chr\u003e\n\u003ch4\u003eHTML response\u003c/h4\u003e\n\u003cp\u003eSimilar to Part 1 above, we need to make sure the bundled JS and CSS files are downloaded on the client-side to “hydrate” the SSR-ed markup. The annotated lines below are slightly different from those in Part 1.\u003c/p\u003e\n\u003cscript src='https://gist.github.com/suhanw/f636755485cf72d5a61a153e6e952b23.js'\u003e\u003c/script\u003e\n\u003cp\u003eAnnotations of the code comments above:\u003c/p\u003e\n\u003cp\u003e\u003cstrong\u003e[A]\u003c/strong\u003e In production, App Engine will set the \u003ccode\u003eprocess.env.PORT\u003c/code\u003e environment variable to the port that receives HTTP requests over the interwebs.\u003c/p\u003e\n\u003cp\u003e\u003cstrong\u003e[B]\u003c/strong\u003e In production, this is the static server that serves the client-side bundles uploaded to Cloud Storage. Note: there are additional steps to actually enable the Cloud CDN service, but not super relevant to this illustration.\u003c/p\u003e\n\u003chr\u003e\n\u003ch4\u003ePutting it all together\u003c/h4\u003e\n\u003cp\u003eYou’re still here? Awesome!\u003c/p\u003e\n\u003cp\u003eHere’s the workflow that brings all of the above together:\u003c/p\u003e\n\u003col\u003e\n\u003cli\u003e\n\u003cp\u003ePush a commit to the \u003ccode\u003edeploy\u003c/code\u003e branch in the source code repo.\u003c/p\u003e\n\u003c/li\u003e\n\u003cli\u003e\n\u003cp\u003eThe commit triggers Cloud Build to kick off an automated build. Go to \u003ca href=\"https://console.cloud.google.com/cloud-build/builds\"\u003eCloud Build \u003e History\u003c/a\u003e for the history of builds and the associated commits.\u003c/p\u003e\n\u003c/li\u003e\n\u003c/ol\u003e\n\u003cfigure\u003e\n\t\u003cimg src='https://cdn-images-1.medium.com/max/1024/1*3VWR5S8bI6_9MByrOIaCTA.png'\u003e\n\u003c/figure\u003e\n\u003col start=\"3\"\u003e\n\u003cli\u003eIn a given build, the steps defined in \u003ccode\u003ecloudbuild.yaml\u003c/code\u003e are executed.\u003c/li\u003e\n\u003c/ol\u003e\n\u003cfigure\u003e\n\t\u003cimg src='https://cdn-images-1.medium.com/max/1024/1*NrsX2l3eRuuSJk4ECQ_xUA.png'\u003e\n\u003c/figure\u003e\n\u003col start=\"4\"\u003e\n\u003cli\u003eThe client-side bundles are uploaded to Cloud Storage.\u003c/li\u003e\n\u003c/ol\u003e\n\u003cfigure\u003e\n\t\u003cimg src='https://cdn-images-1.medium.com/max/1024/1*zCz2fUu95c-HifUJM2v00A.png'\u003e\n\u003c/figure\u003e\n\u003col start=\"5\"\u003e\n\u003cli\u003eThe Web Application Server is deployed to App Engine.\u003c/li\u003e\n\u003c/ol\u003e\n\u003cfigure\u003e\n\t\u003cimg src='https://cdn-images-1.medium.com/max/1024/1*s2vmSGUimC8gVj1kluDpgA.png'\u003e\n\u003c/figure\u003e\n\u003col start=\"6\"\u003e\n\u003cli\u003eThe SSR app is now up and running in the cloud! 😍\u003c/li\u003e\n\u003c/ol\u003e\n\u003cfigure\u003e\n\t\u003cimg src='https://cdn-images-1.medium.com/max/1024/1*M-8Atpg9mjcJqhJIkRlEfQ.png'\u003e\n\u003c/figure\u003e\n\u003chr\u003e\n\u003ch3\u003eResources\u003c/h3\u003e\n\u003cul\u003e\n\u003cli\u003e\u003ca href=\"https://cloud.google.com/build/docs/building/build-nodejs?hl=en\"\u003eCloud Build: Building Node.js applications\u003c/a\u003e\u003c/li\u003e\n\u003cli\u003e\u003ca href=\"https://cloud.google.com/community/tutorials/automated-publishing-cloud-build\"\u003eCloud Build: Automated static website publishing with Cloud Build\u003c/a\u003e\u003c/li\u003e\n\u003cli\u003e\u003ca href=\"https://cloud.google.com/build/docs/automating-builds/create-github-app-triggers\"\u003eCloud Build: Creating GitHub App triggers\u003c/a\u003e\u003c/li\u003e\n\u003cli\u003e\u003ca href=\"https://cloud.google.com/appengine/docs/standard/nodejs/building-app\"\u003eApp Engine: Building a Node.js app on App Engine\u003c/a\u003e\u003c/li\u003e\n\u003cli\u003e\u003ca href=\"https://cloud.google.com/appengine/docs/standard/nodejs/using-cloud-storage\"\u003eApp Engine: Using Cloud Storage\u003c/a\u003e\u003c/li\u003e\n\u003cli\u003e\u003ca href=\"https://cloud.google.com/storage/docs/access-public-data#api-link\"\u003eCloud Storage: Accessing Public Data\u003c/a\u003e\u003c/li\u003e\n\u003c/ul\u003e\n\u003chr\u003e\n\u003ch3\u003eRead More\u003c/h3\u003e\n\u003cul\u003e\n\u003cli\u003e\u003ca href=\"https://www.suhanwijaya.com/posts/intro-to-react-server-side-rendering\"\u003eIntro to React Server Side Rendering\u003c/a\u003e\u003c/li\u003e\n\u003cli\u003e\u003ca href=\"https://www.suhanwijaya.com/posts/decouple-data-from-ui-with-react-hooks\"\u003eDecouple Data from UI with React Hooks\u003c/a\u003e\u003c/li\u003e\n\u003cli\u003e\u003ca href=\"https://www.suhanwijaya.com/posts/decouple-data-from-ui-in-react\"\u003eDecouple Data from UI in React Part 2: Hooks, Render Props, and HOC patterns\u003c/a\u003e\u003c/li\u003e\n\u003c/ul\u003e\n\u003chr\u003e\n\u003cp\u003e📫 \u003cem\u003eLet’s connect on\u003c/em\u003e \u003ca href=\"https://www.linkedin.com/in/suhanwijaya/\"\u003e\u003cem\u003eLinkedIn\u003c/em\u003e\u003c/a\u003e \u003cem\u003eor \u003cem\u003e\u003ca href=\"https://twitter.com/suhanw\"\u003e\u003cem\u003eTwitter\u003c/em\u003e\u003c/a\u003e\u003c/em\u003e!\u003c/em\u003e\u003c/p\u003e\n","pin_order":1,"title":"Deploy React SSR to Production","description":"How to deploy a React SSR app on Google Cloud Platform","image":"https://cdn-images-1.medium.com/max/955/1*i7eATXxurPAPCyLIJ4X5xw.png","tags":"nodejs,technology,javascript,react","canonical_url":"https://javascript.plainenglish.io/deploy-react-ssr-to-production-26350e9985d1","date":"2021-06-02"}},"__N_SSG":true},"page":"/posts/[id]","query":{"id":"deploy-react-ssr-to-production"},"buildId":"sSusOixO1kydmjrEv9yS8","nextExport":false,"isFallback":false,"gsp":true}</script><script nomodule="" src="/_next/static/chunks/polyfills-28a453ab78bd7ac4fdb9.js"></script><script src="/_next/static/chunks/main-08372472a9a690b518ed.js" async=""></script><script src="/_next/static/chunks/webpack-147ea3ada7109f6dc0bb.js" async=""></script><script src="/_next/static/chunks/framework.abffcf18e526b7c0dbcd.js" async=""></script><script src="/_next/static/chunks/c8817c810ac732b2202d2ab097cea034b8097b3b.d4f57090bd55662b89aa.js" async=""></script><script src="/_next/static/chunks/styles.2fb92792e98ddc01317c.js" async=""></script><script src="/_next/static/chunks/pages/_app-3f426cc9284b0d3f87e0.js" async=""></script><script src="/_next/static/chunks/7989c093b81d86ddb0abfb342d5bc2e84730435d.35f69bd20a4f4cb15d7a.js" async=""></script><script src="/_next/static/chunks/pages/posts/%5Bid%5D-9a0b8b84e8bb9206aca5.js" async=""></script><script src="/_next/static/sSusOixO1kydmjrEv9yS8/_buildManifest.js" async=""></script><script src="/_next/static/sSusOixO1kydmjrEv9yS8/_ssgManifest.js" async=""></script></body></html>
