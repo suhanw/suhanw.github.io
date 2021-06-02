@@ -1,5 +1,5 @@
 ---
-pin_order: 4
+pin_order: 5
 title: Async/await is awesome, but don’t abandon Promises
 description: Async/await is awesome, but don’t abandon Promises
 image: https://miro.medium.com/max/2746/1*vjATL-EAN7xvJf0kjMUh5Q.png
