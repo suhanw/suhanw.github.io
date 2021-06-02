@@ -31,7 +31,7 @@ _Part 2: Deploy to the cloud._
 Here’s the big picture:
 
 1. Transpile client-side and server-side bundles via webpack.
-2. Serve the client-side bundles as static files.
+2. Start a static server to serve the client-side bundles.
 3. Start the server-side bundle as the Web Application Server.
 
 For reference, here’s the [Github repo](https://github.com/suhanw/blog-react-ssr/tree/local-build) for the code used in this section.
