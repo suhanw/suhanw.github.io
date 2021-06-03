@@ -50,7 +50,7 @@ Let’s create a simple React component App, which renders our favorite greeting
 
 #### webpack configs
 
-Instead of using webpack-dev-server to build the client-side bundles in memory (like in [Intro to React Server Side Rendering](https://www.suhanwijaya.com/posts/intro-to-react-server-side-rendering)), we’ll be writing the bundle output into files, and starting a local static server to serve those files. Note the annotated lines below.
+Instead of using `webpack-dev-server` to build the client-side bundles in memory (like in [Intro to React Server Side Rendering](https://www.suhanwijaya.com/posts/intro-to-react-server-side-rendering)), we’ll be writing the bundle output into files, and starting a local static server to serve those files. Note the annotated lines below.
 
 <script src='https://gist.github.com/suhanw/a8805ba3726a51525c5df782374e8a54.js'></script>
 
@@ -234,7 +234,7 @@ Annotations of the code comments above:
 
 **[B]** This sets the runtime environment variable `NODE_ENV` with the value “production”, which we can access in our code via `process.env.NODE_ENV`.
 
-Lastly, App Engine starts the app by running `npm start`, so let’s add that npm script to our package.json.
+Lastly, App Engine starts the app by running `npm start`, so let’s add that npm script to our `package.json`.
 
 <script src='https://gist.github.com/suhanw/b18b7ddf97de7cc5504ca1d4e995a8d3.js'></script>
 
@@ -272,7 +272,7 @@ Annotations of the code comments above:
 
 **[A]** This runs `npm install` to install all our dependencies in the cloud, just like we would when we’re starting a new project locally.
 
-**[B]** This runs npm run build to transpile our client-side and server-side bundles via webpack, and save the output to `./build`, with build-time environment variable `NODE_ENV` set to “production”, which we can access in our code via `process.env.NODE_ENV`.
+**[B]** This runs `npm run build` to transpile our client-side and server-side bundles via webpack, and save the output to `./build`, with build-time environment variable `NODE_ENV` set to “production”, which we can access in our code via `process.env.NODE_ENV`.
 
 **[C]** This uploads the files in the `./build` directory to the Cloud Storage bucket `react-ssr/build` which we created previously.
 
