@@ -25,16 +25,18 @@ const Home = ({ pinnedPosts }) => {
 
 	useEffect(() => {
 		const handleHashChange = (url, options) => {
-			if (typeof document === 'undefined' || typeof window === 'undefined') return;
+			if (!url || typeof document === 'undefined' || typeof window === 'undefined') return;
 
-			const sectionId = `${url.substring(2)}-section`;
+			const sectionId = `${url?.substring?.(2)}-section`;
 			const section = document.getElementById(sectionId);
 			
 			if (section) {
-				const scrollDistance = section.offsetTop;
+				const scrollDistance = section?.offsetTop || 0;
 				window.scrollTo({ top: scrollDistance, behavior: 'smooth' });
 			}
 		};
+
+		handleHashChange(router?.asPath);
 
 		if (router?.asPath !== '/') {
 			router.replace('/'); // to remove `/index.html` appended by LinkedIn
@@ -42,9 +44,7 @@ const Home = ({ pinnedPosts }) => {
 
 		router.events.on('hashChangeComplete', handleHashChange);
 
-		return () => {
-			router.events.off('hashChangeComplete', handleHashChange);
-		};
+		return () => router.events.off('hashChangeComplete', handleHashChange);
 	}, []);
 
 	const metaTitle = 'Suhan Wijaya';
