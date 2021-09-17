@@ -16,7 +16,7 @@ date: '2020-11-30'
 
 ***
 
-Suppose I use an third party service provider to process payments for my E-commerce app, and I need to embed some third party code to integrate the payment service into my app.
+Suppose I use a third party service provider to process payments for my E-commerce app, and I need to embed some third party code to integrate the payment service into my app.
 
 In this oversimplified example, let’s say the payment service is responsible for checking whether a given payment method (e.g, Apple Pay and Google Pay) is available based on the customer’s device, region, etc. While my “core” UI component `PaymentOptions` is responsible for rendering the available payment methods as options. Lastly, I want the flexibility of adding new payment methods in the future (for 📈💰reasons).
 
@@ -24,7 +24,7 @@ I can write it this way.
 
 <script src="https://gist.github.com/suhanw/1cb50a75844ae43cc3ff9b24d8ffefb7.js"></script>
 
-However, the UI code is tightly coupled with the third party code from the payment service, i.e., **I have to modify the**  **`PaymentOptions` component in order to add a new payment method or to make SDK updates.**
+However, the UI code is tightly coupled with the third party code from the payment service, i.e., **I have to modify the**  **`PaymentOptions` component in order to add a new payment method or to make third party code updates.**
 ***
 
 I can perhaps break out the third party code into a separate hook.
