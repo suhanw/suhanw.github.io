@@ -2,7 +2,7 @@
 pin_order: 6
 title: Decouple Third Party Code From Core React Code
 description: And reduce the size of your future PRs with the Open/Closed Principle
-image: https://cdn-images-1.medium.com/max/1024/1*p37cH3mNXH_Z2wtXprcT2Q.jpeg
+image: https://www.suhanwijaya.com/images/decouple-third-party-from-react-cover.JPG
 tags: softwaredesign,react,webdev,javascript
 canonical_url: https://medium.com/javascript-in-plain-english/decouple-external-services-from-your-core-ui-code-dd490f91ae49
 author: Suhan Wijaya
@@ -10,7 +10,7 @@ date: '2020-11-30'
 ---
 
 <figure>
-	<img src="https://cdn-images-1.medium.com/max/1024/1*p37cH3mNXH_Z2wtXprcT2Q.jpeg">
+	<img src="https://www.suhanwijaya.com/images/decouple-third-party-from-react-cover.JPG">
 	<figcaption>KNOW YOUR ENEMY<br /> (image by <a href="https://unsplash.com/photos/CatcixzdUcg">Klara Kulikova</a>, meme from <a href="https://programming-memes.com/spaghetti-code-know-your-enemy/">Programming Memes</a>)</figcaption>
 </figure>
 
