@@ -8,7 +8,9 @@ jobs:
       - uses: actions/setup-node@v2 # enable access to npm 
         with:
           node-version: '12'
-      - uses: actions/cache@v2
+      - name: Cache packages and source files
+        id: cache
+        uses: actions/cache@v2
         with:
           path: ${{ github.workspace }}/.next/cache
           # Generate a new cache whenever packages or source files change.
@@ -16,5 +18,7 @@ jobs:
           # If source files changed but packages didn't, rebuild from a prior cache.
           restore-keys: |
             ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json') }}-
-      - run: npm install
+      - name: Install packages (when changed or no cache)
+        if: steps.cache.outputs.cache-hit != 'true' # if no/stale cache
+        run: npm install
       - run: npm run build
