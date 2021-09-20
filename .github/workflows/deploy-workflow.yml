@@ -1,14 +1,14 @@
-name: learn-github-actions
+name: deploy-workflow
 on: [push]
 jobs:
-  check-bats-version:
+  deploy-job:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2 # checks out repo
       - uses: actions/setup-node@v2 # enable access to npm 
         with:
           node-version: '12'
-      - name: Cache packages and source files
+      - name: Cache packages and source files # https://nextjs.org/docs/messages/no-cache#github-actions
         id: cache
         uses: actions/cache@v2
         with:
@@ -18,7 +18,5 @@ jobs:
           # If source files changed but packages didn't, rebuild from a prior cache.
           restore-keys: |
             ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json') }}-
-      - name: Install packages (when changed or no cache)
-        if: steps.cache.outputs.cache-hit != 'true' # if no/stale cache
-        run: npm install
+      - run: npm install
       - run: npm run build
