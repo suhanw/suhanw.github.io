@@ -5,11 +5,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2 # checks out repo
-      - uses: actions/setup-node@v2 # enable access to npm 
+      - id: setup-node
+        uses: actions/setup-node@v2 # enable access to npm 
         with:
           node-version: '12'
           cache: 'npm' # https://github.com/actions/setup-node#caching-packages-dependencies
       - run: npm install
+        if: steps.setup-node.outputs.cache-hit != 'true'
       # - name: Cache packages and source files # https://nextjs.org/docs/messages/no-cache#github-actions
       #   id: cache
       #   uses: actions/cache@v2
