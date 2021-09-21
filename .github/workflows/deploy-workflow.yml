@@ -5,10 +5,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checks out repo
-        uses: actions/checkout@v2 # checks out repo 
+        uses: actions/checkout@v2 
       - name: Enable access to npm commands
         id: setup-node
-        uses: actions/setup-node@v2 # enable access to npm 
+        uses: actions/setup-node@v2
         with:
           node-version: '12'
           # cache: 'npm' # https://github.com/actions/setup-node#caching-packages-dependencies
