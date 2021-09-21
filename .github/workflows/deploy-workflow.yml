@@ -4,14 +4,22 @@ jobs:
   deploy-job:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2 # checks out repo 
-      - id: setup-node
+      - name: Checks out repo
+        uses: actions/checkout@v2 # checks out repo 
+      - name: Enable access to npm commands
+        id: setup-node
         uses: actions/setup-node@v2 # enable access to npm 
         with:
-          node-version: '14'
-          cache: 'npm' # https://github.com/actions/setup-node#caching-packages-dependencies
+          node-version: '12'
+          # cache: 'npm' # https://github.com/actions/setup-node#caching-packages-dependencies
+      - name: Cache dependencies
+        id: cache
+        uses: actions/cache@v2
+        with:
+          path: ./node_modules
+          key: modules-${{ hashFiles('package-lock.json') }}
       - run: npm install
-      - name: Cache packages and source files # https://nextjs.org/docs/messages/no-cache#github-actions
+      - name: Cache source files # https://nextjs.org/docs/messages/no-cache#github-actions
         id: cache
         uses: actions/cache@v2
         with:
