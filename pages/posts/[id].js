@@ -53,6 +53,9 @@ const Post = ({ postData }) => {
 				<meta name="twitter:card" content="summary_large_image" />
 				
 				{postData?.canonical_url && <link rel="canonical" href={postData.canonical_url} />}
+
+				{/* CSS for `remark-prism` code block highlights */}
+				<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/themes/prism-okaidia.min.css" integrity="sha512-mIs9kKbaw6JZFfSuo+MovjU+Ntggfoj8RwAmJbVXQ5mkAX5LlgETQEweFPI18humSPHymTb5iikEOKWF7I8ncQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 				
 			</Head>
 			<article className={style.contentWrapper}>
