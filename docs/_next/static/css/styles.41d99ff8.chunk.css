@@ -446,20 +446,6 @@ a {
 .content_33yU5 figcaption {
   font-size: 80%;
 }
-.content_33yU5 code {
-  background-color: rgba(0, 0, 0, 0.1);
-  border-radius: 5px;
-  padding: 0.1em 0.25em;
-}
-.content_33yU5 pre {
-  padding: 20px;
-  border-radius: 5px;
-  background-color: rgba(0, 0, 0, 0.1);
-  overflow: scroll;
-}
-.content_33yU5 pre code {
-  background: none;
-}
 .content_33yU5 p {
   margin: 30px 0px;
 }
