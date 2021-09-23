@@ -19,8 +19,8 @@ const About = (props) => {
 				<li>⌨️ JavaScript, React, Node, GraphQL.</li>
 				<li>🌱 Learning webpack Module Federation.</li>
 			</ul>
-			<p className={cn(style.content, style.mobile)}>View my <a href='/assets/suhan_wijaya_resume.pdf' target='_blank'>resume</a>.</p>
-			<p className={cn(style.content, style.desktop)}>View my <a href='/assets/suhan_wijaya_resume.pdf' target='_blank'>resume</a>.</p>
+			{/* <p className={cn(style.content, style.mobile)}>View my <a href='/assets/suhan_wijaya_resume.pdf' target='_blank'>resume</a>.</p>
+			<p className={cn(style.content, style.desktop)}>View my <a href='/assets/suhan_wijaya_resume.pdf' target='_blank'>resume</a>.</p> */}
 		</section>
 	);
 };
