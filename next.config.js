@@ -12,7 +12,6 @@ module.exports = withLess({
 		config.resolve.extensions = [
 			...config.resolve.extensions,
 			'.less',
-			'.jsx'
 		];
 
 		// Important: return the modified config

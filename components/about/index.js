@@ -13,7 +13,6 @@ const About = (props) => {
 				<li>👷🏻‍♂️ I work at Boxed.com as the Growth Tech Lead. Check us out for your grocery needs (in bulk!).</li>
 				<li>🌱 I'm currently learning about and experimenting with webpack 5 Module Federation.</li>
 				<li>💬 Happy to chat JavaScript, React, Apollo/GraphQL, Hapi, UX/UI, CSS, web performance, etc.</li>
-				<li>💬 test</li>
 			</ul>
 			<ul className={cn(style.content, style.mobile)}>
 				<li>👷🏻‍♂️ Growth Tech Lead at Boxed.com.</li>
