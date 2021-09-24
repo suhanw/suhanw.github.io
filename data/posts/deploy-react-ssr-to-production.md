@@ -1,5 +1,5 @@
 ---
-pin_order: 1
+pin_order: 2
 title: Deploy React SSR to Production
 description: How to deploy a React SSR app on Google Cloud Platform
 image: https://cdn-images-1.medium.com/max/955/1*i7eATXxurPAPCyLIJ4X5xw.png

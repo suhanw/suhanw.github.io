@@ -1,5 +1,5 @@
 ---
-pin_order: 3
+pin_order: 4
 title: Decouple Data from UI with React Hooks
 description: And how I “program to an interface” with JavaScript functions
 image: https://cdn-images-1.medium.com/max/540/1*F1CfUAi51VQA4NJd3Fj_cA.jpeg

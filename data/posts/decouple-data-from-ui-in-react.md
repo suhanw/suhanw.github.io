@@ -1,5 +1,5 @@
 ---
-pin_order: 4
+pin_order: 5
 title: Decouple Data from UI in React Part 2
 description: A further exploration of the Hooks, Render Props, and HOC patterns
 image: https://cdn-images-1.medium.com/max/556/1*goD09hSrSRRjYBjiCrimJQ.jpeg
