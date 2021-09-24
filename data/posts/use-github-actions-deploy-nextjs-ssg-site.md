@@ -116,7 +116,7 @@ jobs:
 ```bash
 next build && next export -o docs
 ```
-See the [docs](https://nextjs.org/docs/advanced-features/static-html-export). TL;DR, These are the Next.js commands to build the files for the SSG site, and export them to the `docs` folder. 
+See the [docs](https://nextjs.org/docs/advanced-features/static-html-export). TL;DR, these are the Next.js commands to build the files for the SSG site, and export them to the `docs` folder. 
 
 ***
 
@@ -144,7 +144,7 @@ jobs:
 
 **[G]** This [action](https://github.com/marketplace/actions/git-auto-commit) will commit changes made in the Runner environment, and push the commit to the GitHub repo. The default commit message will be “Automated publish”.   
 
-Now, pushing a commit to the repo will trigger the workflow, and deploy my SSG site to GitHub Pages. 🎉
+Now, pushing a change to the repo will automatically deploy my SSG site to GitHub Pages. 🎉
 
 I can now stare at the pipeline in the [Actions tab of my GitHub repo](https://github.com/suhanw/suhanw.github.io/actions). 
 
@@ -152,7 +152,7 @@ I can now stare at the pipeline in the [Actions tab of my GitHub repo](https://g
 
 ### Caching
 
-I realized the job runs a fresh `npm install` every time I push a commit. So let's introduce caching so that fresh install occurs only when `package-lock.json` changes. 
+I realized that the job runs a fresh `npm install` every time I push a commit. So let's introduce caching so that a fresh install occurs only when `package-lock.json` changes. 
 
 ```diff
 # ./.github/workflows/deploy.workflow.yml
@@ -178,7 +178,7 @@ jobs:
           commit_message: Automated publish
 ```
 
-**[H]** This [action](https://github.com/actions/cache) caches the `node_modules` folder, and makes the Runner use the cache as long as  `package-lock.json` doesn’t change. 
+**[H]** This [action](https://github.com/actions/cache) caches the `node_modules` folder across builds, and makes the Runner use the cache as long as  `package-lock.json` doesn’t change. 
 
 Additionally, noticed that `next build` issues the following warning about lack of caching. 
 
@@ -222,10 +222,9 @@ jobs:
         with:
           commit_message: Automated publish
 ```
-**[I]** Next.js stores its cache in the `.next/cache` directory. This will persist the cache across builds for faster application rebuilds. For example, if I updated only my codebase without updating or adding any new dependencies, this avoids re-bundling the existing dependencies. 
+**[I]** Next.js stores its cache in the `.next/cache` directory. This will persist the cache across builds for faster application rebuilds. For example, if I only updated my codebase without updating or adding any new dependencies, this avoids re-bundling the existing dependencies. 
 
-
-Improved deployment time by about ~30%! 🥰
+This improved deployment time by about ~30%! 🥰
 
 ***
 
