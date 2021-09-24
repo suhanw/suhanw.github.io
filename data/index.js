@@ -92,7 +92,9 @@ export const getPostData = async (id) => {
 
 	// Use remark to convert markdown into HTML string
 	const processedContent = await remark()
-		.use(remarkPrism) // add code block highlights
+		.use(remarkPrism, {
+			transformInlineCode: true,
+		}) // add code block highlights
 		.use(remarkHtml)
 		.process(matterResult.content);
 
