@@ -472,6 +472,9 @@ a {
 .content_33yU5 li {
   margin: 0px 0px 10px 0px;
 }
+.content_33yU5 a {
+  color: #323EBE;
+}
 @media only screen and (min-width: 992px) {
   .contentWrapper_1Wy1l {
     padding: 0px;
@@ -728,6 +731,9 @@ a {
   font-weight: 700;
 }
 @media only screen and (min-width: 768px) {
+  .posts_1oXCz {
+    justify-content: flex-start;
+  }
   .post_1hoDI {
     flex: 0 0 auto;
     width: 33%;
