@@ -44,7 +44,8 @@ const Post = ({ postData }) => {
 				<meta property="og:url" content={metaUrl} />
 				<meta property="og:title" content={metaTitle} />
 				<meta property="og:description" content={metaDescription} />
-				<meta property="og:image" content={metaImage} />
+				{/* https://blog.hootsuite.com/social-media-image-sizes-guide/#LinkedIn_image_sizes */}
+				<meta property="og:image" content={metaImage} /> 
 
 				{/* Twitter */}
 				<meta name="twitter:title" content={metaTitle} />
@@ -55,7 +56,7 @@ const Post = ({ postData }) => {
 				{postData?.canonical_url && <link rel="canonical" href={postData.canonical_url} />}
 
 				{/* CSS for `remark-prism` code block highlights */}
-				<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/themes/prism-okaidia.min.css" integrity="sha512-mIs9kKbaw6JZFfSuo+MovjU+Ntggfoj8RwAmJbVXQ5mkAX5LlgETQEweFPI18humSPHymTb5iikEOKWF7I8ncQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+				<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/themes/prism-okaidia.min.css" integrity="sha512-mIs9kKbaw6JZFfSuo+MovjU+Ntggfoj8RwAmJbVXQ5mkAX5LlgETQEweFPI18humSPHymTb5iikEOKWF7I8ncQ==" crossOrigin="anonymous" referrerPolicy="no-referrer" />
 				
 			</Head>
 			<article className={style.contentWrapper}>
