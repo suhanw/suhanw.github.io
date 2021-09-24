@@ -220,7 +220,7 @@ jobs:
         with:
           commit_message: Automated publish
 ```
-**[I]** Next.js stores its cache in the `.next/cache` directory. This will persist the cache across builds for faster application rebuilds. E.g,, if I only updated my codebase but not the dependencies, this avoids re-bundling the dependencies. 
+**[I]** Next.js stores its cache in the `.next/cache` directory. This will persist the cache across builds for faster application rebuilds. E.g., if I only updated my codebase but not the dependencies, this avoids re-bundling the dependencies. 
 
 Improved deployment time by about ~30%! 🥰
 
