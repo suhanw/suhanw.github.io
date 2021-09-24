@@ -187,9 +187,7 @@ warn  - No build cache found. Please configure build caching for faster rebuilds
 Read more: https://err.sh/next.js/no-cache
 ```
 
-I love it when the warning links you to the [answer](https://nextjs.org/docs/messages/no-cache#github-actions) to fix it. Good job Vercel. 
-
-
+The warning links you to the [answer](https://nextjs.org/docs/messages/no-cache#github-actions) to fix it. Love it.
 
 ```diff
 # ./.github/workflows/deploy.workflow.yml
@@ -222,9 +220,9 @@ jobs:
         with:
           commit_message: Automated publish
 ```
-**[I]** Next.js stores its cache in the `.next/cache` directory. This will persist the cache across builds for faster application rebuilds. For example, if I only updated my codebase without updating or adding any new dependencies, this avoids re-bundling the existing dependencies. 
+**[I]** Next.js stores its cache in the `.next/cache` directory. This will persist the cache across builds for faster application rebuilds. E.g,, if I only updated my codebase but not the dependencies, this avoids re-bundling the dependencies. 
 
-This improved deployment time by about ~30%! 🥰
+Improved deployment time by about ~30%! 🥰
 
 ***
 
