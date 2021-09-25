@@ -24,9 +24,9 @@ For reference, here’s the [Github repo](https://github.com/suhanw/suhanw.gith
 
 This article will be laser-focused on setting up GitHub Actions, so I may gloss over technical details I consider ancillary. Here are some background readings if you're interested: 
 
-- The [docs](https://nextjs.org/docs/advanced-features/static-html-export) on how to build an SSG site with Next.js. For the purpose of this article, AYNTK is to use the `next build` and `next export` commands to generate the files for a static site.
+- The [docs](https://nextjs.org/docs/advanced-features/static-html-export) on how to build an SSG site with Next.js. For this article, AYNTK is to use the `next build` and `next export` commands to generate the files for a static site.
 
-- The [docs](https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site) on how to publish a static site on GitHub Pages. For the purpose of this article, AYNTK is to commit and push the build files within the `docs` folder in the project root directory to deploy the site. 
+- The [docs](https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site) on how to publish a static site on GitHub Pages. For this article, AYNTK is to commit and push the build files within the `docs` folder in the project root directory to deploy the site. 
 
 - The [definitions](https://docs.github.com/en/actions/learn-github-actions/understanding-github-actions#the-components-of-github-actions) of the different components of a GitHub Actions pipeline. 
 
@@ -41,7 +41,7 @@ Let's create a GitHub Actions pipeline to automate the following steps:
 4. Install dependencies (or use cache if no changes)
 5. Build the files for the static site (or use cache if no changes)
 3. Cache dependencies and source files
-6. Commit and push the build files to repo
+6. Commit and push the build files to the repo
 
 *** 
 
@@ -116,7 +116,7 @@ jobs:
 ```bash
 next build && next export -o docs
 ```
-See the [docs](https://nextjs.org/docs/advanced-features/static-html-export). TL;DR, these are the Next.js commands to build the files for the SSG site, and export them to the `docs` folder. 
+See the [docs](https://nextjs.org/docs/advanced-features/static-html-export). TL;DR these are the Next.js commands to build the files for the SSG site, and export them to the `docs` folder. 
 
 ***
 
