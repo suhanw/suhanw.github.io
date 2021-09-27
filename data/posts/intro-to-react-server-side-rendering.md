@@ -302,9 +302,9 @@ In future(ish 😅🤞🏻) articles, I plan to cover more advanced features lik
 
 ### Read More
 
+- [Deploy React SSR to Production](https://www.suhanwijaya.com/posts/deploy-react-ssr-to-production)
+- [Use GitHub Actions to Deploy a Next.js SSG Site](https://www.suhanwijaya.com/posts/use-github-actions-deploy-nextjs-ssg-site)
 - [Decouple Data from UI with React Hooks](https://dev.to/suhanw/decouple-data-from-ui-with-react-hooks-3amn)
-- [Decouple Data from UI in React Part 2: Hooks, Render Props, and HOC patterns](https://dev.to/suhanw/decouple-data-from-ui-in-react-part-2-4amk)
-- [Accessible UI: Stop making clickable DIVs](https://dev.to/suhanw/accessible-ui-stop-making-clickable-divs-g8k)
 
 ***
 

@@ -365,9 +365,9 @@ Here’s the workflow that brings all of the above together:
 
 ### Read More
 
+- [Use GitHub Actions to Deploy a Next.js SSG Site](https://www.suhanwijaya.com/posts/use-github-actions-deploy-nextjs-ssg-site)
 - [Intro to React Server Side Rendering](https://www.suhanwijaya.com/posts/intro-to-react-server-side-rendering)
 - [Decouple Data from UI with React Hooks](https://www.suhanwijaya.com/posts/decouple-data-from-ui-with-react-hooks)
-- [Decouple Data from UI in React Part 2: Hooks, Render Props, and HOC patterns](https://www.suhanwijaya.com/posts/decouple-data-from-ui-in-react)
 
 * * *
 
