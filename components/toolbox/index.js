@@ -8,15 +8,16 @@ const Toolbox = (props) => {
 			<h2 className={style.title}>toolbox</h2>
 			<div className={style.icons}>
 				<TechIcon imageSrc={'/tech-icons/javascript.jpeg'} imageCaption={`JavaScript`} />
-				<TechIcon imageSrc={'/tech-icons/html5.png'} imageCaption={`HTML5`} />
-				<TechIcon imageSrc={'/tech-icons/css3.png'} imageCaption={`CSS3`} />
+				<TechIcon imageSrc={'/tech-icons/typescript.jpeg'} imageCaption={`TypeScript`} />
 				<TechIcon imageSrc={'/tech-icons/react.png'} imageCaption={`React`} />
+				<TechIcon imageSrc={'/tech-icons/nodejs.png'} imageCaption={`Node.js`} />
+				<TechIcon imageSrc={'/tech-icons/nx.png'} imageCaption={`Nx`} />
+				<TechIcon imageSrc={'/tech-icons/webpack.png'} imageCaption={`webpack`} />
 				<TechIcon imageSrc={'/tech-icons/redux.png'} imageCaption={`Redux`} />
 				<TechIcon imageSrc={'/tech-icons/react-router.png'} imageCaption={`React Router`} />
 				<TechIcon imageSrc={'/tech-icons/babel.png'} imageCaption={`Babel`} />
 				<TechIcon imageSrc={'/tech-icons/less.png'} imageCaption={`Less`} />
 				<TechIcon imageSrc={'/tech-icons/storybook.png'} imageCaption={`Storybook`} />
-				<TechIcon imageSrc={'/tech-icons/nodejs.png'} imageCaption={`Node.js`} />
 				<TechIcon imageSrc={'/tech-icons/hapi.png'} imageCaption={`Hapi.js`} />
 				<TechIcon imageSrc={'/tech-icons/express.png'} imageCaption={`Express.js`} />
 				<TechIcon imageSrc={'/tech-icons/next-js.svg'} imageCaption={`Next.js`} />
@@ -32,7 +33,6 @@ const Toolbox = (props) => {
 				<TechIcon imageSrc={'/tech-icons/postgresql.png'} imageCaption={`PostgreSQL`} />
 				<TechIcon imageSrc={'/tech-icons/active-record.png'} imageCaption={`activerecord`} />
 				<TechIcon imageSrc={'/tech-icons/redis.png'} imageCaption={`Redis`} />
-				<TechIcon imageSrc={'/tech-icons/webpack.png'} imageCaption={`webpack`} />
 				<TechIcon imageSrc={'/tech-icons/grunt.png'} imageCaption={`Grunt`} />
 				<TechIcon imageSrc={'/tech-icons/git.png'} imageCaption={`Git`} />
 				<TechIcon imageSrc={'/tech-icons/tower.png'} imageCaption={`Tower`} />
@@ -44,6 +44,8 @@ const Toolbox = (props) => {
 				<TechIcon imageSrc={'/tech-icons/heroku.png'} imageCaption={`Heroku`} />
 				<TechIcon imageSrc={'/tech-icons/datadog.jpg'} imageCaption={`Datadog`} />
 				<TechIcon imageSrc={'/tech-icons/graylog.png'} imageCaption={`Graylog`} />
+				<TechIcon imageSrc={'/tech-icons/html5.png'} imageCaption={`HTML5`} />
+				<TechIcon imageSrc={'/tech-icons/css3.png'} imageCaption={`CSS3`} />
 				<TechIcon imageSrc={'/tech-icons/chrome.png'} imageCaption={`Chrome`} />
 				<TechIcon imageSrc={'/tech-icons/firefox.png'} imageCaption={`Firefox`} />
 				<TechIcon imageSrc={'/tech-icons/safari.jpg'} imageCaption={`Safari`} />
