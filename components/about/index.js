@@ -11,7 +11,7 @@ const About = (props) => {
 			</p>
 			<ul className={cn(style.content, style.desktop)}>
 				<li>👷🏻‍♂️ Senior Software Engineer at <a href={'https://www.spresso.com'} target={'_blank'}>Spresso.com</a>.</li>
-				<li>🏗 Building things with Nx, JavaScript, TypeScript, React, GraphQL, Node.js, GCP.</li>
+				<li>🏗 Building apps with Nx, JavaScript, TypeScript, React, GraphQL, Node.js, GCP.</li>
 				<li>🌱 Currently learning and experimenting with Jenkins, GitHub Actions, Pulumi.</li>
 			</ul>
 			<ul className={cn(style.content, style.mobile)}>
