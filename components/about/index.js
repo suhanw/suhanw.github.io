@@ -10,12 +10,12 @@ const About = (props) => {
 				Right-brained techie passionate about coding, product, UX, and fun with my family.
 			</p>
 			<ul className={cn(style.content, style.desktop)}>
-				<li>👷🏻‍♂️ Senior Software Engineer at <a href={'https://www.spresso.com'} target={'_blank'}>Spresso.com</a>.</li>
+				<li>👷🏻‍♂️ Staff Software Engineer at <a href={'https://www.spresso.com'} target={'_blank'}>Spresso.com</a>.</li>
 				<li>🏗 Building apps with Nx, JavaScript, TypeScript, React, GraphQL, Node.js, GCP.</li>
 				<li>🌱 Currently learning and experimenting with Jenkins, GitHub Actions, Pulumi.</li>
 			</ul>
 			<ul className={cn(style.content, style.mobile)}>
-				<li>👷🏻‍♂️ Sr. Software Engineer at <a href={'https://www.spresso.com'} target={'_blank'}>Spresso.com</a>.</li>
+				<li>👷🏻‍♂️ Staff SWE at <a href={'https://www.spresso.com'} target={'_blank'}>Spresso.com</a>.</li>
 				<li>🏗 JavaScript, TypeScript, React, Node.</li>
 				<li>🌱 Learning Jenkins, GitHub Actions, GCP.</li>
 			</ul>
