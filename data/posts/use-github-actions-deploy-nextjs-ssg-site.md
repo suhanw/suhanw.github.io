@@ -1,5 +1,5 @@
 ---
-pin_order: 1
+pin_order: 2
 title: Use GitHub Actions to Deploy a Next.js SSG Site
 description: Let’s use GitHub Actions to create a basic deployment pipeline for a Next.js SSG site hosted on Github Pages.
 image: https://www.suhanwijaya.com/images/use-github-actions-deploy-nextjs-ssg-site.jpeg

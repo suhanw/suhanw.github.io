@@ -1,5 +1,5 @@
 ---
-pin_order: 8
+pin_order: 1
 title: Designing a “white-label” e-commerce web app
 description: Streamlining development and deployment with a monorepo
 image: https://www.suhanwijaya.com/images/designing-white-label-web-app-cover.jpg
