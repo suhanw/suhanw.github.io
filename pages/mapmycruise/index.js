@@ -3,7 +3,7 @@ import Head from 'next/head';
 const MapMyCruise = () => {
 	const metaTitle = 'mapmycruise by Suhan Wijaya';
 	const metaDescription = 'MapMyCruise is a full-stack web application inspired by MapMyRun. Rails on the backend, a PostgreSQL database, and React.js with a Redux architectural framework on the frontend.';
-	const metaImage = 'https://www.suhanwijaya.com/images/mapmycruise.png';
+	const metaImage = 'https://www.suhanwijaya.com/images/mapmycruise.jpg';
 	const metaUrl = 'https://www.suhanwijaya.com/mapmycruise';
 	
 	return (
