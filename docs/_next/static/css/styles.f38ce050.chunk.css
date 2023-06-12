@@ -632,6 +632,12 @@ a {
 .contentWrapper_1aS_o figure img {
   max-width: 100%;
 }
+.cta_3ivKg {
+  display: block;
+  font-size: 18px;
+  color: blue;
+  margin: 10px 0px;
+}
 .figureFlex_NrWih {
   display: flex;
   align-items: center;
