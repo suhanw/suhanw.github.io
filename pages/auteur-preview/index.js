@@ -5,6 +5,9 @@ export default () => {
 	return (
 		<article className={style.contentWrapper}>
 			<h1>Auteur</h1>
+			<a className={style.cta} href="/auteur">
+				www.suhanwijaya.com/auteur
+			</a>
 			<p>
 				Auteur is a full-stack web application inspired by Tumblr. It utilizes Node.js on the backend, a MongoDB
 				database, and React.js with a Redux architectural framework on the frontend.
