@@ -527,7 +527,12 @@ a {
   margin: 0px 0px 10px 0px;
 }
 .content_33yU5 a {
-  color: #323EBE;
+  color: #323ebe;
+}
+.content_33yU5 p,
+.content_33yU5 ul,
+.content_33yU5 ol {
+  line-height: 1.6em;
 }
 @media only screen and (min-width: 992px) {
   .contentWrapper_1Wy1l {
