@@ -11,18 +11,19 @@ date: '2023-06-03'
     <img src="/images/designing-white-label-web-app-cover.jpg">
 </figure>
 
-***
+---
 
-A big challenge we had to tackle recently was to scale up our existing e-commerce web application which has been designed for a single retailer brand, to deploy multiple storefronts for various retailers that sign up for our “white label” service. 
+A big challenge we had to tackle recently was to scale up our existing e-commerce web application which has been designed for a single retailer brand, to deploy multiple storefronts for various retailers that sign up for our “white label” service.
 
 In addition, our solution needs to account for several requirements and constraints:
-- avoid major rewrites and maintain code reusability
-- address internationalization and localization specific to each retailer
-- address theming and branding specific to each retailer
-- allow for various degrees of customization and extensibility of features
-- a deployment strategy that scales with the number of retailers
 
-***
+-   avoid major rewrites and maintain code reusability
+-   address internationalization and localization specific to each retailer
+-   address theming and branding specific to each retailer
+-   allow for various degrees of customization and extensibility of features
+-   a deployment strategy that scales with the number of retailers
+
+---
 
 ### Monorepo Structure
 
@@ -30,11 +31,10 @@ In addition, our solution needs to account for several requirements and constrai
     <img src="/images/designing-white-label-web-app-monorepo-structure.png">
 </figure>
 
-
 A monorepo structure refers to a single repository that houses multiple applications. In our case, each retailer has its own application (`app`), that consumes either retailer-specific libraries (`lib`), or shared libraries that are reusable across retailers.
 
 1. One `app` per retailer:
-    - Each retailer has its own dedicated app within the monorepo. 
+    - Each retailer has its own dedicated app within the monorepo.
     - The retailer app does not contain any components, services, or business logic. It instead configures dependency injection and wires up libs, based on retailer-specific configs.
     - Retailer-specific environment variables and configs are managed within the respective app, ensuring a tailored experience for each retailer.
 2. One retailer-specific `lib` per retailer:
@@ -46,7 +46,7 @@ A monorepo structure refers to a single repository that houses multiple applicat
     - These shared libraries contain reusable code that can be utilized by all retailers, ensuring consistency and promoting code reusability.
     - By default, new features are implemented within shared libraries to enable seamless inheritance across retailers.
 
-***
+---
 
 ### Broad Strategy
 
@@ -68,7 +68,7 @@ To efficiently manage code within the monorepo structure, here’s the general s
     - For example, we can create a distinct `TopNav` component for each retailer to display a retailer-specific logo.
     - Alternatively, all retailers can use a shared `TopNav` component that has common UI features, while importing a retailer-specific `Logo` component.
 
-***
+---
 
 ### Deployment Mechanism
 
@@ -78,13 +78,9 @@ To efficiently manage code within the monorepo structure, here’s the general s
 
 Efficient deployment is crucial to propagate updates correctly across retailers and to avoid unnecessary deployments. The logic is essentially this:
 
-1. Perform code change analysis between the most recent commit and the last commit that triggered a successful production deployment. 
+1. Perform code change analysis between the most recent commit and the last commit that triggered a successful production deployment.
 2. If updates were made only to retailer-specific code, only deploy that particular retailer storefront.
-3. If updates were made to code that’s shared across all or some retailers, only deploy the retailer storefronts with changed dependencies. 
-4. Rinse and repeat. 
+3. If updates were made to code that’s shared across all or some retailers, only deploy the retailer storefronts with changed dependencies.
+4. Rinse and repeat.
 
 Thanks for reading. I may dive into the code in a future(ish 😅) article.
-
-***
-
-📫 _Let’s connect on_ [_LinkedIn_](https://www.linkedin.com/in/suhanwijaya/) _or _[_Twitter_](https://twitter.com/suhanw)_!_
