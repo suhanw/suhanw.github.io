@@ -150,6 +150,3 @@ async function handleClick() {
   appendCommentsDOM(commentsJson);
 }
 ```
-***
-
-📫 _Hit me up on_ [_LinkedIn_](https://www.linkedin.com/in/suhanwijaya/) _or_ [_Twitter_](https://twitter.com/suhanw)_!_

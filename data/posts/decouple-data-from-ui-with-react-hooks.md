@@ -66,7 +66,3 @@ Curious to hear your thoughts.
 
 - [Decouple Data from UI in React Part 2](https://medium.com/javascript-in-plain-english/how-to-decouple-data-from-ui-in-react-d6b1516f4f0b)
 - [Intro to React Server Side Rendering](https://medium.com/javascript-in-plain-english/intro-to-react-server-side-rendering-3c2af3782d08)
-
-***
-
-📫 _Let’s connect on_ [_LinkedIn_](https://www.linkedin.com/in/suhanwijaya/) _or_ [_Twitter_](https://twitter.com/suhanw)_!_

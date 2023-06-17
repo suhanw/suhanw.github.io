@@ -115,7 +115,3 @@ Whereas, the `button` version that’s _equally accessible_ looks like this.
 What’s your approach to creating clickable UI components? 
 
 Note: I decided not to discuss aria attributes because I think they deserve their own article.
-
-***
-
-📫 _Let’s connect on_ [_LinkedIn_](https://www.linkedin.com/in/suhanwijaya/) _or _[_Twitter_](https://twitter.com/suhanw)_!_

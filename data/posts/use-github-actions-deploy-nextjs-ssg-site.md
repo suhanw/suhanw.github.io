@@ -231,7 +231,3 @@ Improved deployment time by about ~30%! 🥰
 - [Deploy React SSR to Production](https://www.suhanwijaya.com/posts/deploy-react-ssr-to-production)
 - [Intro to React Server Side Rendering](https://www.suhanwijaya.com/posts/intro-to-react-server-side-rendering)
 - [Decouple Data from UI with React Hooks](https://www.suhanwijaya.com/posts/decouple-data-from-ui-with-react-hooks)
-
-***
-
-📫 _Let’s connect on_ [_LinkedIn_](https://www.linkedin.com/in/suhanwijaya/) _or _[_Twitter_](https://twitter.com/suhanw)_!_

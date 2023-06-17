@@ -305,7 +305,3 @@ In future(ish 😅🤞🏻) articles, I plan to cover more advanced features lik
 - [Deploy React SSR to Production](https://www.suhanwijaya.com/posts/deploy-react-ssr-to-production)
 - [Use GitHub Actions to Deploy a Next.js SSG Site](https://www.suhanwijaya.com/posts/use-github-actions-deploy-nextjs-ssg-site)
 - [Decouple Data from UI with React Hooks](https://dev.to/suhanw/decouple-data-from-ui-with-react-hooks-3amn)
-
-***
-
-📫 _Let’s connect on_ [_LinkedIn_](https://www.linkedin.com/in/suhanwijaya/) _or_ [_Twitter_](https://twitter.com/suhanw)_!_
