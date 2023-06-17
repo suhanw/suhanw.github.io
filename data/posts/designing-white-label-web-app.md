@@ -84,3 +84,7 @@ Efficient deployment is crucial to propagate updates correctly across retailers 
 4. Rinse and repeat. 
 
 Thanks for reading. I may dive into the code in a future(ish 😅) article.
+
+***
+
+📫 _Let’s connect on_ [_LinkedIn_](https://www.linkedin.com/in/suhanwijaya/) _or _[_Twitter_](https://twitter.com/suhanw)_!_
