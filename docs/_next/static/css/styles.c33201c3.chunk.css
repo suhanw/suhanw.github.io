@@ -442,7 +442,7 @@ a {
 }
 
 .contentWrapper_1Wy1l {
-  padding: 50px 15px 0px;
+  padding: 40px 15px 0px;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -480,6 +480,9 @@ a {
   height: 100%;
   width: auto;
   margin: 0px 0px 0px 10px;
+}
+.content_33yU5 {
+  padding: 0px 10px;
 }
 .content_33yU5 h3 {
   margin: 32px 0px 16px 0px;
@@ -521,6 +524,7 @@ a {
   list-style: disc;
 }
 .content_33yU5 ol {
+  margin-left: 10px;
   list-style-type: decimal;
 }
 .content_33yU5 li {
