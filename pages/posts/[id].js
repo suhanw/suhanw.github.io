@@ -29,7 +29,7 @@ const Post = ({ postData }) => {
 	const metaDescription = postData?.description;
 	const metaImage = postData?.image;
 	const metaUrl = `https://www.suhanwijaya.com${router?.asPath}`;
-	
+
 	return (
 		<Layout topMenu>
 			<Head>
@@ -45,19 +45,24 @@ const Post = ({ postData }) => {
 				<meta property="og:title" content={metaTitle} />
 				<meta property="og:description" content={metaDescription} />
 				{/* https://blog.hootsuite.com/social-media-image-sizes-guide/#LinkedIn_image_sizes */}
-				<meta property="og:image" content={metaImage} /> 
+				<meta property="og:image" content={metaImage} />
 
 				{/* Twitter */}
 				<meta name="twitter:title" content={metaTitle} />
 				<meta name="twitter:description" content={metaDescription} />
 				<meta name="twitter:image" content={metaImage} />
 				<meta name="twitter:card" content="summary_large_image" />
-				
+
 				{postData?.canonical_url && <link rel="canonical" href={postData.canonical_url} />}
 
 				{/* CSS for `remark-prism` code block highlights */}
-				<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/themes/prism-okaidia.min.css" integrity="sha512-mIs9kKbaw6JZFfSuo+MovjU+Ntggfoj8RwAmJbVXQ5mkAX5LlgETQEweFPI18humSPHymTb5iikEOKWF7I8ncQ==" crossOrigin="anonymous" referrerPolicy="no-referrer" />
-				
+				<link
+					rel="stylesheet"
+					href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/themes/prism-okaidia.min.css"
+					integrity="sha512-mIs9kKbaw6JZFfSuo+MovjU+Ntggfoj8RwAmJbVXQ5mkAX5LlgETQEweFPI18humSPHymTb5iikEOKWF7I8ncQ=="
+					crossOrigin="anonymous"
+					referrerPolicy="no-referrer"
+				/>
 			</Head>
 			<article className={style.contentWrapper}>
 				<h1 className={style.title}>{postData?.title}</h1>
@@ -70,6 +75,17 @@ const Post = ({ postData }) => {
 				<div className={style.footer}>
 					<SocialIcons url={metaUrl} title={metaTitle} description={metaDescription} />
 				</div>
+				<div className={style.author}>
+					<a href="https://www.linkedin.com/comm/mynetwork/discovery-see-all?usecase=PEOPLE_FOLLOWS&followMember=suhanwijaya">
+						<img src="https://github.com/suhanw.png?size=200" />
+					</a>
+					<span>
+						Like what you've read? <br />
+						<a href="https://www.linkedin.com/comm/mynetwork/discovery-see-all?usecase=PEOPLE_FOLLOWS&followMember=suhanwijaya">
+							Follow me on LinkedIn!
+						</a>
+					</span>
+				</div>
 			</article>
 		</Layout>
 	);
@@ -77,13 +93,19 @@ const Post = ({ postData }) => {
 
 const SocialIcons = ({ url, title, description }) => (
 	<span className={style.socialIcons}>
-		<a href={`https://www.linkedin.com/sharing/share-offsite/?url=${url}`} target={'_blank'} aria-label={'Share this article on LinkedIn'}>
+		<a
+			href={`https://www.linkedin.com/sharing/share-offsite/?url=${url}`}
+			target={'_blank'}
+			aria-label={'Share this article on LinkedIn'}>
 			<img src={'/images/linkedin-share.png'} />
 		</a>
-		<a href={`https://twitter.com/intent/tweet?text=${title}%20@suhanw%20${url}`} target={'_blank'} aria-label={'Share this article on Twitter'}>
+		<a
+			href={`https://twitter.com/intent/tweet?text=${title}%20@suhanw%20${url}`}
+			target={'_blank'}
+			aria-label={'Share this article on Twitter'}>
 			<img src={'/images/twitter-share.png'} />
 		</a>
 	</span>
-); 
+);
 
 export default Post;
