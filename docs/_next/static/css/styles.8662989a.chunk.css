@@ -468,6 +468,20 @@ a {
   margin: 32px 0px 32px 0px;
   font-size: 80%;
 }
+.author_3TJVZ {
+  margin: 0px 0px 24px 0px;
+  padding: 0px 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.author_3TJVZ img {
+  height: 60px;
+}
+.author_3TJVZ span {
+  margin-left: 10px;
+  font-size: 12px;
+}
 .footer_2PjJq {
   display: flex;
   justify-content: center;
