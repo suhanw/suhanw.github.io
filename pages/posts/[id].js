@@ -80,7 +80,7 @@ const Post = ({ postData }) => {
 						<img src="https://github.com/suhanw.png?size=200" />
 					</a>
 					<span>
-						Like what you've read? <br />
+						Liked what you've read? <br />
 						<a href="https://www.linkedin.com/comm/mynetwork/discovery-see-all?usecase=PEOPLE_FOLLOWS&followMember=suhanwijaya">
 							Follow me on LinkedIn!
 						</a>
