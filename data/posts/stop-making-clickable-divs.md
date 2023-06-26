@@ -1,5 +1,5 @@
 ---
-pin_order: 8
+pin_order: 1
 title: Stop making clickable DIVs
 description: Making the web accessible one (less) DIV at a time.
 image: https://www.suhanwijaya.com/images/stop-making-clickable-divs.jpeg

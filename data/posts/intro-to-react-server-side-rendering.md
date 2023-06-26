@@ -1,5 +1,5 @@
 ---
-pin_order: 3
+pin_order: 6
 title: Intro to React Server Side Rendering
 description: How to build a React SSR app without any tooling or framework
 image: https://cdn-images-1.medium.com/max/900/1*PXvYmj3eEqaRigoFGcJZTA.jpeg

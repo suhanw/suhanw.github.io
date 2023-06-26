@@ -1,5 +1,5 @@
 ---
-pin_order: 6
+pin_order: 4
 title: Decouple Third Party Code From Core React Code
 description: And reduce the size of your future PRs with the Open/Closed Principle
 image: https://www.suhanwijaya.com/images/decouple-third-party-from-react-cover.JPG
