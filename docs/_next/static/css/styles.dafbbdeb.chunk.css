@@ -771,7 +771,8 @@ a {
   width: 100%;
   max-width: 1000px;
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: wrap-reverse;
+  flex-direction: row-reverse;
   justify-content: center;
 }
 .post_1hoDI {
@@ -808,9 +809,6 @@ a {
   font-weight: 700;
 }
 @media only screen and (min-width: 768px) {
-  .posts_1oXCz {
-    justify-content: flex-start;
-  }
   .post_1hoDI {
     flex: 0 0 auto;
     width: 33%;
