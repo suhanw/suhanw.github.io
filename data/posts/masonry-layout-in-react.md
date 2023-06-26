@@ -156,7 +156,7 @@ useEffect(() => {
 
 **Step 3.** Once we’ve identified the shortest column, push the current image to the column’s `tiles` array.
 
-**Steps 4 and 5.** Calculate the rendered height of the current image by using the `container` element’s rendered with divided by the number of columns (in this case `4`) and the image's original dimensions (width and height) or aspect ratio, and increment the column’s `height` property to reflect the new total height of the current column.
+**Steps 4 and 5.** Calculate the rendered height of the current image by using the `container` element’s rendered width divided by the number of columns (in this case - `4`) and the image's aspect ratio based on its actual height/width, and increment the column’s `height` property to reflect the new total height of the current column.
 
 ---
 
