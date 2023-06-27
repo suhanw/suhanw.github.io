@@ -183,7 +183,7 @@ The `container` element is assigned the `containerRef` variable, which gives us 
 
 ### Tada!
 
-Here’s my [CodeSandbox project](https://codesandbox.io/s/client-side-events-5grmlk?file=/src/App.js) to see the whole thing come together.
+Here’s my [CodeSandbox project](https://codesandbox.io/s/masonry-layout-5grmlk?file=/src/App.js) to see the whole thing come together.
 
 <figure>
     <img src="/images/masonry-layout-in-react-final.jpg">
