@@ -164,17 +164,17 @@ useEffect(() => {
 
 The `container` element is assigned the `containerRef` variable, which gives us access to the element’s rendered width based on the user’s screen size. Then we simply iterate through each element in the `columns` array, key into the `tiles` property, and render the list of images in the appropriate columns as determined by the masonry layout logic above.
 
-```html
-<section className="container" ref="{containerRef}">
+```javascript
+<section className="container" ref={containerRef}>
 	{columns.map((column, i) => (
-	<div className="column" key="{i}">
-		{column.tiles.map((cat) => (
-		<div className="tile" key="{cat.id}">
-			<span className="cat-index">{cat.catIndex}</span>
-			<img src="{cat.url}" alt="{cat.id}" />
+		<div className="column" key={i}>
+			{column.tiles.map((cat) => (
+				<div className="tile" key={cat.id}>
+					<span className="cat-index">{cat.catIndex}</span>
+					<img src={cat.url} />
+				</div>
+			))}
 		</div>
-		))}
-	</div>
 	))}
 </section>
 ```
