@@ -1,6 +1,6 @@
 ---
 pin_order: 10
-title: Masonry layout in React
+title: Masonry layout with React and CSS Flexbox
 description: Using React, CSS Flexbox, and cats to create a masonry grid layout
 image: /images/masonry-layout-in-react_cover.jpg
 tags: ui,javascript,webdev,masonry,css
