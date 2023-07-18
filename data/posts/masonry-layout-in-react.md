@@ -116,19 +116,16 @@ Lastly, this is the logic to execute the “big picture” steps laid out earlie
 
 ```jsx
 useEffect(() => {
-	let columns = [];
+	let columns = Array.from({ length: NUM_COLUMNS }, () => ({
+		height: 0,
+		tiles: [],
+	}));
 
 	// 1. iterate through each image
 	cats.forEach((cat, catIndex) => {
 		// 2. iterate through each column and identify the shortest column
 		let shortestColumnIndex = 0;
 		for (let i = 0; i < NUM_COLUMNS; i++) {
-			if (!columns[i]) {
-				columns[i] = { height: 0, tiles: [] };
-				shortestColumnIndex = i;
-				break;
-			}
-
 			if (columns[i]?.height < columns[shortestColumnIndex]?.height) {
 				shortestColumnIndex = i;
 			}
