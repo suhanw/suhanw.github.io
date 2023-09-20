@@ -10,14 +10,14 @@ const About = (props) => {
 				Right-brained techie passionate about coding, product, UX, and fun with my family.
 			</p>
 			<ul className={cn(style.content, style.desktop)}>
-				<li>👷🏻‍♂️ Staff Software Engineer at <a href={'https://www.spresso.com'} target={'_blank'}>Spresso.com</a>.</li>
+				<li>👷🏻‍♂️ Senior Software Engineer at <a href={'https://www.datadoghq.com/'} target={'_blank'}>Datadog</a>.</li>
 				<li>🏗 Building apps with Nx, JavaScript, TypeScript, React, GraphQL, Node.js, GCP.</li>
-				<li>🌱 Currently learning and experimenting with Jenkins, GitHub Actions, Pulumi.</li>
+				{/* <li>🌱 Currently learning and experimenting with Jenkins, GitHub Actions, Pulumi.</li> */}
 			</ul>
 			<ul className={cn(style.content, style.mobile)}>
-				<li>👷🏻‍♂️ Staff SWE at <a href={'https://www.spresso.com'} target={'_blank'}>Spresso.com</a>.</li>
+				<li>👷🏻‍♂️ Sr. SWE at <a href={'https://www.datadoghq.com/'} target={'_blank'}>Datadog</a>.</li>
 				<li>🏗 JavaScript, TypeScript, React, Node.</li>
-				<li>🌱 Learning Jenkins, GitHub Actions, GCP.</li>
+				{/* <li>🌱 Learning Jenkins, GitHub Actions, GCP.</li> */}
 			</ul>
 			{/* <p className={cn(style.content, style.mobile)}>View my <a href='/assets/suhan_wijaya_resume.pdf' target='_blank'>resume</a>.</p>
 			<p className={cn(style.content, style.desktop)}>View my <a href='/assets/suhan_wijaya_resume.pdf' target='_blank'>resume</a>.</p> */}
