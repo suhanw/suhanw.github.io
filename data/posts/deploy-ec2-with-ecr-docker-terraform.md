@@ -2,7 +2,7 @@
 pin_order: 12
 title: Deploy Docker-ized React/Node.js on EC2 via Terraform
 description: Avoid ClickOps by using Terraform to push Docker images to ECR and run a container on EC2
-image: https://www.suhanwijaya.com/images/deploy-ec2-with-ecr-docker-terraform/final.webp
+image: https://www.suhanwijaya.com/images/deploy-ec2-with-ecr-docker-terraform/final.gif
 tags: webdev,docker,terraform,aws,ec2,ecr,react,node
 date: "2024-04-25"
 ---
