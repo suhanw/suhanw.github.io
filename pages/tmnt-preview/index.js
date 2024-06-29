@@ -19,7 +19,7 @@ export default () => {
           characters.
         </p>
 
-        <h2>Features and Implementation</h2>
+        <h2>Features</h2>
 
         <h3>Viewport that centers on Turtle</h3>
         <p>

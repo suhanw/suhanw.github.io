@@ -17,7 +17,7 @@ export default () => {
 					backend, a PostgreSQL database, and React.js with a Redux architectural framework on the frontend.
 				</p>
 
-				<h2>Features and Implementation</h2>
+				<h2>Features</h2>
 
 				<h3>Single Page</h3>
 				<p>
