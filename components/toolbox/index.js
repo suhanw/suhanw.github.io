@@ -20,7 +20,9 @@ const Toolbox = (props) => {
 				<TechIcon imageSrc={'/tech-icons/redux.png'} imageCaption={`Redux`} />
 				<TechIcon imageSrc={'/tech-icons/react-router.png'} imageCaption={`React Router`} />
 				<TechIcon imageSrc={'/tech-icons/babel.png'} imageCaption={`Babel`} />
+				<TechIcon imageSrc={'/tech-icons/css-modules.png'} imageCaption={`CSS Modules`} />
 				<TechIcon imageSrc={'/tech-icons/less.png'} imageCaption={`Less`} />
+				<TechIcon imageSrc={'/tech-icons/bem.png'} imageCaption={`BEM`} />
 				<TechIcon imageSrc={'/tech-icons/mui.png'} imageCaption={`Material UI`} />
 				<TechIcon imageSrc={'/tech-icons/storybook.png'} imageCaption={`Storybook`} />
 				<TechIcon imageSrc={'/tech-icons/express.png'} imageCaption={`Express.js`} />
