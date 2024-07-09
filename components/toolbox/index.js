@@ -66,6 +66,7 @@ const Toolbox = (props) => {
 				<TechIcon imageSrc={'/tech-icons/browserstack.png'} imageCaption={`BrowserStack`} />
 				<TechIcon imageSrc={'/tech-icons/responsively.png'} imageCaption={`Responsively`} />
 				<TechIcon imageSrc={'/tech-icons/vsc.png'} imageCaption={`Visual Studio Code`} />
+				<TechIcon imageSrc={'/tech-icons/github-copilot.webp'} imageCaption={`GitHub Copilot`} />
 				<TechIcon imageSrc={'/tech-icons/figma.png'} imageCaption={`Figma`} />
 				<TechIcon imageSrc={'/tech-icons/zeplin.png'} imageCaption={`Zeplin`} />
 				<TechIcon imageSrc={'/tech-icons/postman.png'} imageCaption={`Postman`} />
@@ -73,8 +74,9 @@ const Toolbox = (props) => {
 				<TechIcon imageSrc={'/tech-icons/jira.jpg'} imageCaption={`JIRA`} />
 				<TechIcon imageSrc={'/tech-icons/confluence.jpg'} imageCaption={`Confluence`} />
 				<TechIcon imageSrc={'/tech-icons/notion.jpg'} imageCaption={`Notion`} />
-				<TechIcon imageSrc={'/tech-icons/google-search-console.svg'} imageCaption={`Google Search Console`} />
 				<TechIcon imageSrc={'/tech-icons/google-analytics.jpg'} imageCaption={`Google Analytics`} />
+				<TechIcon imageSrc={'/tech-icons/google-lighthouse.png'} imageCaption={`Google Lighthouse`} />
+				<TechIcon imageSrc={'/tech-icons/google-search-console.svg'} imageCaption={`Google Search Console`} />
 			</div>
 		</section>
 	);
