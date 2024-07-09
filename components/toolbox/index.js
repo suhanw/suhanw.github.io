@@ -11,6 +11,8 @@ const Toolbox = (props) => {
 				<TechIcon imageSrc={'/tech-icons/typescript.jpeg'} imageCaption={`TypeScript`} />
 				<TechIcon imageSrc={'/tech-icons/golang.png'} imageCaption={`Go`} />
 				<TechIcon imageSrc={'/tech-icons/ruby.png'} imageCaption={`Ruby`} />
+				<TechIcon imageSrc={'/tech-icons/html5.png'} imageCaption={`HTML5`} />
+				<TechIcon imageSrc={'/tech-icons/css3.png'} imageCaption={`CSS3`} />
 				<TechIcon imageSrc={'/tech-icons/react.png'} imageCaption={`React`} />
 				<TechIcon imageSrc={'/tech-icons/nodejs.png'} imageCaption={`Node.js`} />
 				<TechIcon imageSrc={'/tech-icons/esbuild.png'} imageCaption={`ESBuild`} />
@@ -48,21 +50,19 @@ const Toolbox = (props) => {
 				<TechIcon imageSrc={'/tech-icons/npm.png'} imageCaption={`npm`} />
 				<TechIcon imageSrc={'/tech-icons/yarn.jpg'} imageCaption={`yarn`} />
 				<TechIcon imageSrc={'/tech-icons/terraform.png'} imageCaption={`Terraform`} />
-				<TechIcon imageSrc={'/tech-icons/nx.png'} imageCaption={`Nx`} />
 				<TechIcon imageSrc={'/tech-icons/docker.png'} imageCaption={`Docker`} />
+				<TechIcon imageSrc={'/tech-icons/nx.png'} imageCaption={`Nx`} />
 				<TechIcon imageSrc={'/tech-icons/jenkins.png'} imageCaption={`Jenkins`} />
 				<TechIcon imageSrc={'/tech-icons/aws.jpg'} imageCaption={`AWS`} />
 				<TechIcon imageSrc={'/tech-icons/gcp.jpg'} imageCaption={`GCP`} />
 				<TechIcon imageSrc={'/tech-icons/heroku.png'} imageCaption={`Heroku`} />
 				<TechIcon imageSrc={'/tech-icons/datadog.jpg'} imageCaption={`Datadog`} />
-				<TechIcon imageSrc={'/tech-icons/graylog.png'} imageCaption={`Graylog`} />
-				<TechIcon imageSrc={'/tech-icons/html5.png'} imageCaption={`HTML5`} />
-				<TechIcon imageSrc={'/tech-icons/css3.png'} imageCaption={`CSS3`} />
+				{/* <TechIcon imageSrc={'/tech-icons/graylog.png'} imageCaption={`Graylog`} /> */}
 				<TechIcon imageSrc={'/tech-icons/chrome.png'} imageCaption={`Chrome`} />
 				<TechIcon imageSrc={'/tech-icons/firefox.png'} imageCaption={`Firefox`} />
 				<TechIcon imageSrc={'/tech-icons/safari.jpg'} imageCaption={`Safari`} />
 				<TechIcon imageSrc={'/tech-icons/edge.jpeg'} imageCaption={`Edge`} />
-				<TechIcon imageSrc={'/tech-icons/ie.png'} imageCaption={`IE11`} />
+				{/* <TechIcon imageSrc={'/tech-icons/ie.png'} imageCaption={`IE11`} /> */}
 				<TechIcon imageSrc={'/tech-icons/browserstack.png'} imageCaption={`BrowserStack`} />
 				<TechIcon imageSrc={'/tech-icons/responsively.png'} imageCaption={`Responsively`} />
 				<TechIcon imageSrc={'/tech-icons/vsc.png'} imageCaption={`Visual Studio Code`} />
