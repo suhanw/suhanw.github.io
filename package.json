@@ -7,8 +7,8 @@
 		"dev": "NODE_ENV=development next dev",
 		"build-ssr": "next build",
 		"start-ssr": "next start",
-		"build": "next build && next export -o docs",
-		"postbuild": "copyfiles .nojekyll CNAME docs",
+		"build": "next build && next export -o gh-pages",
+		"postbuild": "copyfiles .nojekyll CNAME gh-pages",
 		"start": "serve docs"
 	},
 	"author": "Suhan Wijaya",
