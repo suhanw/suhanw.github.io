@@ -31,7 +31,8 @@ const Post = ({ postData }) => {
   const metaUrl = `https://www.suhanwijaya.com${router?.asPath}`;
 
   return (
-    <Layout topMenu>
+    // <Layout topMenu>
+    <Layout>
       <Head>
         <title>{metaTitle}</title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
