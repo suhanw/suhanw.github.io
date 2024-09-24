@@ -1,124 +1,127 @@
 .hamburger {
-	z-index: 2;
-	position: fixed;
-	top: 15px;
-	right: 15px;
-	display: inline-block;
-	width: 50px;
-	background-color: #fff;
-	border-radius: 10px;
-	
-	> img {
-		display: block;
-		width: 100%;
-		height: auto;
-	}
+  z-index: 2;
+  position: fixed;
+  top: 15px;
+  right: 15px;
+  display: inline-block;
+  width: 50px;
+  background-color: #fff;
+  border-radius: 10px;
+
+  > img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
 }
 
 .menu {
-	z-index: 2;
-	position: fixed;
-	top: 0px;
-	left: 0px;
-	transform: translateX(-100%);
-	transition: transform 300ms ease-out;
-	padding: 0px 30px 0px 50px;
-	height: 100%;
-	min-height: auto;
-	overflow-y: scroll;
-	background-color: rgba(255, 255, 255, 0.9);
+  z-index: 2;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  transform: translateX(-100%);
+  transition: transform 300ms ease-out;
+  padding: 0px 30px 0px 50px;
+  height: 100%;
+  min-height: auto;
+  overflow-y: scroll;
+  background-color: rgba(255, 255, 255, 0.9);
 
-	&.showMenu {
-		transform: translateX(0);
-		transition: transform 300ms ease-out;
-		width: 100%;
-	}
+  &.showMenu {
+    transform: translateX(0);
+    transition: transform 300ms ease-out;
+    width: 100%;
+  }
 }
 
 .name {
-	margin: 80px 0px 50px 0px;
-	color: #222222;
-	font-size: 36px;
+  margin: 80px 0px 50px 0px;
+  color: #222222;
+  font-size: 36px;
 }
 
 .menuItems {
-	margin: 0px 0px 50px 0px;
+  margin: 0px 0px 50px 0px;
 }
 
 .topMenuItems {
-	display: none;
+  display: none;
 }
 
 .menuItem {
-	margin: 0px 0px 20px 0px;
-	width: 200px;
-	color: #555555;
-	font-size: 14px;
-	letter-spacing: 2px;
+  margin: 0px 0px 20px 0px;
+  width: 200px;
+  color: #555555;
+  font-size: 14px;
+  letter-spacing: 2px;
 
-	a {
-		text-decoration: none;
-	}
+  a {
+    text-decoration: none;
+  }
 }
 
 .email {
-	display: inline-block;
-	margin: 0px 0px 30px 0px;
-	color: #555555;
-	font-size: 14px;
-	text-decoration: none;
+  display: inline-block;
+  margin: 0px 0px 30px 0px;
+  color: #555555;
+  font-size: 14px;
+  text-decoration: none;
 }
 
 .social {
-	display: block;
-	margin: 0px 0px 80px 0px;
+  display: block;
+  margin: 0px 0px 80px 0px;
 
-	a {
-		margin: 0px 10px 0px 0px;
-		display: inline-block;
-	}
+  a {
+    margin: 0px 10px 0px 0px;
+    display: inline-block;
+  }
 
-	img {
-		display: block;
-		width: 30px;
-	}
+  img {
+    display: block;
+    width: 30px;
+  }
 }
 
 @media only screen and (min-width: 992px) {
-	.hamburger {
-		display: none;
-	}
-	
-	.menu {
-		transform: translateX(0px);
-		transition: transform 300ms ease-out;
-		border-right: 1px solid #f9f9f9;
-	}
+  .hamburger {
+    display: none;
+  }
 
-	.social {
-		margin: 0px;
-	}
+  .menu {
+    transform: translateX(0px);
+    transition: transform 300ms ease-out;
+    border-right: 1px solid #f9f9f9;
+  }
 
-	.topMenu {
-		&.menu {
-			height: auto;
-			position: relative;
-			padding: 40px 20px 0px;
-			border-right: none;
-			border-bottom: 1px solid #f9f9f9;
-		}
+  .social {
+    margin: 0px;
+  }
 
-		.name, .menuItems, .email, .social {
-			display: none;
-		}
+  .topMenu {
+    &.menu {
+      height: auto;
+      position: relative;
+      padding: 40px 20px 0px;
+      border-right: none;
+      border-bottom: 1px solid #f9f9f9;
+    }
 
-		.topMenuItems {
-			display: flex;
-			justify-content: center;
+    .name,
+    .menuItems,
+    .email,
+    .social {
+      display: none;
+    }
 
-			.menuItem {
-				width: auto;
-			}
-		}
-	}
+    .topMenuItems {
+      display: flex;
+      justify-content: center;
+
+      .menuItem {
+        width: auto;
+      }
+    }
+  }
 }
