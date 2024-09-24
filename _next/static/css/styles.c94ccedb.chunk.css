@@ -454,6 +454,7 @@ a {
   max-width: 700px;
 }
 .title_29RlI {
+  padding: 60px 0 0 0;
   margin: 32px 0px 0px 0px;
   font-size: 36px;
 }
@@ -604,7 +605,7 @@ a {
 }
 .menuItem_5m-L2 {
   margin: 0px 0px 20px 0px;
-  width: 200px;
+  width: 150px;
   color: #555555;
   font-size: 14px;
   letter-spacing: 2px;
@@ -671,7 +672,7 @@ a {
 }
 @media only screen and (min-width: 992px) {
   .layout_GvkLX {
-    padding: 0px 0px 0px 281px;
+    padding: 0px 0px 0px 246px;
   }
   .layout_GvkLX.hasTopMenu_1WVP3 {
     padding: 0px;
