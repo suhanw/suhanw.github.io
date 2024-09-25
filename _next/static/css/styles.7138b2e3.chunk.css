@@ -454,7 +454,6 @@ a {
   max-width: 700px;
 }
 .title_29RlI {
-  padding: 60px 0 0 0;
   margin: 32px 0px 0px 0px;
   font-size: 36px;
 }
@@ -556,6 +555,9 @@ a {
 @media only screen and (min-width: 992px) {
   .contentWrapper_1Wy1l {
     padding: 0px;
+  }
+  .title_29RlI {
+    padding: 60px 0 0 0;
   }
 }
 
