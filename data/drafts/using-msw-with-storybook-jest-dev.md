@@ -1,7 +1,7 @@
 ---
 pin_order: 13
 title: Mock Service Worker, Storybook, and Jest in 2024
-description: Boosting local development, Storybook, and Jest tests with Mock Service Worker (MSW)
+description: Boosting local web development, Storybook, and Jest tests with Mock Service Worker (MSW)
 image: https://www.suhanwijaya.com/images/react-node-typescript-2024.jpeg
 tags: javascript,webdev,typescript,storybook,jest,msw
 date: "2024-10-10"
@@ -75,13 +75,10 @@ function getUserReducer(state: State, action: Action): State {
   }
 }
 
-export function useGetUser() {
-  const [{ loading, error, firstName, lastName }, dispatch] = useReducer(
-    getUserReducer,
-    {
-      loading: true,
-    }
-  );
+export function useGetUser(): State {
+  const [userState, dispatch] = useReducer(getUserReducer, {
+    loading: true,
+  });
 
   useEffect(() => {
     getUser()
@@ -99,13 +96,22 @@ export function useGetUser() {
       });
   }, []);
 
-  return {
-    loading,
-    error,
-    firstName,
-    lastName,
-  };
+  return userState;
 }
+
+type State = {
+  loading: boolean;
+  error?: string | null;
+  firstName?: string | null;
+  lastName?: string | null;
+};
+
+type Action = {
+  type: string;
+  error?: string | null;
+  firstName?: string | null;
+  lastName?: string | null;
+};
 ```
 
 And finally, create the React component that uses the data fetching hook.
@@ -156,7 +162,7 @@ Now, this is where MSW unblocks the frontend work even though the backend is not
 npm install msw --save-dev
 ```
 
-In a nutshell, MSW will intercept outgoing API requests, and run a resolver function to handle that intercepted request. Your job is to write that resolver function to return a mock response that complies with the backend-frontend contract.
+In a nutshell, MSW will intercept outgoing API requests, and run a resolver function to handle that intercepted request. Your job is to write that resolver function to return a mock response that follows the backend-frontend contract.
 
 ```ts
 // client/src/api/get-user-mock.ts
@@ -186,10 +192,10 @@ In the browser, MSW works by registering a Service Worker responsible for reques
 If your application registers a Service Worker it must host and serve the worker script. The library CLI provides you with the init command to quickly copy the `./mockServiceWorker.js` worker script into your application’s public directory.
 
 ```
-npx msw init <PUBLIC_DIR> --save
+npx msw init PUBLIC_DIR --save
 ```
 
-Once copied, navigate to the `/mockServiceWorker.js` URL of your application in your browser (e.g. if your application is running on http://localhost:3000, go to the http://localhost:3000/mockServiceWorker.js route). You should see the worker script contents. If you see a 404 or a MIME type error, make sure you are specifying the correct PUBLIC_DIR when running the init command, and that you adjust any potential configuration of your application that would affect serving static files.
+Once copied, navigate to the `/mockServiceWorker.js` URL of your application in your browser (e.g. if your application is running on `http://localhost:3000`, go to the `http://localhost:3000/mockServiceWorker.js` route). You should see the worker script contents. If you see a 404 or a MIME type error, make sure you are specifying the correct `PUBLIC_DIR` when running the init command, and that you adjust any potential configuration of your application that would affect serving static files.
 
 In our case, I decided to register a specific route for the Service Worker script in the Express app:
 
@@ -203,19 +209,20 @@ const app = express();
 
 const isDev = !process.env.NODE_ENV || process.env.NODE_ENV === "development";
 
-// Only register this route in development, assuming that the backend route will be ready in prod.
+// Only register this route in development
 if (isDev) {
   app.use(
     "/mockServiceWorker.js",
     express.static(
-      // I ran `npx msw init client/src/mocks --save` to generate and copy the worker script.
+      // I ran `npx msw init client/src/mocks --save`
+      // to generate and copy the worker script.
       path.join(process.cwd(), "./client/src/mocks/mockServiceWorker.js")
     )
   );
 }
 ```
 
-To enable MSW on the frontend, we call the [setupWorker()](https://mswjs.io/docs/api/setup-worker) function to prepare the client-worker communication channel to enable API mocking, passing in the resolver function `getUserMockHandler` defined above.
+To enable MSW on the frontend, call the [setupWorker()](https://mswjs.io/docs/api/setup-worker) function to prepare the client-worker communication channel to enable API mocking, passing in the resolver function `getUserMockHandler` defined above.
 
 ```ts
 // client/src/mocks/browser.ts
@@ -243,10 +250,10 @@ import React from "react";
 import { createRoot } from "react-dom/client";
 import { enableMocking } from "./mocks/browser";
 
-// Only enable API mocking in development so production traffic is unaffected.
 const isDev = !process.env.NODE_ENV || process.env.NODE_ENV === "development";
 
 window.addEventListener("DOMContentLoaded", async () => {
+  // Only enable API mocking in development so production traffic is unaffected.
   if (isDev) {
     await enableMocking();
   }
@@ -256,7 +263,7 @@ window.addEventListener("DOMContentLoaded", async () => {
 });
 ```
 
-Start the app `npm run dev` and you should see these logs in your browser console. 🎉
+Start the app `npm run dev` and observe these logs in your browser console. 🎉
 
 ```
 [MSW] Mocking enabled.
@@ -267,35 +274,40 @@ Start the app `npm run dev` and you should see these logs in your browser consol
 
 ### Storybook
 
+I won't go over how to [install Storybook](https://storybook.js.org/docs) in your project.
+
+Instead, let's start with creating a Story for the `DataComponent` created above. A story is an object that describes how to render a component, i.e., `DataComponent` in this case. You can have multiple stories per component, each story capturing the rendered state of this particular component.
+
+```tsx
+// client/src/components/DataComponent.stories.tsx
+
+import type { Meta, StoryObj } from "@storybook/react";
+import DataComponent from "./DataComponent";
+
+const meta: Meta<typeof DataComponent> = {
+  title: "DataComponent",
+  component: DataComponent,
+};
+
+export default meta;
+
+type Story = StoryObj<typeof DataComponent>;
+
+// Rendered state when API request succeeds.
+export const Success: Story = {};
+
+// Rendered state when API request fails.
+export const Error: Story = {};
+```
+
+Now, we integrate MSW to leverage the mock response defined above.
+
 ---
 
 ### Jest
 
-Here are the `scripts` defined in my `package.json`.
-
-```json
-// package.json
-
-{
-	...
-
-  "scripts": {
-    "build:client": "node client/esbuild.mjs",
-    "build:server": "node server/esbuild.mjs",
-    "build": "concurrently \"npm:build:client\" \"npm:build:server\"",
-    "start": "node dist/server/index.js"
-  },
-
-  ...
-}
-```
-
-In summary, `build:client` and `build:server` bundle frontend and backend code respectively. `build` uses the **`concurrently`** package to run both **`build:client`** and **`build:server`** in parallel. And finally, `start` launches the Node.js server to serve the application. Open up `localhost:3000` in your browser and 🎉!
-
-Here’s [my repo](https://github.com/suhanw/blog-react-node-typescript) to see the whole thing come together.
+---
 
 ### Putting it all together
 
 Using Mock Service Worker (MSW) in your local development, Storybook, and Jest testing environments offers numerous benefits, including faster development cycles, more consistent testing, and easier simulation of API behaviors. By mocking your API responses, you can focus on building and testing your UI without being held back by network dependencies or external APIs.
-
-With MSW, you get a powerful tool that scales across multiple environments, making it a must-have for modern frontend developers looking to streamline their workflows.
