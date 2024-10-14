@@ -300,7 +300,71 @@ export const Success: Story = {};
 export const Error: Story = {};
 ```
 
-Now, we integrate MSW to leverage the mock response defined above.
+Now, we integrate MSW by installing the Storybook addon:
+
+```
+npm install msw-storybook-addon --save-dev
+```
+
+Initialize MSW and provide the MSW loader in `.storybook/preview.ts`:
+
+```ts
+// .storybook/preview.js
+
+import type { Preview } from "@storybook/react";
+import { initialize, mswLoader } from "msw-storybook-addon";
+
+initialize();
+
+const preview: Preview = {
+  // other code...
+
+  // Provide the MSW addon loader globally.
+  loaders: [mswLoader],
+};
+
+export default preview;
+```
+
+Similar to local development where your app needs to host and serve the Service Worker script, Storybook also needs to do the same. Recall that we already generated the worker script in `client/src/mocks/mockServiceWorker.js` earlier. You can add the path to the same worker script in the Storybook [static files config](https://storybook.js.org/docs/configure/integration/images-and-assets#serving-static-files-via-storybook-configuration) in `.storybook/main.ts`:
+
+```ts
+// .storybook/main.ts
+
+import type { StorybookConfig } from "@storybook/react-vite";
+
+const config: StorybookConfig = {
+  // other code...
+
+  // Enable Storybook to serve the MSW script
+  staticDirs: ["../client/src/mocks"],
+};
+export default config;
+```
+
+Finally, you can use the same resolver function `getUserMockHandler` in your Story.
+
+```diff
+// client/src/components/DataComponent.stories.tsx
+
++import { getUserMockHandler } from "../api/get-user-mock";
+
+// Rendered state when API request succeeds.
+export const Success: Story = {
++  parameters: {
++    msw: {
++      handlers: [getUserMockHandler],
++    },
++  },
+};
+```
+
+Start Storybook `npm run storybook` and observe these logs in your browser console. 🎉
+
+```
+[MSW] Mocking enabled.
+[MSW] 12:16:09 GET /user (200 OK)
+```
 
 ---
 
@@ -311,3 +375,7 @@ Now, we integrate MSW to leverage the mock response defined above.
 ### Putting it all together
 
 Using Mock Service Worker (MSW) in your local development, Storybook, and Jest testing environments offers numerous benefits, including faster development cycles, more consistent testing, and easier simulation of API behaviors. By mocking your API responses, you can focus on building and testing your UI without being held back by network dependencies or external APIs.
+
+```
+
+```
