@@ -1,14 +1,14 @@
 ---
 pin_order: 13
-title: Mock Service Worker, Storybook, and Jest in 2024
-description: Boosting local web development, Storybook, and Jest tests with Mock Service Worker (MSW)
+title: Mock Service Worker, Storybook, Jest, and React in 2024
+description: Supercharging local React development, Storybook, and Jest tests with Mock Service Worker (MSW)
 image: https://www.suhanwijaya.com/images/react-node-typescript-2024.jpeg
 tags: javascript,webdev,typescript,storybook,jest,msw
 date: "2024-10-10"
 ---
 
 <figure>
-    <img src="/images/react-node-typescript-2024.jpeg">
+    <img src="/images/using-msw-with-storybook-jest-dev-cover.jpg">
 </figure>
 
 ---
@@ -189,7 +189,7 @@ export const getUserMockHandler = http.get(API_ROUTE, function () {
 
 In the browser, MSW works by registering a Service Worker responsible for request interception on the network level.
 
-If your application registers a Service Worker it must host and serve the worker script. The library CLI provides you with the init command to quickly copy the `./mockServiceWorker.js` worker script into your application’s public directory.
+If your application registers a Service Worker, it must host and serve the worker script. The library CLI provides you with the init command to quickly copy the `./mockServiceWorker.js` worker script into your application’s public directory.
 
 ```
 npx msw init PUBLIC_DIR --save
@@ -274,33 +274,7 @@ Start the app `npm run dev` and observe these logs in your browser console. 🎉
 
 ### Storybook
 
-I won't go over how to [install Storybook](https://storybook.js.org/docs) in your project.
-
-Instead, let's start with creating a Story for the `DataComponent` created above. A story is an object that describes how to render a component, i.e., `DataComponent` in this case. You can have multiple stories per component, each story capturing the rendered state of this particular component.
-
-```tsx
-// client/src/components/DataComponent.stories.tsx
-
-import type { Meta, StoryObj } from "@storybook/react";
-import DataComponent from "./DataComponent";
-
-const meta: Meta<typeof DataComponent> = {
-  title: "DataComponent",
-  component: DataComponent,
-};
-
-export default meta;
-
-type Story = StoryObj<typeof DataComponent>;
-
-// Rendered state when API request succeeds.
-export const Success: Story = {};
-
-// Rendered state when API request fails.
-export const Error: Story = {};
-```
-
-Now, we integrate MSW by installing the Storybook addon:
+Assuming that you've already [installed Storybook](https://storybook.js.org/docs) in your project, we start by integrating MSW by installing the Storybook addon:
 
 ```
 npm install msw-storybook-addon --save-dev
@@ -344,19 +318,37 @@ export default config;
 
 Finally, you can use the same resolver function `getUserMockHandler` in your Story.
 
-```diff
+```tsx
 // client/src/components/DataComponent.stories.tsx
 
-+import { getUserMockHandler } from "../api/get-user-mock";
+import type { Meta, StoryObj } from "@storybook/react";
+import DataComponent from "./DataComponent";
+import { getUserMockHandler } from "../api/get-user-mock";
+
+const meta: Meta<typeof DataComponent> = {
+  title: "DataComponent",
+  component: DataComponent,
+};
+
+export default meta;
+
+type Story = StoryObj<typeof DataComponent>;
 
 // Rendered state when API request succeeds.
 export const Success: Story = {
-+  parameters: {
-+    msw: {
-+      handlers: [getUserMockHandler],
-+    },
-+  },
+  parameters: {
+    msw: {
+      // Add the resolver function to intercept `GET /user` requests
+      handlers: [getUserMockHandler],
+    },
+  },
 };
+
+// Rendered state when API request fails.
+export const Error: Story = {};
+
+// You can have multiple stories per component, each story
+// capturing the rendered state of this particular component.
 ```
 
 Start Storybook `npm run storybook` and observe these logs in your browser console. 🎉
@@ -370,12 +362,114 @@ Start Storybook `npm run storybook` and observe these logs in your browser conso
 
 ### Jest
 
+Again, I will assume that you have installed [Jest](https://jestjs.io/docs/getting-started) and [Testing Library](https://testing-library.com/docs/) in your project.
+
+Jest runs on Node.js, therefore we need to setup MSW via the [Node.js integration](https://mswjs.io/docs/integrations/node). So first, we export an MSW server to intercept outgoing traffic.
+
+```ts
+// client/src/mocks/server.ts
+
+// Import from `msw/node` to integrate MSW in Node.js.
+import { setupServer } from "msw/node";
+
+// We will then use the `server` object in our tests to
+// intercept requests and respond with mock data.
+export const server = setupServer();
+```
+
+Next, let's create a test file for `DataComponent`, where we will import the MSW server and again reuse our resolver function `getUserMockHandler` to handle intercepted `GET /user` requests.
+
+```tsx
+// client/src/components/DataComponent.test.tsx
+
+import React from "react";
+import { render, screen, waitFor } from "@testing-library/react";
+import DataComponent from "./DataComponent";
+import { server } from "../mocks/server";
+import { getUserMockHandler, mockResponseData } from "../api/get-user-mock";
+
+beforeAll(() => {
+  // Register the `GET /user` resolver prior to running tests.
+  server.use(getUserMockHandler);
+  // Start listening for and intercepting `GET /user` requests.
+  server.listen();
+});
+
+afterEach(() => {
+  // This will remove any runtime request handlers
+  // after each test, ensuring isolated network behavior.
+  server.resetHandlers();
+});
+
+afterAll(() => {
+  // Disable request interception and clean up.
+  server.close();
+});
+
+describe("DataComponent", () => {
+  it("should display user data", async () => {
+    render(<DataComponent />);
+    expect(screen.queryByText("This is DataComponent.")).toBeInTheDocument();
+    expect(screen.queryByText("LOADING")).toBeInTheDocument();
+
+    // wait until the `GET /user` request promise resolves
+    await waitFor(() => {
+      expect(screen.queryByText("LOADING")).not.toBeInTheDocument();
+      const { firstName, lastName } = mockResponseData;
+      expect(
+        screen.queryByText(`"Yeah." -${firstName} ${lastName}`)
+      ).toBeInTheDocument();
+    });
+  });
+});
+
+// other tests...
+```
+
+To test client-side React component, Jest leverages JSDOM to simulate a browser environment in Node.js without having to launch an actual browser.
+
+At the time of this writing, there are a couple of "gotchas" caused by the fact that we're using JSDOM as our test environment while using the Node.js integration for MSW.
+
+Gotcha #1, the `msw/node` module is not exported in a client-side environment, which includes JSDOM, i.e., `Cannot find module msw/node` throws when running the test.
+
+Gotcha #2, `msw/node` expects and uses several Node.js globals that do not exist in the JSDOM environment, i.e., `ReferenceError: TextEncoder is not defined` throws from the `msw/node` library.
+
+Here are the fixes:
+
+```ts
+// client/jest.config.ts
+
+import type { Config } from "jest";
+
+const config: Config = {
+  displayName: "client",
+  // To fix Gotcha #2, we set `jest-fixed-jsdom` as the test environment,
+  // a superset of `jest-environment-jsdom` that includes Node.js globals
+  testEnvironment: "jest-fixed-jsdom",
+  testEnvironmentOptions: {
+    // To fix Gotcha #1, override the exported lib version
+    // which defaults to "browser" for JSDOM.
+    customExportConditions: ["msw"],
+  },
+
+  //   other settings...
+};
+```
+
+Run the test `npm test` and observe the green checks. 🎉
+
 ---
 
 ### Putting it all together
 
-Using Mock Service Worker (MSW) in your local development, Storybook, and Jest testing environments offers numerous benefits, including faster development cycles, more consistent testing, and easier simulation of API behaviors. By mocking your API responses, you can focus on building and testing your UI without being held back by network dependencies or external APIs.
+This blog post covers a lot of one-time setup. However, as your app grows, it will be much simpler to add new API helper modules, mocks, and MSW resolvers, and extend the MSW resolvers in your local dev, Storybook, and Jest. This offers numerous benefits, including faster development cycles, more consistent testing, easier simulation of API behaviors, and perhaps a happier collaboration with your backend teams. 🍻
+Here’s [my repo](https://github.com/suhanw/blog-storybook-jest-msw) to see the whole thing come together.
 
-```
+---
 
-```
+### Resources
+
+- [Mock API requests in Storybook with Mock Service Worker](https://storybook.js.org/addons/msw-storybook-addon)
+- [Integrate MSW with test runners](https://mswjs.io/docs/integrations/node#test-runner)
+- [MSW 2.0 frequent issues](https://mswjs.io/docs/migrations/1.x-to-2.x#frequent-issues)
+- [Building a full stack React and Node web app with TypeScript and ESBuild](https://www.suhanwijaya.com/posts/react-node-typescript-2024)
