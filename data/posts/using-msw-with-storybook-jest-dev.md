@@ -195,7 +195,7 @@ If your application registers a Service Worker, it must host and serve the worke
 npx msw init PUBLIC_DIR --save
 ```
 
-Once copied, navigate to the `/mockServiceWorker.js` URL of your application in your browser (e.g. if your application is running on `http://localhost:3000`, go to the `http://localhost:3000/mockServiceWorker.js` route). You should see the worker script contents. If you see a 404 or a MIME type error, make sure you are specifying the correct `PUBLIC_DIR` when running the init command, and that you adjust any potential configuration of your application that would affect serving static files.
+Once copied, navigate to the `/mockServiceWorker.js` URL of your application in your browser (e.g. if your application is running on `http://localhost:3000`, go to the `localhost:3000/mockServiceWorker.js` route). You should see the worker script contents. If you see a 404 or a MIME type error, make sure you are specifying the correct `PUBLIC_DIR` when running the init command, and that you adjust any potential configuration of your application that would affect serving static files.
 
 In our case, I decided to register a specific route for the Service Worker script in the Express app:
 
