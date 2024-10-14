@@ -19,11 +19,13 @@ That's where Mock Service Worker (MSW) comes in. It enables you to mock API resp
 
 In this post, we'll explore how you can leverage MSW to supercharge your local development, make your Storybook demos more realistic, and test your app’s functionality in isolation with Jest.
 
+We will be building upon the React/Node.js app from this [previous blog post](https://www.suhanwijaya.com/posts/react-node-typescript-2024).
+
 ---
 
 ### React hooks for API requests
 
-I like to keep my API helper methods in separate modules.
+I like to keep my API helper methods in separate modules. This method calls the API route `GET /user`.
 
 ```ts
 // client/src/api/get-user.ts
@@ -106,27 +108,74 @@ export function useGetUser() {
 }
 ```
 
+And finally, create the React component that uses the data fetching hook.
+
+```tsx
+// client/src/components/DataComponent.tsx
+
+import React from "react";
+import { useGetUser } from "../api/get-user";
+
+function DataComponent() {
+  const { loading, error, firstName, lastName } = useGetUser();
+
+  return (
+    <div>
+      <p>This is DataComponent.</p>
+      {loading && <p>LOADING</p>}
+      {!loading && error && <p role="alert">{error}</p>}
+      {!loading && firstName && lastName && (
+        <p>{`"Yeah." -${firstName} ${lastName}`}</p>
+      )}
+    </div>
+  );
+}
+
+export default DataComponent;
+```
+
 ---
 
 ### Setting up MSW in the project
 
-```jsx
-// client/index.tsx
+Suppose the `GET /user` endpoint is not ready at the moment, but you and your backend team agree on a JSON response data structure. Let's define a TypeScript type to codify the backend-frontend contract:
 
-import React from "react";
-import { createRoot } from "react-dom/client";
+```ts
+// client/src/api/get-user.ts
 
-function App({ message }: { message: string }) {
-  return <h1>{message}</h1>;
-}
-
-window.addEventListener("DOMContentLoaded", () => {
-  const root = createRoot(document.getElementById("root")); // [A]
-  root.render(<App message="Hello World!!" />);
-});
+export type ResponseData = {
+  id: string;
+  firstName: string;
+  lastName: string;
+};
 ```
 
-**[A]** Make sure the root element ID matches that in the HTML page served by Node.
+Now, this is where MSW unblocks the frontend work even though the backend is not ready. Let's install `msw` in your project:
+
+```
+npm install msw --save-dev
+```
+
+In a nutshell, MSW will intercept outgoing API requests, and run a resolver function to handle that intercepted request. Your job is to write that resolver function to return a mock response that complies with the backend-frontend contract.
+
+```ts
+// client/src/api/get-user-mock.ts
+
+import { http, HttpResponse } from "msw";
+import { API_ROUTE, ResponseData } from "./get-user";
+
+// Mock data enforced by the TypeScript type `ResponseData` defined above.
+export const mockResponseData: ResponseData = {
+  id: "c7b3d8e0-5e0b-4b0f-8b3a-3b9f4b3d3b3d",
+  firstName: "John",
+  lastName: "Wick",
+};
+
+// The resolver function that handles intercepted `GET /user` requests.
+export const getUserMockHandler = http.get(API_ROUTE, function () {
+  return HttpResponse.json(mockResponseData);
+});
+```
 
 ---
 
