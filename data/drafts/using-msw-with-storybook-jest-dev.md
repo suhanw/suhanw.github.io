@@ -181,49 +181,79 @@ export const getUserMockHandler = http.get(API_ROUTE, function () {
 
 ### Local development
 
-When working on a full-stack project with TypeScript, using a common `tsconfig.base.json` file along with “platform-specific” configuration files can help maintain consistency while allowing flexibility for different environments. Again, I’m keeping my config files barebones for the sake of illustration.
+In the browser, MSW works by registering a Service Worker responsible for request interception on the network level.
 
-```json
-// tsconfig.base.json
+If your application registers a Service Worker it must host and serve the worker script. The library CLI provides you with the init command to quickly copy the `./mockServiceWorker.js` worker script into your application’s public directory.
 
-{
-  "compilerOptions": {
-    "esModuleInterop": true,
-    "noImplicitAny": true
-  },
-  "include": ["./**/*.ts"]
+```
+npx msw init <PUBLIC_DIR> --save
+```
+
+Once copied, navigate to the `/mockServiceWorker.js` URL of your application in your browser (e.g. if your application is running on http://localhost:3000, go to the http://localhost:3000/mockServiceWorker.js route). You should see the worker script contents. If you see a 404 or a MIME type error, make sure you are specifying the correct PUBLIC_DIR when running the init command, and that you adjust any potential configuration of your application that would affect serving static files.
+
+In our case, I decided to register a specific route for the Service Worker script in the Express app:
+
+```ts
+// server/src/index.ts
+
+import path from "path";
+import express from "express";
+
+const app = express();
+
+const isDev = !process.env.NODE_ENV || process.env.NODE_ENV === "development";
+
+// Only register this route during development, assuming that the backend route will be ready in prod
+if (isDev) {
+  app.use(
+    "/mockServiceWorker.js",
+    express.static(
+      // I ran `npx msw init client/src/mocks --save` to generate and copy the worker script.
+      path.join(process.cwd(), "./client/src/mocks/mockServiceWorker.js")
+    )
+  );
 }
 ```
 
-Platform-specific configuration files, that live in `client/tsconfig.json` for the frontend and `server/tsconfig.json` for the backend, inherit from `tsconfig.base.json` and override specific options. This approach allows you to customize settings without affecting the base configuration.
+To enable MSW on the frontend, we call the [setupWorker()](https://mswjs.io/docs/api/setup-worker) function to prepare the client-worker communication channel to enable API mocking, passing in the resolver function `getUserMockHandler` defined above.
 
-For example, the frontend config might include options for JSX support and set to a lower `target` (e.g. ES5) if you need to support older browsers.
+```ts
+// client/src/mocks/browser.ts
 
-```json
-// client/tsconfig.json
+import { setupWorker } from "msw/browser";
+import { getUserMockHandler } from "../api/get-user-mock";
 
-{
-  "extends": "../tsconfig.base.json",
-  "compilerOptions": {
-    "jsx": "react",
-    "target": "ES5"
-  },
-  "include": ["./**/*.ts", "./**/*.tsx"]
+const handlers = [getUserMockHandler];
+
+const worker = setupWorker(...handlers);
+
+export async function enableMocking() {
+  // `worker.start()` returns a Promise that resolves
+  // once the Service Worker is up and ready to intercept requests.
+  return worker.start();
 }
 ```
 
-Whereas you may need to specify the `module` resolution option based on the Node version your backend runs on.
+And lastly, we activate the Service Worker by calling `worker.start()`. Because activating the Service Worker is an asynchronous operation, it’s a good idea to await the `worker.start()` Promise before rendering your application. Failing to await it may result in a race condition between the worker registration and the initial requests your application makes.
 
-```json
-// server/tsconfig.json
+```ts
+// client/src/index.ts
 
-{
-  "extends": "../tsconfig.base.json",
-  "compilerOptions": {
-    "target": "ESNext",
-    "module": "NodeNext"
+import React from "react";
+import { createRoot } from "react-dom/client";
+import { enableMocking } from "./mocks/browser";
+
+// Only enable API mocking in development so production traffic is unaffected.
+const isDev = !process.env.NODE_ENV || process.env.NODE_ENV === "development";
+
+window.addEventListener("DOMContentLoaded", async () => {
+  if (isDev) {
+    await enableMocking();
   }
-}
+
+  const root = createRoot(document.getElementById("root"));
+  root.render(<App />);
+});
 ```
 
 ---
