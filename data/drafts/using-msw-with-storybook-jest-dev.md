@@ -203,7 +203,7 @@ const app = express();
 
 const isDev = !process.env.NODE_ENV || process.env.NODE_ENV === "development";
 
-// Only register this route during development, assuming that the backend route will be ready in prod
+// Only register this route in development, assuming that the backend route will be ready in prod.
 if (isDev) {
   app.use(
     "/mockServiceWorker.js",
@@ -256,78 +256,16 @@ window.addEventListener("DOMContentLoaded", async () => {
 });
 ```
 
+Start the app `npm run dev` and you should see these logs in your browser console. 🎉
+
+```
+[MSW] Mocking enabled.
+[MSW] 12:16:09 GET /user (200 OK)
+```
+
 ---
 
 ### Storybook
-
-ESBuild configurations can follow a similar pattern, where a base config can contain settings common to both frontend and backend, and “platform-specific” configs can extend the base config to address unique requirements. Again, I’m keeping my configs barebones for the sake of illustration.
-
-```js
-// esbuild.mjs
-
-import esbuildPluginTsc from "esbuild-plugin-tsc";
-
-const isDev = !process.env.NODE_ENV || process.env.NODE_ENV === "development";
-
-export function createBuildSettings({ tsconfigPath, tsx, ...restOptions }) {
-  return {
-    minify: !isDev,
-    sourcemap: isDev,
-    bundle: true,
-    plugins: [
-      esbuildPluginTsc({
-        force: true,
-        tsconfigPath,
-        tsx,
-      }),
-    ],
-    ...restOptions,
-  };
-}
-```
-
-Similarly, platform-specific configuration files that live in `client/esbuild.mjs` for the frontend and `server/esbuild.mjs` for the backend, inherit from `esbuild.base.mjs` augmented with additional options.
-
-In the frontend, options may include targeted browser versions, plugins to handle CSS modules, SVG imports, etc.
-
-```js
-// client/esbuild.mjs
-
-import esbuild from "esbuild";
-import { createBuildSettings } from "../esbuild.base.mjs";
-
-const settings = createBuildSettings({
-  platform: "browser",
-  entryPoints: ["client/src/index.tsx"],
-  outfile: "dist/client/bundle.js",
-  tsconfigPath: "client/tsconfig.json",
-  tsx: true,
-  target: ["chrome58", "firefox57", "safari11"],
-});
-
-await esbuild.build(settings);
-```
-
-In the backend, a common option is to avoid bundling `node_modules` packages. Since the backend runs in a Node environment, you might not need to bundle external dependencies, allowing Node to load them at runtime. This reduces the output size and simplifies server deployments.
-
-```js
-// server/esbuild.mjs
-
-import esbuild from "esbuild";
-import { createBuildSettings } from "../esbuild.base.mjs";
-
-const settings = createBuildSettings({
-  platform: "node",
-  entryPoints: ["server/src/index.ts"],
-  outfile: "dist/server/index.js",
-  tsconfigPath: "server/tsconfig.json",
-  packages: "external", // avoid bundling modules in node_modules folder
-});
-
-await esbuild.build(settings);
-```
-
-One important caveat about ESBuild is that it [does not include type checking](https://esbuild.github.io/content-types/#:~:text=esbuild%20does%20not%20do%20any%20type%20checking). However, you can run `tsc` in parallel with ESBuild. This allows you to leverage ESBuild’s speed for bundling while maintaining type safety through TypeScript's type checker, potentially speeding up your CI/CD performance.
 
 ---
 
