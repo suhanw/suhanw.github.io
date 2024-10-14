@@ -4,7 +4,7 @@ title: Mock Service Worker, Storybook, Jest, and React in 2024
 description: Supercharging local React development, Storybook, and Jest tests with Mock Service Worker (MSW)
 image: https://www.suhanwijaya.com/images/react-node-typescript-2024.jpeg
 tags: javascript,webdev,typescript,storybook,jest,msw
-date: "2024-10-10"
+date: "2024-10-14"
 ---
 
 <figure>
@@ -463,6 +463,7 @@ Run the test `npm test` and observe the green checks. 🎉
 ### Putting it all together
 
 This blog post covers a lot of one-time setup. However, as your app grows, it will be much simpler to add new API helper modules, mocks, and MSW resolvers, and extend the MSW resolvers in your local dev, Storybook, and Jest. This offers numerous benefits, including faster development cycles, more consistent testing, easier simulation of API behaviors, and perhaps a happier collaboration with your backend teams. 🍻
+
 Here’s [my repo](https://github.com/suhanw/blog-storybook-jest-msw) to see the whole thing come together.
 
 ---
