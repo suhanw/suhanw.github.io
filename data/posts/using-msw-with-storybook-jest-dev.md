@@ -2,7 +2,7 @@
 pin_order: 13
 title: Mock Service Worker, Storybook, Jest, and React in 2024
 description: Supercharging local React development, Storybook, and Jest tests with Mock Service Worker (MSW)
-image: https://www.suhanwijaya.com/images/react-node-typescript-2024.jpeg
+image: https://www.suhanwijaya.com/images/using-msw-with-storybook-jest-dev-cover.jpg
 tags: javascript,webdev,typescript,storybook,jest,msw
 date: "2024-10-14"
 ---
