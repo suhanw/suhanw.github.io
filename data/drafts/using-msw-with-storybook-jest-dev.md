@@ -23,33 +23,92 @@ In this post, we'll explore how you can leverage MSW to supercharge your local d
 
 ### React hooks for API requests
 
-blah blah
+I like to keep my API helper methods in separate modules.
 
+```ts
+// client/src/api/get-user.ts
+
+export const API_ROUTE = "/user";
+
+async function getUser(): Promise<ResponseData> {
+  try {
+    const { data } = await axios.get(API_ROUTE);
+    return data;
+  } catch (error) {
+    console.error(error);
+    throw error;
+  }
+}
 ```
-project-root/
-│
-├── client/
-│   ├── src/
-│   │   └── index.tsx
-│   ├── tsconfig.json
-│   └── esbuild.mjs
-│
-└── server/
-│   ├── src/
-│   │   └── index.ts
-│   ├── tsconfig.json
-│   └── esbuild.mjs
-│
-├── tsconfig.base.json
-├── esbuild.base.mjs
-└── package.json
+
+Wrap the API call in a custom hook that leverages `useReducer` to manage the state transitions during the various stages of an API call i.e., loading, success, failure.
+
+```ts
+// client/src/api/get-user.ts
+
+function getUserReducer(state: State, action: Action): State {
+  switch (action.type) {
+    case "LOADING": {
+      return {
+        loading: true,
+      };
+    }
+    case "SUCCESS": {
+      return {
+        loading: false,
+        error: null,
+        firstName: action.firstName,
+        lastName: action.lastName,
+      };
+    }
+    case "ERROR": {
+      return {
+        loading: false,
+        error: action.error,
+      };
+    }
+    default: {
+      return state;
+    }
+  }
+}
+
+export function useGetUser() {
+  const [{ loading, error, firstName, lastName }, dispatch] = useReducer(
+    getUserReducer,
+    {
+      loading: true,
+    }
+  );
+
+  useEffect(() => {
+    getUser()
+      .then((data) => {
+        dispatch({
+          type: "SUCCESS",
+          ...data,
+        });
+      })
+      .catch(() => {
+        dispatch({
+          type: "ERROR",
+          error: "Uh oh. Something went wrong.",
+        });
+      });
+  }, []);
+
+  return {
+    loading,
+    error,
+    firstName,
+    lastName,
+  };
+}
 ```
 
 ---
 
 ### Setting up MSW in the project
-
-I purposely kept the React and Node entry points simple and hopefully self-explanatory.
 
 ```jsx
 // client/index.tsx
