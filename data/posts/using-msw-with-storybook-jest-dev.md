@@ -426,7 +426,7 @@ describe("DataComponent", () => {
 // other tests...
 ```
 
-To test client-side React component, Jest leverages JSDOM to simulate a browser environment in Node.js without having to launch an actual browser.
+To test client-side React component, Jest leverages [JSDOM](https://github.com/jsdom/jsdom) to simulate a browser environment in Node.js without having to launch an actual browser.
 
 At the time of this writing, there are a couple of "gotchas" caused by the fact that we're using JSDOM as our test environment while using the Node.js integration for MSW.
 
