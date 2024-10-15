@@ -4,7 +4,7 @@ title: Masonry layout with React and CSS Flexbox
 description: Using React, CSS Flexbox, and cats to create a masonry grid layout
 image: /images/masonry-layout-in-react_cover.jpg
 tags: ui,javascript,webdev,masonry,css
-date: '2023-06-27'
+date: "2023-06-27"
 ---
 
 <figure>
@@ -43,14 +43,14 @@ Use Flexbox to style the `container` and `column` elements. The `container` pare
 
 ```css
 .container {
-	display: flex;
-	align-items: flex-start;
+  display: flex;
+  align-items: flex-start;
 }
 
 .column {
-	display: flex;
-	flex-direction: column;
-	flex: 1 1 0;
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 0;
 }
 ```
 
@@ -58,14 +58,14 @@ Each `tile` element contains the `img` tag that renders a cat image of varying a
 
 ```css
 .tile {
-	margin: 0;
-	display: inline-flex;
-	position: relative;
+  margin: 0;
+  display: inline-flex;
+  position: relative;
 }
 
 .tile img {
-	margin: 0;
-	width: 100%;
+  margin: 0;
+  width: 100%;
 }
 ```
 
@@ -83,9 +83,9 @@ In this example, I’m using [the Cat API](https://thecatapi.com/) to serve me a
 const [cats, setCats] = useState([]);
 
 useEffect(() => {
-	fetch('https://api.thecatapi.com/v1/images/search?limit=10')
-		.then((res) => res.json())
-		.then((data) => setCats(data));
+  fetch("https://api.thecatapi.com/v1/images/search?limit=10")
+    .then((res) => res.json())
+    .then((data) => setCats(data));
 }, []);
 ```
 
@@ -116,36 +116,36 @@ Lastly, this is the logic to execute the “big picture” steps laid out earlie
 
 ```jsx
 useEffect(() => {
-	let columns = Array.from({ length: NUM_COLUMNS }, () => ({
-		height: 0,
-		tiles: [],
-	}));
+  let columns = Array.from({ length: NUM_COLUMNS }, () => ({
+    height: 0,
+    tiles: [],
+  }));
 
-	// 1. iterate through each image
-	cats.forEach((cat, catIndex) => {
-		// 2. iterate through each column and identify the shortest column
-		let shortestColumnIndex = 0;
-		for (let i = 0; i < NUM_COLUMNS; i++) {
-			if (columns[i]?.height < columns[shortestColumnIndex]?.height) {
-				shortestColumnIndex = i;
-			}
-		}
+  // 1. iterate through each image
+  cats.forEach((cat, catIndex) => {
+    // 2. iterate through each column and identify the shortest column
+    let shortestColumnIndex = 0;
+    for (let i = 0; i < NUM_COLUMNS; i++) {
+      if (columns[i]?.height < columns[shortestColumnIndex]?.height) {
+        shortestColumnIndex = i;
+      }
+    }
 
-		// 3. stack the current image under the current shortest column
-		columns[shortestColumnIndex].tiles.push({
-			catIndex,
-			...cat,
-		});
+    // 3. stack the current image under the current shortest column
+    columns[shortestColumnIndex].tiles.push({
+      catIndex,
+      ...cat,
+    });
 
-		// 4. calculate current image's rendered height based on its aspect ratio
-		const columnWidth = containerRef?.current?.clientWidth / NUM_COLUMNS;
-		const tileHeight = (cat.height / cat.width) * columnWidth;
+    // 4. calculate current image's rendered height based on its aspect ratio
+    const columnWidth = containerRef?.current?.clientWidth / NUM_COLUMNS;
+    const tileHeight = (cat.height / cat.width) * columnWidth;
 
-		// 5. update the height of the current column
-		columns[shortestColumnIndex].height += tileHeight;
-	});
+    // 5. update the height of the current column
+    columns[shortestColumnIndex].height += tileHeight;
+  });
 
-	setColumns(columns);
+  setColumns(columns);
 }, [cats.length]);
 ```
 
@@ -163,16 +163,16 @@ The `container` element is assigned the `containerRef` variable, which gives us 
 
 ```javascript
 <section className="container" ref={containerRef}>
-	{columns.map((column, i) => (
-		<div className="column" key={i}>
-			{column.tiles.map((cat) => (
-				<div className="tile" key={cat.id}>
-					<span className="cat-index">{cat.catIndex}</span>
-					<img src={cat.url} />
-				</div>
-			))}
-		</div>
-	))}
+  {columns.map((column, i) => (
+    <div className="column" key={i}>
+      {column.tiles.map((cat) => (
+        <div className="tile" key={cat.id}>
+          <span className="cat-index">{cat.catIndex}</span>
+          <img src={cat.url} />
+        </div>
+      ))}
+    </div>
+  ))}
 </section>
 ```
 
@@ -189,3 +189,11 @@ Here’s my [CodeSandbox project](https://codesandbox.io/s/masonry-layout-5grmlk
 The original indices from the array of cat images are displayed so you can visually see how the masonry logic determines which column a particular image belongs to.
 
 Thanks for reading. In a future(ish 😅) article, I may explore adding bells and whistles such as making the React component more reusable, dynamically updating the number of columns based on screen widths, or implementing infinite scroll.
+
+---
+
+### Read More
+
+- [Mock Service Worker, Storybook, Jest, and React in 2024](https://www.suhanwijaya.com/posts/using-msw-with-storybook-jest-dev)
+- [React, Node, TypeScript in 2024](https://www.suhanwijaya.com/posts/react-node-typescript-2024)
+- [Deploy Docker-ized React/Node.js on EC2 via Terraform](https://www.suhanwijaya.com/posts/deploy-ec2-with-ecr-docker-terraform)
