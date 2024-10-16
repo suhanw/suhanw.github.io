@@ -987,6 +987,41 @@ a {
   }
 }
 
+.floatingMenu_3kAem {
+  z-index: 1;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  height: 60px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  border-top: solid 1px #e2e0e0;
+  transform: translateY(100%);
+  transition: transform 300ms ease-out;
+}
+.floatingMenu_3kAem.showMenu_clrPx {
+  transform: translateY(0);
+  transition: transform 300ms ease-out;
+}
+.author_3acRY {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.author_3acRY a {
+  height: 40px;
+}
+.author_3acRY a > img {
+  height: 100%;
+}
+.author_3acRY span {
+  margin-left: 10px;
+  font-size: 12px;
+}
+
 .contentWrapper_6ZnmJ {
   padding: 0px 15px 0px;
   display: flex;
