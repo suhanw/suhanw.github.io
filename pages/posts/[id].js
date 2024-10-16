@@ -110,7 +110,7 @@ const Post = ({ postData }) => {
 const SocialIcons = ({ url, title, description }) => (
   <span className={style.socialIcons}>
     <a
-      href={`https://www.linkedin.com/sharing/share-offsite/?url=${url}`}
+      href={`https://www.linkedin.com/shareArticle?mini=true&url=${url}`}
       target={"_blank"}
       aria-label={"Share this article on LinkedIn"}
     >

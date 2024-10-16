@@ -70,7 +70,7 @@ const Menu = ({ topMenu }) => {
         </a>
         <div className={style.social}>
           <a
-            href={"https://www.linkedin.com/in/suhanwijaya/"}
+            href={"https://www.linkedin.com/comm/in/suhanwijaya/"}
             target={"_blank"}
           >
             <img
