@@ -6,13 +6,19 @@ function FloatingMenu() {
   const [showMenu, setShowMenu] = useState(false);
   useEffect(() => {
     let lastScrollTop = window.scrollY || document.documentElement.scrollTop;
-    const handleScroll = (e) => {
+    const handleScroll = () => {
       const currentScrollTop =
         window.scrollY || document.documentElement.scrollTop;
-      const isUpScroll =
-        currentScrollTop <= lastScrollTop || currentScrollTop < 20;
+
+      const isUpScroll = currentScrollTop < lastScrollTop;
+      const scrollDistance = Math.abs(currentScrollTop - lastScrollTop);
+      const closeToTop = currentScrollTop < 20;
+
       lastScrollTop = currentScrollTop;
-      setShowMenu(isUpScroll);
+
+      if (scrollDistance > 10) {
+        setShowMenu(isUpScroll || closeToTop);
+      }
     };
 
     window.addEventListener("scroll", handleScroll);
