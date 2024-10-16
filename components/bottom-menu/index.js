@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import style from "./style";
 import cn from "classnames";
 
-function FloatingMenu() {
+function BottomMenu() {
   const [showMenu, setShowMenu] = useState(false);
   useEffect(() => {
     let lastScrollTop = window.scrollY || document.documentElement.scrollTop;
@@ -30,7 +30,7 @@ function FloatingMenu() {
   return (
     <nav
       className={cn({
-        [style.floatingMenu]: true,
+        [style.bottomMenu]: true,
         [style.showMenu]: showMenu,
       })}
     >
@@ -49,4 +49,4 @@ function FloatingMenu() {
   );
 }
 
-export default FloatingMenu;
+export default BottomMenu;

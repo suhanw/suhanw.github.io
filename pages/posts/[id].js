@@ -4,7 +4,7 @@ import style from "./style";
 import { getAllPostIds, getPostData } from "data";
 import Date from "components/date";
 import Layout from "components/layout";
-import FloatingMenu from "components/floating-menu";
+import BottomMenu from "components/bottom-menu";
 
 export const getStaticPaths = async () => {
   const paths = getAllPostIds();
@@ -68,7 +68,7 @@ const Post = ({ postData }) => {
           referrerPolicy="no-referrer"
         />
       </Head>
-      <FloatingMenu />
+      <BottomMenu />
       <article className={style.contentWrapper}>
         <h1 className={style.title}>{postData?.title}</h1>
         <div className={style.description}>{postData?.description}</div>
