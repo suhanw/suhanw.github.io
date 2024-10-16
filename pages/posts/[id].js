@@ -68,7 +68,6 @@ const Post = ({ postData }) => {
           referrerPolicy="no-referrer"
         />
       </Head>
-      <BottomMenu />
       <article className={style.contentWrapper}>
         <h1 className={style.title}>{postData?.title}</h1>
         <div className={style.description}>{postData?.description}</div>
@@ -103,6 +102,7 @@ const Post = ({ postData }) => {
           </span>
         </div>
       </article>
+      <BottomMenu />
     </Layout>
   );
 };
