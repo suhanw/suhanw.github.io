@@ -1000,8 +1000,7 @@ a {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: white;
-  border-top: solid 1px #e2e0e0;
+  background-color: #f9f9f9;
   transform: translateY(100%);
   transition: transform 300ms ease-out;
 }
