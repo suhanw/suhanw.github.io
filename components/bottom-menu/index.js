@@ -16,7 +16,7 @@ function BottomMenu() {
 
       lastScrollTop = currentScrollTop;
 
-      if (scrollDistance > 10) {
+      if (scrollDistance > 15) {
         setShowMenu(isUpScroll || closeToTop);
       }
     };
