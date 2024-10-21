@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import style from "./style";
 import cn from "classnames";
 
-function BottomMenu() {
+function BottomMenu({ children }) {
   const [showMenu, setShowMenu] = useState(false);
   useEffect(() => {
     let lastScrollTop = window.scrollY || document.documentElement.scrollTop;
@@ -34,17 +34,7 @@ function BottomMenu() {
         [style.showMenu]: showMenu,
       })}
     >
-      <div className={style.author}>
-        <a href="https://www.linkedin.com/comm/mynetwork/discovery-see-all?usecase=PEOPLE_FOLLOWS&followMember=suhanwijaya">
-          <img src="https://github.com/suhanw.png?size=200" />
-        </a>
-        <span>
-          Liked what you've read? <br />
-          <a href="https://www.linkedin.com/comm/mynetwork/discovery-see-all?usecase=PEOPLE_FOLLOWS&followMember=suhanwijaya">
-            Follow me on LinkedIn!
-          </a>
-        </span>
-      </div>
+      {children}
     </nav>
   );
 }

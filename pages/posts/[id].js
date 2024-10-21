@@ -102,7 +102,19 @@ const Post = ({ postData }) => {
           </span>
         </div>
       </article>
-      <BottomMenu />
+      <BottomMenu>
+        <div className={style.authorMobile}>
+          <a href="https://www.linkedin.com/comm/mynetwork/discovery-see-all?usecase=PEOPLE_FOLLOWS&followMember=suhanwijaya">
+            <img src="https://github.com/suhanw.png?size=200" />
+          </a>
+          <span>
+            Liked what you've read? <br />
+            <a href="https://www.linkedin.com/comm/mynetwork/discovery-see-all?usecase=PEOPLE_FOLLOWS&followMember=suhanwijaya">
+              Follow me on LinkedIn!
+            </a>
+          </span>
+        </div>
+      </BottomMenu>
     </Layout>
   );
 };
