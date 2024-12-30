@@ -1,7 +1,7 @@
 import Head from "next/head";
 
 const AiChatbot = () => {
-  const metaTitle = "auteur by Suhan Wijaya";
+  const metaTitle = "AI Chatbot by Suhan Wijaya";
   const metaDescription =
     "Full-stack AI Chatbot inspired by ChatGPT. React, Node.js, MongoDB, Redis, Docker. ";
   const metaImage = "https://www.suhanwijaya.com/images/ai-chatbot-preview.jpg";
