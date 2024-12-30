@@ -13,13 +13,21 @@ const Projects = () => (
     <div className={style.masonry}>
       <div className={style.column}>
         <ProjectThumbnail
-          href={"/tmnt-preview"}
-          imageSrc={"/images/tmnt.png"}
-          imageAlt={
-            "Personal challenge to build a game with React & Redux. Design/features inspired by SNES TMNT."
-          }
-          stack={["react.png", "redux.png", "html5.png", "css3.png"]}
+          href={"https://github.com/suhanw/ai-chatbot"}
+          imageSrc={"/images/ai-chatbot.png"}
+          imageAlt={"Personal challenge to build a ChatGPT clone."}
+          stack={[
+            "openai.jpg",
+            "typescript.jpeg",
+            "nodejs.png",
+            "react.png",
+            "webpack.png",
+            "mongodb.png",
+            "redis.png",
+            "docker.png",
+          ]}
         />
+
         <ProjectThumbnail
           href={"/auteur-preview"}
           imageSrc={"/images/auteur.png"}
@@ -39,6 +47,14 @@ const Projects = () => (
         />
       </div>
       <div className={style.column}>
+        <ProjectThumbnail
+          href={"/tmnt-preview"}
+          imageSrc={"/images/tmnt.png"}
+          imageAlt={
+            "Personal challenge to build a game with React & Redux. Design/features inspired by SNES TMNT."
+          }
+          stack={["react.png", "redux.png", "html5.png", "css3.png"]}
+        />
         <ProjectThumbnail
           href={"/mapmycruise-preview"}
           imageSrc={"/images/mapmycruise.png"}

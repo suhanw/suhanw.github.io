@@ -1,92 +1,93 @@
 .projects {
-	background-color: #f9f9f9;
+  background-color: #f9f9f9;
 }
 
 .masonry {
-	flex: 0 0 auto;
-	width: 100%;
-	display: flex;
-	flex-direction: column;
-	justify-content: flex-start;
-	align-items: center;
+  flex: 0 0 auto;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
 }
 
 .column {
-	flex: 0 0 auto;
-	max-width: 500px;
-	display: inline-flex;
-	flex-direction: column;
+  flex: 0 0 auto;
+  max-width: 500px;
+  display: inline-flex;
+  flex-direction: column;
 }
 
 .cell {
-	position: relative;
-	flex: 0 0 auto;
-	display: block;
-	margin: 0px 0px 15px 0px;
-	overflow: hidden;
+  position: relative;
+  flex: 0 0 auto;
+  display: block;
+  margin: 0px 0px 15px 0px;
+  border: 1px solid #333;
+  overflow: hidden;
 
-	> img {
-		display: block;
-		width: 100%;
-		height: auto;
-	}
+  > img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
 }
 
 .overlay {
-	position: absolute;
-	width: 100%;
-	height: 100%;
-	transform: translateX(-100%);
-	transition: transform 350ms ease-out;
-	background-color: rgba(255, 255, 255, 0.75);
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  transform: translateX(-100%);
+  transition: transform 350ms ease-out;
+  background-color: rgba(255, 255, 255, 0.75);
 }
 
 .overlayContent {
-	position: absolute;
-	width: 100%;
-	height: 100%;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	opacity: 0;
-	transition: opacity 350ms ease-out;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transition: opacity 350ms ease-out;
 }
 
 .iconWrapper {
-	width: 50%;
+  width: 50%;
 }
 
 .icon {
-	margin: 2.5%;
-	width: 20%;
-	height: auto;
+  margin: 2.5%;
+  width: 20%;
+  height: auto;
 }
 
 .show {
-	.overlay {
-		transform: translateX(0);
-		transition: transform 350ms ease-in;
-	}
+  .overlay {
+    transform: translateX(0);
+    transition: transform 350ms ease-in;
+  }
 
-	.overlayContent {
-		opacity: 1;
-		transition: opacity 350ms ease-in;
-	}
+  .overlayContent {
+    opacity: 1;
+    transition: opacity 350ms ease-in;
+  }
 }
 
 @media only screen and (min-width: 992px) {
-	.masonry {
-		flex-direction: row;
-		justify-content: center;
-		align-items: flex-start;
-	}
+  .masonry {
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+  }
 
-	.column {
-		flex: 0 0 50%;
-		padding: 0px 10px;
-	}
+  .column {
+    flex: 0 0 50%;
+    padding: 0px 10px;
+  }
 
-	.cell {
-		margin: 0px 0px 20px 0px;
-	}
+  .cell {
+    margin: 0px 0px 20px 0px;
+  }
 }
