@@ -29,7 +29,7 @@ const AiChatbot = () => {
       <meta name="twitter:card" content="summary_large_image" />
 
       <script>
-        window.location.replace('https://chatbot-server-mi7w.onrender.com/');
+        window.location.replace('https://github.com/suhanw/ai-chatbot');
       </script>
     </Head>
   );
