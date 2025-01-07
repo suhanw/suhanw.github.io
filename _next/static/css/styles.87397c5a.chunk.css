@@ -419,10 +419,14 @@ a {
   max-width: 100%;
 }
 .cta_3ivKg {
-  display: block;
+  display: flex;
   font-size: 18px;
   color: blue;
   margin: 10px 0px;
+  align-items: flex-end;
+}
+.cta_3ivKg > img {
+  margin-left: 5px;
 }
 .figureFlex_NrWih {
   display: flex;
