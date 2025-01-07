@@ -1,5 +1,6 @@
 import Head from "next/head";
 import style from "./style";
+import BottomMenu from "components/bottom-menu";
 
 export default () => {
   return (
@@ -10,7 +11,8 @@ export default () => {
       <article className={style.contentWrapper}>
         <h1>TMNT React</h1>
         <a className={style.cta} href="/tmnt">
-          www.suhanwijaya.com/tmnt
+          <span>www.suhanwijaya.com/tmnt</span>
+          <img src="/icons/external-link.svg" />
         </a>
         <p>
           TMNT React is inspired by TMNT 4: Turtles in Time, a classic "beat 'em
@@ -101,6 +103,12 @@ export default () => {
           <img src="/images/tmnt-preview/turtle-attack.gif" />
         </figure>
       </article>
+      <BottomMenu mobileOnly={false}>
+        <a className={style.cta} href="/tmnt">
+          <span>TMNT React</span>
+          <img src="/icons/external-link.svg" />
+        </a>
+      </BottomMenu>
     </>
   );
 };
