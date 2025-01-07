@@ -127,7 +127,7 @@ export default () => {
       </article>
       <BottomMenu mobileOnly={false}>
         <a className={style.cta} href="/auteur">
-          <span>www.suhanwijaya.com/auteur</span>
+          <span>Auteur</span>
           <img src="/icons/external-link.svg" />
         </a>
       </BottomMenu>
