@@ -24,7 +24,8 @@ export default () => {
       <article className={style.contentWrapper}>
         <h1>Auteur</h1>
         <a className={style.cta} href="/auteur">
-          www.suhanwijaya.com/auteur
+          <span>www.suhanwijaya.com/auteur</span>
+          <img src="/icons/external-link.svg" />
         </a>
         <p>
           Auteur is a full-stack web application inspired by Tumblr. It utilizes
@@ -126,7 +127,8 @@ export default () => {
       </article>
       <BottomMenu mobileOnly={false}>
         <a className={style.cta} href="/auteur">
-          www.suhanwijaya.com/auteur
+          <span>www.suhanwijaya.com/auteur</span>
+          <img src="/icons/external-link.svg" />
         </a>
       </BottomMenu>
     </>
