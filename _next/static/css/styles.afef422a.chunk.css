@@ -426,7 +426,7 @@ a {
   align-items: flex-end;
 }
 .cta_3ivKg > img {
-  margin-left: 5px;
+  margin-left: 3px;
 }
 .figureFlex_NrWih {
   display: flex;
@@ -484,7 +484,7 @@ a {
   align-items: flex-end;
 }
 .cta_1hPgg > img {
-  margin-left: 5px;
+  margin-left: 3px;
 }
 .figureFlex_12YNZ {
   display: flex;
@@ -1068,42 +1068,6 @@ a {
   }
 }
 
-.bottomMenu_SThI5 {
-  z-index: 1;
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  height: 60px;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: #f9f9f9;
-  transform: translateY(100%);
-  transition: transform 300ms ease-out;
-}
-.bottomMenu_SThI5.showMenu_2idxs {
-  transform: translateY(0);
-  transition: transform 300ms ease-out;
-}
-@media only screen and (min-width: 992px) {
-  .mobileOnly_bZ-pA {
-    display: none;
-  }
-}
-
-.social_3OTPv {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.social_3OTPv a {
-  margin: 0px 5px;
-}
-.social_3OTPv a img {
-  height: 40px;
-}
-
 .contentWrapper_2Bs0K {
   padding: 0px 15px 0px;
   display: flex;
@@ -1143,10 +1107,14 @@ a {
   margin: 1.2em 0;
 }
 .cta_3CgVt {
-  display: block;
+  display: flex;
   font-size: 18px;
   color: blue;
   margin: 10px 0px;
+  align-items: flex-end;
+}
+.cta_3CgVt > img {
+  margin-left: 3px;
 }
 .figureFlex_3zC_2 {
   display: flex;
@@ -1163,5 +1131,41 @@ a {
   .contentWrapper_2Bs0K {
     padding: 0px;
   }
+}
+
+.bottomMenu_SThI5 {
+  z-index: 1;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  height: 60px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f9f9f9;
+  transform: translateY(100%);
+  transition: transform 300ms ease-out;
+}
+.bottomMenu_SThI5.showMenu_2idxs {
+  transform: translateY(0);
+  transition: transform 300ms ease-out;
+}
+@media only screen and (min-width: 992px) {
+  .mobileOnly_bZ-pA {
+    display: none;
+  }
+}
+
+.social_3OTPv {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.social_3OTPv a {
+  margin: 0px 5px;
+}
+.social_3OTPv a img {
+  height: 40px;
 }
 
