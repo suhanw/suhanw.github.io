@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import style from "./style";
 import cn from "classnames";
 
-function BottomMenu({ children }) {
+function BottomMenu({ children, mobileOnly = true }) {
   const [showMenu, setShowMenu] = useState(false);
   useEffect(() => {
     let lastScrollTop = window.scrollY || document.documentElement.scrollTop;
@@ -32,6 +32,7 @@ function BottomMenu({ children }) {
       className={cn({
         [style.bottomMenu]: true,
         [style.showMenu]: showMenu,
+        [style.mobileOnly]: mobileOnly,
       })}
     >
       {children}

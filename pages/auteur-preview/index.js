@@ -1,5 +1,6 @@
 import Head from "next/head";
 import style from "./style";
+import BottomMenu from "components/bottom-menu";
 
 export default () => {
   const prefetchScript = (
@@ -123,6 +124,11 @@ export default () => {
           <img src="/images/auteur-responsive.gif" />
         </figure>
       </article>
+      <BottomMenu mobileOnly={false}>
+        <a className={style.cta} href="/auteur">
+          www.suhanwijaya.com/auteur
+        </a>
+      </BottomMenu>
     </>
   );
 };
