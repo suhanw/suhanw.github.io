@@ -18,6 +18,7 @@ export default () => {
     <>
       <Head>
         <title>Auteur Preview</title>
+        {prefetchScript}
       </Head>
       <article className={style.contentWrapper}>
         <h1>Auteur</h1>
