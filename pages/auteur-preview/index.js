@@ -1,25 +1,19 @@
+import { useEffect } from "react";
 import Head from "next/head";
 import style from "./style";
 import BottomMenu from "components/bottom-menu";
 
 export default () => {
-  const prefetchScript = (
-    <script
-      dangerouslySetInnerHTML={{
-        __html: `
-				if (typeof fetch !== "undefined") {
-					fetch("https://auteur-app.onrender.com/scripts/bundle.js")
-						.catch(err => console.error(err));
-				}
-			`,
-      }}
-    />
-  );
+  useEffect(() => {
+    fetch("https://auteur-app.onrender.com/health").catch((err) =>
+      console.error(err)
+    );
+  }, []);
+
   return (
     <>
       <Head>
         <title>Auteur Preview</title>
-        {prefetchScript}
       </Head>
       <article className={style.contentWrapper}>
         <h1>Auteur</h1>
