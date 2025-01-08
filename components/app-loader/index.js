@@ -16,7 +16,7 @@ function AppLoader({ prefetchUrl, appUrl }) {
       </Head>
       <article className={style.contentWrapper}>
         <h2>Warming up my free server...</h2>
-        <p>I appreciate your patience.</p>
+        <p>It's loading, I swear.</p>
 
         <figure>
           <span className={style.loader}></span>
