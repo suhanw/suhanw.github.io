@@ -387,6 +387,68 @@ a {
   }
 }
 
+.contentWrapper_2z0wZ {
+  padding: 0px 15px 0px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  text-align: center;
+}
+.contentWrapper_2z0wZ > * {
+  flex: 0 0 auto;
+  width: 100%;
+  max-width: 700px;
+}
+.contentWrapper_2z0wZ h1 {
+  margin: 32px 0px 0px 0px;
+  font-size: 36px;
+}
+.contentWrapper_2z0wZ h2 {
+  margin: 24px 0px 0px 0px;
+  font-size: 24px;
+}
+.contentWrapper_2z0wZ h3 {
+  margin: 18px 0px 0px 0px;
+  font-size: 18px;
+}
+.contentWrapper_2z0wZ figure {
+  margin: 16px 0px;
+  text-align: center;
+}
+.contentWrapper_2z0wZ figure img {
+  max-width: 80%;
+}
+.loader_jYp87 {
+  width: 80%;
+  height: 4.8px;
+  display: inline-block;
+  position: relative;
+  background: rgba(255, 255, 255, 0.15);
+  overflow: hidden;
+}
+.loader_jYp87::after {
+  content: "";
+  width: 192px;
+  height: 4.8px;
+  background: #81cd2e;
+  position: absolute;
+  top: 0;
+  left: 0;
+  box-sizing: border-box;
+  animation: animloader_2IYZl 2s linear infinite;
+}
+@keyframes animloader_2IYZl {
+  0% {
+    left: 0;
+    transform: translateX(-100%);
+  }
+  100% {
+    left: 100%;
+    transform: translateX(0%);
+  }
+}
+
 .contentWrapper_1aS_o {
   padding: 0px 15px 0px;
   display: flex;
@@ -1175,67 +1237,5 @@ a {
 }
 .social_3OTPv a img {
   height: 40px;
-}
-
-.contentWrapper_2z0wZ {
-  padding: 0px 15px 0px;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
-  text-align: center;
-}
-.contentWrapper_2z0wZ > * {
-  flex: 0 0 auto;
-  width: 100%;
-  max-width: 700px;
-}
-.contentWrapper_2z0wZ h1 {
-  margin: 32px 0px 0px 0px;
-  font-size: 36px;
-}
-.contentWrapper_2z0wZ h2 {
-  margin: 24px 0px 0px 0px;
-  font-size: 24px;
-}
-.contentWrapper_2z0wZ h3 {
-  margin: 18px 0px 0px 0px;
-  font-size: 18px;
-}
-.contentWrapper_2z0wZ figure {
-  margin: 16px 0px;
-  text-align: center;
-}
-.contentWrapper_2z0wZ figure img {
-  max-width: 80%;
-}
-.loader_jYp87 {
-  width: 80%;
-  height: 4.8px;
-  display: inline-block;
-  position: relative;
-  background: rgba(255, 255, 255, 0.15);
-  overflow: hidden;
-}
-.loader_jYp87::after {
-  content: "";
-  width: 192px;
-  height: 4.8px;
-  background: #81cd2e;
-  position: absolute;
-  top: 0;
-  left: 0;
-  box-sizing: border-box;
-  animation: animloader_2IYZl 2s linear infinite;
-}
-@keyframes animloader_2IYZl {
-  0% {
-    left: 0;
-    transform: translateX(-100%);
-  }
-  100% {
-    left: 100%;
-    transform: translateX(0%);
-  }
 }
 
