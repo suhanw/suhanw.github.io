@@ -1,13 +1,6 @@
 import { useEffect, useState } from "react";
 import style from "./style";
 
-const randomGifs = [
-  "/images/puppydogeyes-sad.gif",
-  "https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExMG82eml0YjIwY2V0aDgwbXdldjA5eGpneHM2aG91OWdndmpoOXFzcCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/l41lOdm2mFEG0eGmQ/giphy.gif",
-  "https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExcGpqemoxYmJ2aXg4bHZieWcwZTR3OWF6YzV1N2RoY3FvOXJuYjNjMiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/2tLyBxzziMXYdibWHw/giphy.gif",
-  "https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExMnNod2UyNDY2MXo5NG9uZDNxNjhmYW9kMGo0dW1waGhmaDQ4cTFraiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/25MomqaozfaDt7Zq8M/giphy.gif",
-];
-
 function getRandomInt(max) {
   return Math.floor(Math.random() * max);
 }
@@ -29,6 +22,15 @@ function AppLoader({ prefetchUrl, appUrl }) {
       });
   }, []);
 
+  const gifUrls = [
+    "/images/puppydogeyes-sad.gif",
+    "https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExMG82eml0YjIwY2V0aDgwbXdldjA5eGpneHM2aG91OWdndmpoOXFzcCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/l41lOdm2mFEG0eGmQ/giphy.gif",
+    "https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExcGpqemoxYmJ2aXg4bHZieWcwZTR3OWF6YzV1N2RoY3FvOXJuYjNjMiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/2tLyBxzziMXYdibWHw/giphy.gif",
+    "https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExMnNod2UyNDY2MXo5NG9uZDNxNjhmYW9kMGo0dW1waGhmaDQ4cTFraiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/25MomqaozfaDt7Zq8M/giphy.gif",
+  ];
+
+  const randomGifUrl = gifUrls[getRandomInt(gifUrls.length)];
+
   return (
     <>
       <article className={style.contentWrapper}>
@@ -38,7 +40,7 @@ function AppLoader({ prefetchUrl, appUrl }) {
             <p>It's loading soon, I swear.</p>
 
             <figure>
-              <img src={randomGifs[getRandomInt(randomGifs.length)]} />
+              <img src={randomGifUrl} />
             </figure>
           </>
         ) : (
