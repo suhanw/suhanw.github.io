@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import cn from "classnames";
 import style from "./style";
+import Hamburger from "components/hamburger";
 
 const Menu = ({ topMenu }) => {
   const [showMenu, setShowMenu] = useState(false);
@@ -96,9 +97,7 @@ const Menu = ({ topMenu }) => {
           </li>
         </ul>
       </nav>
-      <button className={style.hamburger} onClick={toggleMenu}>
-        <img src={"/images/hamburger.png"} />
-      </button>
+      <Hamburger toggleMenu={toggleMenu} />
     </>
   );
 };

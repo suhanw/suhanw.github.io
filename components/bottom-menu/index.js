@@ -1,37 +1,17 @@
 import { useEffect, useState } from "react";
-import style from "./style";
 import cn from "classnames";
+import { useShowElementOnUpScroll } from "utils";
+
+import style from "./style";
 
 function BottomMenu({ children, mobileOnly = true }) {
-  const [showMenu, setShowMenu] = useState(false);
-  useEffect(() => {
-    let lastScrollTop = window.scrollY || document.documentElement.scrollTop;
-    const handleScroll = () => {
-      const currentScrollTop =
-        window.scrollY || document.documentElement.scrollTop;
-
-      const isUpScroll = currentScrollTop < lastScrollTop;
-      const scrollDistance = Math.abs(currentScrollTop - lastScrollTop);
-      const closeToTop = currentScrollTop < 20;
-
-      lastScrollTop = currentScrollTop;
-
-      if (scrollDistance > 15) {
-        setShowMenu(isUpScroll || closeToTop);
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
+  const { showElement } = useShowElementOnUpScroll();
 
   return (
     <nav
       className={cn({
         [style.bottomMenu]: true,
-        [style.showMenu]: showMenu,
+        [style.showMenu]: showElement,
         [style.mobileOnly]: mobileOnly,
       })}
     >

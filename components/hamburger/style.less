@@ -1,0 +1,28 @@
+.hamburger {
+  z-index: 2;
+  position: fixed;
+  top: 15px;
+  right: 15px;
+  display: inline-block;
+  width: 50px;
+  background-color: #fff;
+  border-radius: 10px;
+  transform: translateY(-150%);
+  transition: transform 300ms ease-out;
+
+  > img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+}
+
+.showHamburger {
+  transform: translateY(0);
+}
+
+@media only screen and (min-width: 992px) {
+  .hamburger {
+    display: none;
+  }
+}
