@@ -417,35 +417,7 @@ a {
   text-align: center;
 }
 .contentWrapper_2z0wZ figure img {
-  max-width: 80%;
-}
-.loader_jYp87 {
   width: 80%;
-  height: 4.8px;
-  display: inline-block;
-  position: relative;
-  overflow: hidden;
-}
-.loader_jYp87::after {
-  content: "";
-  width: 96px;
-  height: 4.8px;
-  background: #81cd2e;
-  position: absolute;
-  top: 0;
-  left: 0;
-  box-sizing: border-box;
-  animation: hitZak_2jfGi 0.6s ease-in-out infinite alternate;
-}
-@keyframes hitZak_2jfGi {
-  0% {
-    left: 0;
-    transform: translateX(-1%);
-  }
-  100% {
-    left: 100%;
-    transform: translateX(-99%);
-  }
 }
 
 .contentWrapper_1aS_o {
