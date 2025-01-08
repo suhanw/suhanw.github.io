@@ -14,11 +14,9 @@ function getRandomInt(max) {
 
 function AppLoader({ prefetchUrl, appUrl }) {
   const [hasError, setHasError] = useState(false);
-  const [randomInt, setRandomInt] = useState(null);
+  const randomInt = getRandomInt(gifUrls.length);
 
   useEffect(() => {
-    setRandomInt(getRandomInt(gifUrls.length));
-
     fetch(prefetchUrl)
       .then((res) => {
         if (!res.ok) {
@@ -41,7 +39,7 @@ function AppLoader({ prefetchUrl, appUrl }) {
             <p>It's loading soon, I swear.</p>
 
             <figure>
-              {randomInt >= 0 && <img src={gifUrls[randomInt]} />}
+              <img src={gifUrls[randomInt]} />
             </figure>
           </>
         ) : (
