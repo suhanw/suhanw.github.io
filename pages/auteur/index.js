@@ -32,7 +32,7 @@ const Auteur = () => {
       </Head>
 
       <AppLoader
-        prefetchAssetUrl={"https://auteur-app.onrender.com/scripts/bundle.js"}
+        prefetchUrl={"https://auteur-app.onrender.com/health"}
         appUrl={"https://auteur-app.onrender.com/"}
       />
     </>

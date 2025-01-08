@@ -1,9 +1,9 @@
 import { useEffect } from "react";
 import style from "./style";
 
-function AppLoader({ prefetchAssetUrl, appUrl }) {
+function AppLoader({ prefetchUrl, appUrl }) {
   useEffect(() => {
-    fetch(prefetchAssetUrl)
+    fetch(prefetchUrl)
       .then(() => window.location.replace(appUrl))
       .catch((err) => console.error(err));
   }, []);
