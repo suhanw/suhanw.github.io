@@ -26,7 +26,7 @@ function AppLoader({ prefetchUrl, appUrl }) {
         if (!res.ok) {
           throw res;
         }
-        // window.location.replace(appUrl);
+        window.location.replace(appUrl);
       })
       .catch((err) => {
         console.error(err);
