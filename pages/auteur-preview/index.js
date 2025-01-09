@@ -5,9 +5,11 @@ import BottomMenu from "components/bottom-menu";
 
 export default () => {
   useEffect(() => {
-    fetch("https://auteur-app.onrender.com/health").catch((err) =>
-      console.error(err)
-    );
+    fetch("https://auteur-app.onrender.com/health")
+      .then((res) => {
+        if (!res.ok) throw res;
+      })
+      .catch((err) => console.error(err));
   }, []);
 
   return (

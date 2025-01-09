@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useLayoutEffect, useState } from "react";
 import style from "./style";
 
 function AppLoader({ prefetchUrl, appUrl }) {
@@ -14,6 +14,11 @@ function AppLoader({ prefetchUrl, appUrl }) {
   };
 
   const [hasError, setHasError] = useState(false);
+  const [loadingGif, setLoadingGif] = useState(null);
+
+  useLayoutEffect(() => {
+    setLoadingGif(getRandomGif());
+  }, []);
 
   useEffect(() => {
     fetch(prefetchUrl)
@@ -37,9 +42,7 @@ function AppLoader({ prefetchUrl, appUrl }) {
             <h2>Warming up my free server...</h2>
             <p>It's loading soon, I swear.</p>
 
-            <figure>
-              <img src={getRandomGif()} />
-            </figure>
+            <figure>{loadingGif && <img src={loadingGif} />}</figure>
           </>
         ) : (
           <>
