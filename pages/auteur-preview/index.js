@@ -1,7 +1,8 @@
 import { useEffect } from "react";
 import Head from "next/head";
 import style from "./style";
-import BottomMenu from "components/bottom-menu";
+import Layout from "components/layout";
+import BottomPill from "components/bottom-pill";
 
 export default () => {
   useEffect(() => {
@@ -13,7 +14,7 @@ export default () => {
   }, []);
 
   return (
-    <>
+    <Layout>
       <Head>
         <title>Auteur Preview</title>
       </Head>
@@ -121,12 +122,12 @@ export default () => {
           <img src="/images/auteur-responsive.gif" />
         </figure>
       </article>
-      <BottomMenu mobileOnly={false}>
+      <BottomPill>
         <a className={style.cta} href="/auteur">
           <span>Auteur</span>
           <img src="/icons/external-link.svg" />
         </a>
-      </BottomMenu>
-    </>
+      </BottomPill>
+    </Layout>
   );
 };

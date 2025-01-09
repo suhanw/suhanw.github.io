@@ -3,15 +3,13 @@ import { useShowElementOnUpScroll } from "utils";
 
 import style from "./style";
 
-function BottomMenu({ children, mobileOnly = true }) {
+function BottomPill({ children }) {
   const { showElement } = useShowElementOnUpScroll();
 
   return (
     <nav
-      className={cn({
-        [style.bottomMenu]: true,
-        [style.showMenu]: showElement,
-        [style.mobileOnly]: mobileOnly,
+      className={cn(style.bottomPill, {
+        [style.show]: showElement,
       })}
     >
       {children}
@@ -19,4 +17,4 @@ function BottomMenu({ children, mobileOnly = true }) {
   );
 }
 
-export default BottomMenu;
+export default BottomPill;

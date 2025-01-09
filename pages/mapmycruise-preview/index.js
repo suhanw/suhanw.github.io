@@ -1,10 +1,11 @@
 import Head from "next/head";
 import style from "./style";
-import BottomMenu from "components/bottom-menu";
+import BottomPill from "components/bottom-pill";
+import Layout from "components/layout";
 
 export default () => {
   return (
-    <>
+    <Layout>
       <Head>
         <title>MapMyCruise Preview</title>
       </Head>
@@ -106,12 +107,12 @@ export default () => {
           <img src="https://github.com/suhanw/map_my_cruise/raw/master/docs/README_gifs/notifications.gif" />
         </figure>
       </article>
-      <BottomMenu mobileOnly={false}>
+      <BottomPill>
         <a className={style.cta} href="/mapmycruise">
           <span>MapMyCruise</span>
           <img src="/icons/external-link.svg" />
         </a>
-      </BottomMenu>
-    </>
+      </BottomPill>
+    </Layout>
   );
 };

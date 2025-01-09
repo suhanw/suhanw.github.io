@@ -1,10 +1,11 @@
 import Head from "next/head";
 import style from "./style";
-import BottomMenu from "components/bottom-menu";
+import BottomPill from "components/bottom-pill";
+import Layout from "components/layout";
 
 export default () => {
   return (
-    <>
+    <Layout>
       <Head>
         <title>TMNT React Preview</title>
       </Head>
@@ -103,12 +104,12 @@ export default () => {
           <img src="/images/tmnt-preview/turtle-attack.gif" />
         </figure>
       </article>
-      <BottomMenu mobileOnly={false}>
+      <BottomPill>
         <a className={style.cta} href="/tmnt">
           <span>TMNT React</span>
           <img src="/icons/external-link.svg" />
         </a>
-      </BottomMenu>
-    </>
+      </BottomPill>
+    </Layout>
   );
 };
