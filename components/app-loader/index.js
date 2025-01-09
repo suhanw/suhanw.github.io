@@ -40,6 +40,7 @@ function AppLoader({ prefetchUrl, appUrl }) {
         {!hasError ? (
           <>
             <h2>Warming up my free server...</h2>
+            <span className={style.loader}></span>
             <p>It's loading soon, I swear.</p>
 
             <figure>{loadingGif && <img src={loadingGif} />}</figure>
