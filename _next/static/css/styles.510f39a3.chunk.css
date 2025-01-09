@@ -429,7 +429,7 @@ a {
   height: 100%;
   width: 0;
   background: #81cd2e;
-  animation: prog_3oKfS 30s ease-out infinite;
+  animation: prog_3oKfS 40s ease-out infinite;
 }
 @keyframes prog_3oKfS {
   to {
