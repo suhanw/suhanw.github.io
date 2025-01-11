@@ -5,7 +5,7 @@ const Auteur = () => {
   const metaTitle = "auteur by Suhan Wijaya";
   const metaDescription =
     "Auteur is a full-stack blogging app inspired by Tumblr. Express.js backend, MongoDB, and React.js with Redux framework.";
-  const metaImage = "https://www.suhanwijaya.com/images/auteur.png";
+  const metaImage = "https://www.suhanwijaya.com/images/auteur-carousel.gif";
   const metaUrl = "https://www.suhanwijaya.com/auteur";
 
   return (
