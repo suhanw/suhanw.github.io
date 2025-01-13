@@ -12,7 +12,7 @@ export default () => {
       <article className={style.contentWrapper}>
         <h1>MapMyCruise</h1>
         <a className={style.cta} href="/mapmycruise">
-          <span>www.suhanwijaya.com/mapmycruise</span>
+          <span>suhanwijaya.com/mapmycruise</span>
           <img src="/icons/external-link.svg" />
         </a>
         <p>

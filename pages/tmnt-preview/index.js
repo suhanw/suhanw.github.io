@@ -12,7 +12,7 @@ export default () => {
       <article className={style.contentWrapper}>
         <h1>TMNT React</h1>
         <a className={style.cta} href="/tmnt">
-          <span>www.suhanwijaya.com/tmnt</span>
+          <span>suhanwijaya.com/tmnt</span>
           <img src="/icons/external-link.svg" />
         </a>
         <p>

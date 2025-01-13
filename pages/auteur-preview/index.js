@@ -44,7 +44,7 @@ export default () => {
       <article className={style.contentWrapper}>
         <h1>Auteur</h1>
         <a className={style.cta} href="/auteur">
-          <span>www.suhanwijaya.com/auteur</span>
+          <span>suhanwijaya.com/auteur</span>
           <img src="/icons/external-link.svg" />
         </a>
         <p>
