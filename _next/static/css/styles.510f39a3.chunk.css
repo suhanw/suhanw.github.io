@@ -903,7 +903,6 @@ a {
 
 .intro_3dVDA {
   height: 100vh;
-  inset: 0;
   min-height: 460px;
   display: flex;
   justify-content: center;
