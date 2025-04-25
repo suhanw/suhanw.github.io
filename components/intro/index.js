@@ -6,7 +6,8 @@ const Intro = () => {
   const introRef = useRef();
   useLayoutEffect(() => {
     if (introRef.current) {
-      introRef.current.style.height = `${introRef.current.offsetHeight}px`;
+      // introRef.current.style.height = `${introRef.current.offsetHeight}px`;
+      introRef.current.style.height = `${window.innerHeight}px`;
     }
   }, []);
 
