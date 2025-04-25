@@ -4,11 +4,11 @@ import { useLayoutEffect, useRef } from "react";
 
 const Intro = () => {
   const introRef = useRef();
-  useLayoutEffect(() => {
-    if (introRef.current) {
-      introRef.current.style.height = `${introRef.current.offsetHeight}px`;
-    }
-  }, []);
+  // useLayoutEffect(() => {
+  //   if (introRef.current) {
+  //     introRef.current.style.height = `${introRef.current.offsetHeight}px`;
+  //   }
+  // }, []);
 
   return (
     <>
