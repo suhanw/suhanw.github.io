@@ -16,12 +16,8 @@ const About = (props) => {
       <ul className={cn(style.content, style.desktop)}>
         <li>
           👷🏻‍♂️ Senior Software Engineer at{" "}
-          <a href={"https://www.cloudcraft.co"} target="_blank">
-            Cloudcraft
-          </a>{" "}
-          by{" "}
-          <a href={"https://www.datadoghq.com/"} target={"_blank"}>
-            Datadog
+          <a href={"https://www.open.gov.sg"} target="_blank">
+            Open Government Products
           </a>
           .
         </li>
@@ -34,12 +30,8 @@ const About = (props) => {
       <ul className={cn(style.content, style.mobile)}>
         <li>
           👷🏻‍♂️ Sr. SWE at{" "}
-          <a href={"https://www.cloudcraft.co"} target="_blank">
-            Cloudcraft
-          </a>{" "}
-          by{" "}
-          <a href={"https://www.datadoghq.com/"} target={"_blank"}>
-            Datadog
+          <a href={"https://www.open.gov.sg"} target="_blank">
+            Open Government Products
           </a>
           .
         </li>
