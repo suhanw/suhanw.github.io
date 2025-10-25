@@ -1,5 +1,6 @@
 import Head from "next/head";
-import AppLoader from "components/app-loader";
+import { useEffect } from "react";
+// import AppLoader from "components/app-loader";
 
 const AiChatbot = () => {
   const metaTitle = "AI Chatbot by Suhan Wijaya";
@@ -7,6 +8,10 @@ const AiChatbot = () => {
     "Full-stack AI Chatbot inspired by ChatGPT. React, Node.js, MongoDB, Redis, Docker. ";
   const metaImage = "https://www.suhanwijaya.com/images/ai-chatbot-preview.jpg";
   const metaUrl = "https://www.suhanwijaya.com/ai-chatbot";
+
+  useEffect(() => {
+    window.location.replace("https://chatbot-server-mi7w.onrender.com/");
+  }, []);
 
   return (
     <>
@@ -31,10 +36,10 @@ const AiChatbot = () => {
         <meta name="twitter:card" content="summary_large_image" />
       </Head>
 
-      <AppLoader
+      {/* <AppLoader
         prefetchUrl="https://chatbot-server-mi7w.onrender.com/health"
         appUrl="https://chatbot-server-mi7w.onrender.com/"
-      />
+      /> */}
     </>
   );
 };

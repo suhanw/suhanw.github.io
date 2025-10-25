@@ -1,5 +1,6 @@
 import Head from "next/head";
-import AppLoader from "components/app-loader";
+import { useEffect } from "react";
+// import AppLoader from "components/app-loader";
 
 const Auteur = () => {
   const metaTitle = "auteur by Suhan Wijaya";
@@ -8,6 +9,10 @@ const Auteur = () => {
   const metaImage = "https://www.suhanwijaya.com/images/auteur-carousel.gif";
   const metaUrl = "https://www.suhanwijaya.com/auteur";
 
+  useEffect(() => {
+    window.location.replace("https://auteur-app.onrender.com/");
+  }, [])
+  
   return (
     <>
       <Head>
@@ -31,10 +36,10 @@ const Auteur = () => {
         <meta name="twitter:card" content="summary_large_image" />
       </Head>
 
-      <AppLoader
+      {/* <AppLoader
         prefetchUrl={"https://auteur-app.onrender.com/health"}
         appUrl={"https://auteur-app.onrender.com/"}
-      />
+      /> */}
     </>
   );
 };
